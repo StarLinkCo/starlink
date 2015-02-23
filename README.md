@@ -3,7 +3,7 @@ Welcome to the starlink wiki!
 ## How to Start
 
 ### 1. Register in Github and fork starlink repo
-git clone https://github.com/dongqiuyepu/starlink
+git clone https://github.com/StarLinkCo/starlink
 
 ### 2. Get to know meteor
 * https://www.eventedmind.com/classes/getting-started-with-meteor/meteor-what-is-meteor
