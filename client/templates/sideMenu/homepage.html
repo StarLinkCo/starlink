@@ -51,6 +51,41 @@
   {{/ionView}}
 </template>
 
+<template name="_groupItem">
+  {{#with group}}
+    {{#ionItem path=../path buttonRight=true avatar=true}}
+      <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
+      <h2>{{name}} ({{count}}人)</h2>
+      <p>{{desc}} </p>
+      <button class="button button-positive">{{> ionIcon icon="ios-people"}} &nbsp;Join</button>
+    {{/ionItem}}
+  {{/with}}
+</template>
+
+<template name="groupsShow">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton class="button-positive" text=false}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Profile of @{{group.name}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+        {{#with group}}
+
+              <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
+              <h2>{{name}} ({{count}}人)</h2>
+              <p>{{desc}} </p>
+
+        {{/with}}
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>
+
 <template name="groups">
   {{#contentFor "headerButtonLeft"}}
     <button class="button button-clear pull-left" data-ion-menu-toggle="left">
@@ -71,32 +106,29 @@
 
       {{#ionList}}
 
+        {{#each groups}}
+          {{> _groupItem group=this path="groups.show"}}
+        {{/each}}
+<!--
         {{#each times}}
 
           {{#ionItem buttonRight=true avatar=true}}
               
               <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
-              <h2>北美梦幻台球 （65 人）</h2>
+              <h2>硅谷创业者联盟 （658 人）</h2>
               <p> </p>
               <span class="comments-count">
               {{numberOfComments}}
               {{> ionIcon icon="ios-chatbubble" }}
-              台球爱好者的天堂，群主亲自免费指导
+              创业者的交流合作平台
               </span>
-<!--
-            <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
 
-            <h2>John Smith</h2>
-            <p>
-              (555) 555-1212
-            </p>
--->
             <button class="button button-positive">{{> ionIcon icon="ios-people"}} &nbsp;Join</button>
 
           {{/ionItem}}
 
         {{/each}}
-
+-->
       {{/ionList}}
     {{/ionContent}}
   {{/ionView}}

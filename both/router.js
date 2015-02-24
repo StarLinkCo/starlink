@@ -11,6 +11,10 @@ Meteor.startup(function () {
   }
 });
 
+Router.route('/groups/:_id', {
+  name: 'groups.show'
+});
+
 Router.map(function() {
 //  this.route('index', {path: '/'});
   this.route('sideMenu', {path: '/'});
