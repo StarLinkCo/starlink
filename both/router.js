@@ -14,6 +14,10 @@ Meteor.startup(function () {
 Router.map(function() {
 //  this.route('index', {path: '/'});
   this.route('sideMenu', {path: '/'});
+  this.route('calendar');
+  this.route('profile');
+  this.route('groups');
+  this.route('updates');
   this.route('actionSheet');
   this.route('backdrop');
   this.route('forms', {
