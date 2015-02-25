@@ -10,6 +10,19 @@ Template.ionBody.events({
     console.log ("menu-close clicked!");
     IonSideMenu.snapper.close();
   },
+  'click [data-ion-menu-homepage]': function (event, template) {
+    if (!IonSideMenu.snapper) {
+      return;
+    }
+    console.log ("menu-homepage clicked!");
+    IonSideMenu.snapper.close();
+  },
+  'click [data-ion-menu-homepage]': function (event, template) {
+    console.log ("menu-homepage clicked!");
+    Session.set('tmplName', "homepage");
+    Router.go('/homepage');
+    IonSideMenu.snapper.close();
+  },
   'click [data-ion-menu-calendar]': function (event, template) {
     console.log ("menu-calendar clicked!");
     Session.set('tmplName', "calendar"); 

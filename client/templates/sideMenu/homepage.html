@@ -1,5 +1,29 @@
 <template name="homepage">
-  Homepage
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Homepage</h1>
+  {{/contentFor}}
+  
+  {{#ionView}}
+    {{#ionContent}}
+      {{#if currentUser}}
+        <div class="padding">
+          <button class="button button-positive button-block" data-action="logout">Log Out</button>
+        </div>
+      {{else}}
+        {{> atForm}}
+      {{/if}}
+    {{/ionContent}}
+  {{/ionView}}
 </template>
 
 <template name="calendar">
@@ -45,7 +69,29 @@
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
-       {{tmplName}}
+        {{#if currentUser}}
+          {{> atForm}}
+          <h1>Current User Profile </h1>
+          {{#with user}}
+            <h2> id : {{_id}} </h2>
+            {{#with profile}}
+              <img src="{{pictureUrl}}" />
+              <h2> email: {{emailAddress}} </h2>
+              <h2> name: {{firstName}}, {{lastName}} </h2>
+              <h2> location: {{location.name}} </h2>
+              <h2> headline: {{headline}} </h2>
+              <h2> numConnections: {{numConnections}} </h2>
+              <h2> My Skills:  total {{skills.values.length}}</h2>
+              {{#with skills}}
+                {{#each values}}
+                  <li> <p> {{skill.name}} </p> </li>
+                {{/each}}
+              {{/with}}
+            {{/with}}
+          {{/with}}
+        {{else}}
+          {{> atForm}}
+        {{/if}}        
       </div>
     {{/ionContent}}
   {{/ionView}}

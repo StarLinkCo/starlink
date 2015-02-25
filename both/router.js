@@ -17,7 +17,8 @@ Router.route('/groups/:_id', {
 
 Router.map(function() {
 //  this.route('index', {path: '/'});
-  this.route('sideMenu', {path: '/'});
+  this.route('homepage', {path: '/'});
+//  this.route('homepage');
   this.route('calendar');
   this.route('profile');
   this.route('groups');

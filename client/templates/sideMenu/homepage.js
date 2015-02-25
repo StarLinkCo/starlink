@@ -1,3 +1,10 @@
+Template.homepage.events({
+  'click [data-action=logout]': function () {
+    AccountsTemplates.logout();
+  }
+});
+
+
 Template.groups.helpers({
   times: function () {
     var times = [];
@@ -17,6 +24,11 @@ Template.calendar.helpers({
 Template.profile.helpers({
   tmplName: function () {
     return Session.get('tmplName');  
+  },
+  user: function () {
+    var u = Meteor.user();
+    console.log (u);
+    return u;
   }
 });
 
