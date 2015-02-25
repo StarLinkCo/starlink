@@ -6,6 +6,12 @@ if (Meteor.isClient) {
     counter: function () {
       return Session.get('counter');
       
+    },
+
+    user: function () {
+      var u = Meteor.users.findOne();
+      console.log (u);
+      return u;
     }
   });
 

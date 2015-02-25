@@ -13,4 +13,25 @@
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
+
+  {{#if currentUser}}
+    <h1>Current User Profile </h1>
+    {{#with user}}
+      <h2> id : {{_id}} </h2>
+      {{#with profile}}
+        <img src="{{pictureUrl}}" />
+        <h2> email: {{emailAddress}} </h2>
+        <h2> name: {{firstName}}, {{lastName}} </h2>
+        <h2> location: {{location.name}} </h2>
+        <h2> headline: {{headline}} </h2>
+        <h2> numConnections: {{numConnections}} </h2>
+        <h2> My Skills:  total {{skills.values.length}}</h2>
+        {{#with skills}}
+          {{#each values}}
+            <li> <p> {{skill.name}} </p> </li>
+          {{/each}}
+        {{/with}}
+      {{/with}}
+    {{/with}}
+  {{/if}}
 </template>
