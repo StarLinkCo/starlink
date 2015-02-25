@@ -73,20 +73,22 @@
 
   {{#ionView}}
     {{#ionContent}}
-
+      
         {{#with group}}
 
               <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
               <h2>{{name}} ({{count}}人)</h2>
               <p>{{desc}} </p>
 
+               <div class="padding">
               {{#each members}}
                 <a href="{{pathFor 'users.show'}}" class="item-avatar" style='position:relative'>
-                  <img src="http://geeknews.net/images/no_gravatar.jpg" height="40" width="40">
+                  <img src="https://avatars3.githubusercontent.com/u/1024025?v=3&s=400" height="40" width="40">
                 </a>
               {{/each}}
+              </div>
         {{/with}}
-
+      
     {{/ionContent}}
   {{/ionView}}
 </template>
