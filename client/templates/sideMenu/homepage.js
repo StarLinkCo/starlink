@@ -25,6 +25,7 @@ Template.groups.helpers({
     return Session.get('tmplName');  
   },
   groups: function () {
+    /*
     var gs = [];
     gs.push({_id:1, name:'group1', count:100, desc:'No.1 group'});
     gs.push({_id:2, name:'group2', count:200, desc:'No.2 group'});
@@ -37,6 +38,8 @@ Template.groups.helpers({
     gs.push({_id:9, name:'group9', count:900, desc:'No.9 group'});    
     console.log(gs);
     return gs;
+    */
+    return Groups.find();
   },
 });
 

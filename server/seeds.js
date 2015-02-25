@@ -8,4 +8,14 @@ Meteor.startup(function () {
     });
   }
 
+  if (Groups.find({}).count() === 0) {
+    _(10).times(function(n){
+        Groups.insert({
+        name: Fake.word(),
+        count: Fake.sentence().length,
+        desc: Fake.sentence()
+      });
+    });
+  }
+
 });

@@ -23,3 +23,5 @@ Posts.attachSchema(new SimpleSchema({
     }
   }
 }));
+
+Groups = new Mongo.Collection('groups');
