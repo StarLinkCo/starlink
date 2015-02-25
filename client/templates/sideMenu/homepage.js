@@ -43,6 +43,16 @@ Template.groups.helpers({
   },
 });
 
+Template.groupsShow.helpers({
+  members: function () {
+    var members = [];
+    _(this.count).times(function(n){
+      members.push(n);
+    });
+    return members;
+  }
+});
+
 Template.updates.helpers({
   tmplName: function () {
     return Session.get('tmplName');  

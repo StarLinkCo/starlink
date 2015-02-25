@@ -80,6 +80,11 @@
               <h2>{{name}} ({{count}}人)</h2>
               <p>{{desc}} </p>
 
+              {{#each members}}
+                <a href="{{pathFor 'users.show'}}" class="item-avatar" style='position:relative'>
+                  <img src="http://geeknews.net/images/no_gravatar.jpg" height="40" width="40">
+                </a>
+              {{/each}}
         {{/with}}
 
     {{/ionContent}}
