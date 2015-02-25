@@ -15,9 +15,13 @@ Router.route('/groups/:_id', {
   name: 'groups.show'
 });
 
+Router.route('/', {
+  name: 'homepage'
+});
+
 Router.map(function() {
 //  this.route('index', {path: '/'});
-  this.route('homepage', {path: '/'});
+//  this.route('homepage', {path: '/'});
 //  this.route('homepage');
   this.route('calendar');
   this.route('profile');
@@ -42,7 +46,7 @@ Router.map(function() {
   this.route('navigation.three', {path: '/navigation/three'});
   this.route('popover');
   this.route('popup');
-//  this.route('sideMenu');
+  this.route('sideMenu');
   this.route('slideBox');
   this.route('tabs.one', {path: '/tabs/one', layoutTemplate: 'tabsLayout'});
   this.route('tabs.two', {path: '/tabs/two', layoutTemplate: 'tabsLayout'});

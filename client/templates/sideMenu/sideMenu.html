@@ -25,13 +25,9 @@
 
   {{#ionView}}
     {{#ionContent}}
-      {{#if currentUser}}
-        <div class="padding">
-          <button class="button button-positive button-block" data-action="logout">Log Out</button>
-        </div>
-      {{else}}
-        {{> atForm}}
-      {{/if}}
+      <div class="padding">
+        {{> loginButtons}}
+      </div>
     {{/ionContent}}
   {{/ionView}}
 
