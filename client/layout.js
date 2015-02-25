@@ -47,4 +47,10 @@ Template.ionBody.events({
     Router.go('/updates');
     IonSideMenu.snapper.close();
   },
+  'click [data-ion-menu-logout]': function (event, template) {
+    console.log ("menu-logout clicked!");
+    Session.set('tmplName', "logout");
+    AccountsTemplates.logout();
+    IonSideMenu.snapper.close();
+  },
 });

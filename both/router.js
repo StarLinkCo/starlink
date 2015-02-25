@@ -15,8 +15,14 @@ Router.route('/groups/:_id', {
   name: 'groups.show'
 });
 
+/*
 Router.route('/', {
-  name: 'homepage'
+  name: 'profile'
+});
+*/
+
+Router.route('/', function () {
+  this.render('profile');
 });
 
 Router.map(function() {

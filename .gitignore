@@ -1,3 +1,5 @@
 .meteor/local
 .meteor/meteorite
 .idea
+server/config.js
+settings.local.json

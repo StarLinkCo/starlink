@@ -28,9 +28,16 @@
               <div class="item item-icon-right" data-ion-menu-updates>
                 Updates {{> ionIcon icon="ios-arrow-right"}}
               </div>
+<!--
               <div class="item item-icon-right" data-ion-menu-close>
                 Close Me {{> ionIcon icon="ios-arrow-right"}}
               </div>
+-->
+            {{#if currentUser}}
+              <div class="item item-icon-right" data-ion-menu-logout>
+                Logout {{> ionIcon icon="ios-arrow-right"}}
+              </div>
+            {{/if}}
             </div>
           </div>
         {{/ionSideMenu}}

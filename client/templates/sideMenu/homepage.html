@@ -20,7 +20,9 @@
           <button class="button button-positive button-block" data-action="logout">Log Out</button>
         </div>
       {{else}}
-        {{> atForm}}
+          <button data-action="sign-in" class="button button-positive sign-in-button">
+            <img src="http://www.hdicon.com/wp-content/uploads/2011/08/linked_in_icon.png" width=40 height=40/> Sign in with Linkedin
+          </button>
       {{/if}}
     {{/ionContent}}
   {{/ionView}}
