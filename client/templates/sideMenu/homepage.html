@@ -72,7 +72,8 @@
     {{#ionContent}}
       <div class="padding">
         {{#if currentUser}}
-          <h1>Current User Profile </h1>
+          
+          <!--
           {{#with user}}
             <h2> id : {{_id}} </h2>
             {{#with profile}}
@@ -90,6 +91,57 @@
               {{/with}}
             {{/with}}
           {{/with}}
+          -->
+            {{#with user}}
+                 <table style="width:100%">
+                 <tr>
+                 <th colspan="2" text-align=center> <h1>Current User Profile</h1> </th>
+                 </tr>
+                    
+                    <tr>    
+                     <th colspan="2" text-align=center> 
+                         <h3>id= {{_id}}</h3> </th>            
+                 </tr>
+                  {{#with profile}}
+                 <tr width=100%>
+                     <td width='35%'> <img src="{{pictureUrl}}" height="220px"/> 
+                     </td>
+                     
+                 <td width="65%"> 
+                     <table style="width:100%" align="left">
+                         <tr>
+                         <td> <h3>{{firstName}} {{lastName}}</h3> </td>
+                         </tr>
+                 
+                          <tr>
+                            <td text-align=left> <h4>{{emailAddress}} </h4> </td>
+                          </tr>
+                        
+                         <tr>
+                          <td text-align=left> <h5>{{headline}}</h5> </td>
+                         </tr>
+                        
+                        <tr>
+                          <td> <h5> {{location.name }} | Connections: {{numConnections}} </h5></td>
+                        </tr>
+                             
+                     </table>
+                  </td> 
+                 </tr>
+
+                         <tr>
+                           <td text-align=left> <h4> My Skills: total {{skills.values.length}}</h4> </td>
+                           {{#with skills}}
+                           {{#each values}}
+                           <li> <p> {{skill.name}} </p> </li>
+                           {{/each}}
+                           {{/with}}
+                        </tr>
+
+                            {{/with}}
+                 </table>
+                 {{/with}}
+
         {{else}}
           {{> atForm}}
         {{/if}} 
