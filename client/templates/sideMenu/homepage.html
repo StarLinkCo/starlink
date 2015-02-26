@@ -150,20 +150,9 @@
   {{/ionView}}
 </template>
 
-<template name="_groupItem">
-  {{#with group}}
-    {{#ionItem path=../path buttonRight=true avatar=true}}
-      <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
-      <h2>{{name}} ({{count}}人)</h2>
-      <p>{{desc}} </p>
-      <button class="button button-positive">{{> ionIcon icon="ios-people"}} &nbsp;Join</button>
-    {{/ionItem}}
-  {{/with}}
-</template>
-
 <template name="groupsShow">
   {{#contentFor "headerButtonLeft"}}
-    {{>ionNavBackButton path="index"}}
+    {{>ionNavBackButton }}
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
@@ -191,6 +180,19 @@
   {{/ionView}}
 </template>
 
+<template name="_groupItem">
+  {{#with group}}
+    {{#ionItem path="groups.show" buttonRight=true avatar=true}}
+      <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
+      <h2>{{name}} ({{count}}人)</h2>
+      <p>{{desc}} </p>
+    {{/ionItem}}
+    {{#ionItem buttonRight=true avatar=true}}
+      <button class="button button-positive pull-right" >{{> ionIcon icon="ios-people"}} &nbsp;Join</button>  
+    {{/ionItem}}
+  {{/with}}
+</template>
+
 <template name="groups">
   {{#contentFor "headerButtonLeft"}}
     <button class="button button-clear pull-left" data-ion-menu-toggle="left">
@@ -212,7 +214,7 @@
       {{#ionList}}
 
         {{#each groups}}
-          {{> _groupItem group=this path="groups.show"}}
+          {{> _groupItem group=this }}
         {{/each}}
 
       {{/ionList}}

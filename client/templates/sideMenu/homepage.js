@@ -109,7 +109,7 @@ Template.groups.events({
         // display the error to the user
         alert(error.reason);
       } else {
-        //Router.go('groups', {_id: this._id});
+        Router.go('groups');
       }
     });
   },
