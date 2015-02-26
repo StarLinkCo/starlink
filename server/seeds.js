@@ -12,8 +12,9 @@ Meteor.startup(function () {
     _(10).times(function(n){
         Groups.insert({
         name: Fake.word(),
-        count: Fake.sentence().length,
-        desc: Fake.sentence()
+        count: 0, // Fake.sentence().length,
+        desc: Fake.sentence(),
+        members: []
       });
     });
   }

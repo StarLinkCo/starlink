@@ -72,7 +72,6 @@
     {{#ionContent}}
       <div class="padding">
         {{#if currentUser}}
-          {{> atForm}}
           <h1>Current User Profile </h1>
           {{#with user}}
             <h2> id : {{_id}} </h2>
@@ -93,7 +92,7 @@
           {{/with}}
         {{else}}
           {{> atForm}}
-        {{/if}}        
+        {{/if}} 
       </div>
     {{/ionContent}}
   {{/ionView}}
@@ -129,8 +128,8 @@
                 <p>{{desc}} </p>
 
                 {{#each members}}
-                  <a href="{{pathFor 'users.show'}}" class="item-avatar" style='position:relative'>
-                    <img src="https://avatars3.githubusercontent.com/u/1024025?v=3&s=400" height="40" width="40">
+                  <a href="{{id}}" class="item-avatar" style='position:relative'>
+                    <img src="{{picture}}" height="40" width="40">
                   </a>
                 {{/each}}
               </div>
@@ -163,26 +162,7 @@
         {{#each groups}}
           {{> _groupItem group=this path="groups.show"}}
         {{/each}}
-<!--
-        {{#each times}}
 
-          {{#ionItem buttonRight=true avatar=true}}
-              
-              <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
-              <h2>硅谷创业者联盟 （658 人）</h2>
-              <p> </p>
-              <span class="comments-count">
-              {{numberOfComments}}
-              {{> ionIcon icon="ios-chatbubble" }}
-              创业者的交流合作平台
-              </span>
-
-            <button class="button button-positive">{{> ionIcon icon="ios-people"}} &nbsp;Join</button>
-
-          {{/ionItem}}
-
-        {{/each}}
--->
       {{/ionList}}
     {{/ionContent}}
   {{/ionView}}

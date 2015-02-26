@@ -6,7 +6,7 @@ Template.homepage.events({
 
   'click [data-action=sign-in]': function (event, template) {
     //Meteor.loginWithMeteorDeveloperAccount({}, function (error) {
-      Meteor.loginWithLinkedin({ loginStyle: "redirect" }, function (error) {
+      Meteor.loginWithLinkedin({ loginStyle: "popup" }, function (error) {
       if (error) {
         alert(error);
         console.log ("redirect err ", error);
@@ -74,12 +74,16 @@ Template.groups.helpers({
 
 Template.groupsShow.helpers({
   members: function () {
+    /*
     var members = [];
     _(this.count).times(function(n){
       members.push(n);
     });
+    */
+    console.log ('members is :', this._id);
+    var members = Groups.findOne(this._id).members;
     return members;
-  }
+  },
 });
 
 Template.updates.helpers({
@@ -91,5 +95,22 @@ Template.updates.helpers({
 Template.groups.events({
   'click button': function (event, template) {
     console.log ("Join groups clicked!");
+    console.log (this);
+    var g = this;
+    g.members.push({ id: Meteor.userId(), picture: Meteor.user().profile.pictureUrl });
+
+    var modifies = {
+      count: g.members.length,
+      members: g.members,
+    }
+
+    Groups.update(this._id, {$set: modifies}, function(error) {
+      if (error) {
+        // display the error to the user
+        alert(error.reason);
+      } else {
+        //Router.go('groups', {_id: this._id});
+      }
+    });
   },
 });

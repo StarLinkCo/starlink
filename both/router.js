@@ -28,7 +28,7 @@ Router.route('/', function () {
 Router.map(function() {
 //  this.route('index', {path: '/'});
 //  this.route('homepage', {path: '/'});
-//  this.route('homepage');
+  this.route('homepage');
   this.route('calendar');
   this.route('profile');
   this.route('groups');
