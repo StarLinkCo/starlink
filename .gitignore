@@ -3,3 +3,4 @@
 .idea
 server/config.js
 settings.local.json
+/.project
