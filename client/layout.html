@@ -1,0 +1,73 @@
+<template name="layout">
+  {{#ionBody}}
+
+    {{#ionSideMenuContainer}}
+
+      {{#ionSideMenus}}
+
+        {{#ionSideMenu}}
+          <div class="bar bar-header bar-dark">
+            <h1 class="title">会员资料</h1>
+          </div>
+          <div class="content has-header">
+            <div class="list">
+<!--
+              <div class="item item-icon-right" data-ion-menu-homepage>
+                Homepage {{> ionIcon icon="ios-arrow-right"}}
+              </div>
+-->
+              <div class="item item-icon-right" data-ion-menu-profile>
+                Profile {{> ionIcon icon="ios-arrow-right"}}
+              </div>
+              <div class="item item-icon-right" data-ion-menu-calendar>
+                Calendar {{> ionIcon icon="ios-arrow-right"}}
+              </div>             
+              <div class="item item-icon-right" data-ion-menu-groups>
+                Groups {{> ionIcon icon="ios-arrow-right"}}
+              </div>
+              <div class="item item-icon-right" data-ion-menu-updates>
+                Updates {{> ionIcon icon="ios-arrow-right"}}
+              </div>
+<!--
+              <div class="item item-icon-right" data-ion-menu-close>
+                Close Me {{> ionIcon icon="ios-arrow-right"}}
+              </div>
+-->
+            {{#if currentUser}}
+              <div class="item item-icon-right" data-ion-menu-logout>
+                Logout {{> ionIcon icon="ios-arrow-right"}}
+              </div>
+            {{/if}}
+            </div>
+          </div>
+        {{/ionSideMenu}}
+
+        {{#ionSideMenu side="right"}}
+          <div class="bar bar-header bar-dark">
+            <h1 class="title">Right Menu</h1>
+          </div>
+          <div class="content has-header">
+            <div class="list">
+              <div class="item item-icon-left" data-ion-menu-homepage>
+                {{> ionIcon icon="ios-arrow-left"}} Homepage
+              </div>
+            </div>
+          </div>
+        {{/ionSideMenu}}
+
+      {{/ionSideMenus}}
+
+      {{#ionSideMenuContent}}
+
+        {{> ionNavBar class="bar-positive"}}
+
+        {{#ionNavView}}
+          {{> yield}}
+        {{/ionNavView}}
+
+      {{/ionSideMenuContent}}
+
+    {{/ionSideMenuContainer}}
+
+  {{/ionBody}}
+</template>

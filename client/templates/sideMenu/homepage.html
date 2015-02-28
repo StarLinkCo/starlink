@@ -1,0 +1,249 @@
+<template name="homepage">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Homepage</h1>
+  {{/contentFor}}
+  
+  {{#ionView}}
+    {{#ionContent}}
+      {{#if currentUser}}
+        <div class="padding">
+          <button class="button button-positive button-block" data-action="logout">Log Out</button>
+        </div>
+      {{else}}
+          <button data-action="sign-in" class="button button-positive sign-in-button">
+            <img src="http://www.hdicon.com/wp-content/uploads/2011/08/linked_in_icon.png" width=40 height=40/> Sign in with Linkedin
+          </button>
+      {{/if}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>
+
+<template name="calendar">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Calendar</h1>
+  {{/contentFor}}
+  
+  {{#ionView}}
+    {{#ionContent}}
+      <div class="padding">
+       {{tmplName}}
+      </div>
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>
+
+<template name="profile">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Profile</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      <div class="padding">
+        {{#if currentUser}}
+          
+          <!--
+          {{#with user}}
+            <h2> id : {{_id}} </h2>
+            {{#with profile}}
+              <img src="{{pictureUrl}}" />
+              <h2> email: {{emailAddress}} </h2>
+              <h2> name: {{firstName}}, {{lastName}} </h2>
+              <h2> location: {{location.name}} </h2>
+              <h2> headline: {{headline}} </h2>
+              <h2> numConnections: {{numConnections}} </h2>
+              <h2> My Skills:  total {{skills.values.length}}</h2>
+              {{#with skills}}
+                {{#each values}}
+                  <li> <p> {{skill.name}} </p> </li>
+                {{/each}}
+              {{/with}}
+            {{/with}}
+          {{/with}}
+          -->
+            {{#with user}}
+                 <table style="width:100%">
+                 <tr>
+                 <th colspan="2" text-align=center> <h1>Current User Profile</h1> </th>
+                 </tr>
+                    
+                    <tr>    
+                     <th colspan="2" text-align=center> 
+                         <h3>id= {{_id}}</h3> </th>            
+                 </tr>
+                  {{#with profile}}
+                 <tr width=100%>
+                     <td width='35%'> <img src="{{pictureUrl}}" height="220px"/> 
+                     </td>
+                     
+                 <td width="65%"> 
+                     <table style="width:100%" align="left">
+                         <tr>
+                         <td> <h3>{{firstName}} {{lastName}}</h3> </td>
+                         </tr>
+                 
+                          <tr>
+                            <td text-align=left> <h4>{{emailAddress}} </h4> </td>
+                          </tr>
+                        
+                         <tr>
+                          <td text-align=left> <h5>{{headline}}</h5> </td>
+                         </tr>
+                        
+                        <tr>
+                          <td> <h5> {{location.name }} | Connections: {{numConnections}} </h5></td>
+                        </tr>
+                             
+                     </table>
+                  </td> 
+                 </tr>
+
+                         <tr>
+                           <td text-align=left> <h4> My Skills: total {{skills.values.length}}</h4> </td>
+                           {{#with skills}}
+                           {{#each values}}
+                           <li> <p> {{skill.name}} </p> </li>
+                           {{/each}}
+                           {{/with}}
+                        </tr>
+
+                            {{/with}}
+                 </table>
+                 {{/with}}
+
+        {{else}}
+          {{> atForm}}
+        {{/if}} 
+      </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>
+
+<template name="groupsShow">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Profile of @{{group.name}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      
+        {{#with group}}
+              <div class="padding">
+                <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
+                <h2>{{name}} ({{count}}人)</h2>
+                <p>{{desc}} </p>
+
+                {{#each members}}
+                  <a href="{{id}}" class="item-avatar" style='position:relative'>
+                    <img src="{{picture}}" height="40" width="40">
+                  </a>
+                {{/each}}
+              </div>
+        {{/with}}
+      
+    {{/ionContent}}
+  {{/ionView}}
+</template>
+
+<template name="_groupItem">
+  {{#with group}}
+    {{#ionItem path="groups.show" buttonRight=true avatar=true}}
+      <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
+      <h2>{{name}} ({{count}}人)</h2>
+      <p>{{desc}} </p>
+    {{/ionItem}}
+    {{#ionItem buttonRight=true avatar=true}}
+      <button class="button button-positive pull-right" >{{> ionIcon icon="ios-people"}} &nbsp;Join</button>  
+    {{/ionItem}}
+  {{/with}}
+</template>
+
+<template name="groups">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Groups</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+      {{#ionList}}
+
+        {{#each groups}}
+          {{> _groupItem group=this }}
+        {{/each}}
+
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+
+
+</template>
+
+<template name="updates">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Updates</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      <div class="padding">
+       {{tmplName}}
+      </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>
