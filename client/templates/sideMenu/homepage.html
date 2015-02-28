@@ -100,7 +100,7 @@
                     
                     <tr>    
                      <th colspan="2" text-align=center> 
-                         <h3>id= {{_id}}</h3> </th>            
+                         <h3>id= {{_id}}</h3> </th>  
                  </tr>
                   {{#with profile}}
                  <tr width=100%>
@@ -140,6 +140,12 @@
 
                             {{/with}}
                  </table>
+
+                 <h4>id2 = {{services.linkedin.values.length}} </h4>     
+                 {{#each services.linkedin.values}}
+                    <li> {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}  </li>
+                 {{/each}}
+
                  {{/with}}
 
         {{else}}

@@ -46,6 +46,12 @@ Template.profile.helpers({
     var u = Meteor.user();
     console.log (u);
     return u;
+  },
+  getid: function  (url) {
+    // body...
+    console.log(url);
+    //var idRegex = /.*id=(\d+)&.*/;
+    return url.match(/.*id=(\d+)&.*/)[1];
   }
 });
 
