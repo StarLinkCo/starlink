@@ -26,7 +26,7 @@ Posts.attachSchema(new SimpleSchema({
 
 Groups = new Mongo.Collection('groups');
 
-Posts.attachSchema(new SimpleSchema({
+Groups.attachSchema(new SimpleSchema({
   name: {
     type: String,
     max: 200,
