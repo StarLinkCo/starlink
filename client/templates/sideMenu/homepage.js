@@ -49,9 +49,10 @@ Template.profile.helpers({
   },
   getid: function  (url) {
     // body...
-    console.log(url);
+    //console.log(url);
     //var idRegex = /.*id=(\d+)&.*/;
-    return url.match(/.*id=(\d+)&.*/)[1];
+   
+    return url? url.match(/.*id=(\d+)&.*/)[1] : undefined;
   }
 });
 

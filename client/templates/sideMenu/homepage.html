@@ -141,11 +141,12 @@
                             {{/with}}
                  </table>
 
-                 <h4>id2 = {{services.linkedin.values.length}} </h4>     
-                 {{#each services.linkedin.values}}
-                    <li> {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}  </li>
-                 {{/each}}
-
+                   {{#with profile}}
+                     <h4>id2 = {{values.length}} </h4>     
+                     {{#each values}}
+                        <li> {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}  </li>
+                     {{/each}}
+                   {{/with}}
                  {{/with}}
 
         {{else}}
