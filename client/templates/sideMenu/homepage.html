@@ -12,7 +12,7 @@
   {{#contentFor "headerTitle"}}
     <h1 class="title">Homepage</h1>
   {{/contentFor}}
-  
+
   {{#ionView}}
     {{#ionContent}}
       {{#if currentUser}}
@@ -42,7 +42,7 @@
   {{#contentFor "headerTitle"}}
     <h1 class="title">Calendar</h1>
   {{/contentFor}}
-  
+
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
@@ -72,7 +72,7 @@
     {{#ionContent}}
       <div class="padding">
         {{#if currentUser}}
-          
+
           <!--
           {{#with user}}
             <h2> id : {{_id}} </h2>
@@ -97,45 +97,41 @@
                  <tr>
                  <th colspan="2" text-align=center> <h1>Current User Profile</h1> </th>
                  </tr>
-                    
-                    <tr>    
-                     <th colspan="2" text-align=center> 
-                         <h3>id= {{_id}}</h3> </th>            
+
+                    <tr>
+                     <th colspan="2" text-align=center>
+                         <h3>id= {{_id}}</h3> </th>
                  </tr>
                   {{#with profile}}
                  <tr width=100%>
-                     <td width='35%'> <img src="{{pictureUrl}}" height="220px"/> 
+                     <td width='35%'> <img src="{{pictureUrl}}" height="220px"/>
                      </td>
-                     
-                 <td width="65%"> 
+
+                 <td width="65%">
                      <table style="width:100%" align="left">
                          <tr>
                          <td> <h3>{{firstName}} {{lastName}}</h3> </td>
                          </tr>
-                 
+
                           <tr>
                             <td text-align=left> <h4>{{emailAddress}} </h4> </td>
                           </tr>
-                        
+
                          <tr>
                           <td text-align=left> <h5>{{headline}}</h5> </td>
                          </tr>
-                        
+
                         <tr>
                           <td> <h5> {{location.name }} | Connections: {{numConnections}} </h5></td>
                         </tr>
-                             
+
                      </table>
-                  </td> 
+                  </td>
                  </tr>
 
                          <tr>
                            <td text-align=left> <h4> My Skills: total {{skills.values.length}}</h4> </td>
-                           {{#with skills}}
-                           {{#each values}}
-                           <li> <p> {{skill.name}} </p> </li>
-                           {{/each}}
-                           {{/with}}
+                           {{> tagInput}}
                         </tr>
 
                             {{/with}}
@@ -144,7 +140,7 @@
 
         {{else}}
           {{> atForm}}
-        {{/if}} 
+        {{/if}}
       </div>
     {{/ionContent}}
   {{/ionView}}
@@ -161,7 +157,7 @@
 
   {{#ionView}}
     {{#ionContent}}
-      
+
         {{#with group}}
               <div class="padding">
                 <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
@@ -175,7 +171,7 @@
                 {{/each}}
               </div>
         {{/with}}
-      
+
     {{/ionContent}}
   {{/ionView}}
 </template>
@@ -188,7 +184,7 @@
       <p>{{desc}} </p>
     {{/ionItem}}
     {{#ionItem buttonRight=true avatar=true}}
-      <button class="button button-positive pull-right" >{{> ionIcon icon="ios-people"}} &nbsp;Join</button>  
+      <button class="button button-positive pull-right" >{{> ionIcon icon="ios-people"}} &nbsp;Join</button>
     {{/ionItem}}
   {{/with}}
 </template>
