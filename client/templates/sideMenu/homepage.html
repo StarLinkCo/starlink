@@ -141,13 +141,20 @@
                             {{/with}}
                  </table>
 
-                   {{#with profile}}
-                     <h4>id2 = {{values.length}} </h4>     
-                     {{#each values}}
-                        <li> {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}  </li>
-                     {{/each}}
-                   {{/with}}
-                 {{/with}}
+                  {{#with profile}}
+                    <h4>Connections total = {{values.length}} </h4>   
+                    {{#ionList}}
+                      {{#each values}}
+                         {{#if notprivate this}}
+                          {{#ionItem buttonRight=true avatar=true}}
+                          <img src="{{pictureUrl}}" />
+                            {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}  
+                          {{/ionItem}}
+                        {{/if}}
+                      {{/each}}
+                    {{/ionList}}
+                  {{/with}}
+                {{/with}}
 
         {{else}}
           {{> atForm}}
