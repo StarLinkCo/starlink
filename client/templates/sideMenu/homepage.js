@@ -46,6 +46,20 @@ Template.profile.helpers({
     var u = Meteor.user();
     console.log (u);
     return u;
+  },
+  getid: function  (url) {
+    // body...
+    //console.log(url);
+    //var idRegex = /.*id=(\d+)&.*/;
+   
+    return url? url.match(/.*id=(\d+)&.*/)[1] : undefined;
+  },
+  notprivate: function  (friend) {
+    // body...
+    if (friend.firstName == "private")
+      return false;
+    else
+      return true;
   }
 });
 

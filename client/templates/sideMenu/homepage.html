@@ -97,10 +97,9 @@
                  <tr>
                  <th colspan="2" text-align=center> <h1>Current User Profile</h1> </th>
                  </tr>
-
                     <tr>
-                     <th colspan="2" text-align=center>
-                         <h3>id= {{_id}}</h3> </th>
+                     <th colspan="2" text-align=center> 
+                         <h3>id= {{_id}}</h3> </th>  
                  </tr>
                   {{#with profile}}
                  <tr width=100%>
@@ -136,7 +135,21 @@
 
                             {{/with}}
                  </table>
-                 {{/with}}
+
+                  {{#with profile}}
+                    <h4>Connections total = {{values.length}} </h4>   
+                    {{#ionList}}
+                      {{#each values}}
+                         {{#if notprivate this}}
+                          {{#ionItem buttonRight=true avatar=true}}
+                          <img src="{{pictureUrl}}" />
+                            {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}  
+                          {{/ionItem}}
+                        {{/if}}
+                      {{/each}}
+                    {{/ionList}}
+                  {{/with}}
+                {{/with}}
 
         {{else}}
           {{> atForm}}

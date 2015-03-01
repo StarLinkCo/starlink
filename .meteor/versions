@@ -41,6 +41,8 @@ iron:location@1.0.7
 iron:middleware-stack@1.0.7
 iron:router@1.0.7
 iron:url@1.0.7
+jamesfirst:accounts-linkedin@1.1.2
+jamesfirst:linkedin@1.1.6
 jparker:crypto-core@0.1.0
 jparker:crypto-md5@0.1.1
 jparker:gravatar@0.3.1
@@ -70,8 +72,6 @@ oauth2@1.1.2
 observe-sequence@1.0.4
 ordered-dict@1.0.2
 patrickleet:tags@1.1.3
-pauli:accounts-linkedin@1.1.1
-pauli:linkedin@1.1.1
 random@1.0.2
 reactive-dict@1.0.5
 reactive-var@1.0.4
