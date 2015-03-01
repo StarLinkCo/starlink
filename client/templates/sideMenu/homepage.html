@@ -129,15 +129,17 @@
                  </tr>
 
                          <tr>
-                           <td text-align=left> <h4> My Skills: total {{skills.values.length}}</h4> </td>
+                           <td text-align=left> 
+                           <h4> My Skills: total {{skills.values.length}}</h4> 
                            {{> tagInput}}
+                           </td>
                         </tr>
 
                             {{/with}}
                  </table>
 
                   {{#with profile}}
-                    <h4>Connections total = {{values.length}} </h4>   
+                    <h4>My Connections: total {{values.length}} </h4>   
                     {{#ionList}}
                       {{#each values}}
                          {{#if notprivate this}}
