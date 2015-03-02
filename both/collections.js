@@ -26,6 +26,7 @@ Posts.attachSchema(new SimpleSchema({
 
 Groups = new Mongo.Collection('groups');
 
+/*
 Groups.attachSchema(new SimpleSchema({
   name: {
     type: String,
@@ -48,3 +49,4 @@ Groups.attachSchema(new SimpleSchema({
     type: [Object],
   }
 }));
+*/

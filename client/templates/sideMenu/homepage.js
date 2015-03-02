@@ -110,13 +110,35 @@ Template.groups.events({
   'click button': function (event, template) {
     console.log ("Join groups clicked!");
     console.log (this);
+
+    if (Meteor.user() == null) {
+      console.log ('Login First before you join');
+      alert('Login first');
+      return;
+    }
+
+    for (i = 0; i < this.members.length; i++) {
+      var m = this.members[i];
+      console.log("m id: ", m.id);
+      console.log("current id:", Meteor.userId());
+      if (m.id == Meteor.userId())
+      {
+        console.log ('you are in this group');
+        alert('you are in this group Already');
+        return;
+      }
+    }
+
     var g = this;
+    console.log ("join id: ", Meteor.userId());
+    console.log ("join picture: ", Meteor.user().profile.pictureUrl);
     g.members.push({ id: Meteor.userId(), picture: Meteor.user().profile.pictureUrl });
 
     var modifies = {
       count: g.members.length,
       members: g.members,
     }
+
 
     Groups.update(this._id, {$set: modifies}, function(error) {
       if (error) {
