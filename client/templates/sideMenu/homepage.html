@@ -184,6 +184,21 @@
                     <img src="{{picture}}" height="40" width="40">
                   </a>
                 {{/each}}
+
+				<p>&nbsp;</p>
+
+				<h2>Group chat</h2>
+				  <p>
+					  {{currentUserName}} :
+				    <!-- <input type="text" id="name" placeholder="Your name"> -->
+				    <input type="text" id="messageBox" placeholder="What do you want to say?">
+				  </p>
+
+				<div id="chat" style='position:relative'>
+				  {{#each messages}}
+                    <p>{{name}}: {{message}} </p>
+				  {{/each}}
+				</div>
               </div>
         {{/with}}
 

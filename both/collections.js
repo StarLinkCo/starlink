@@ -26,6 +26,7 @@ Posts.attachSchema(new SimpleSchema({
 
 Groups = new Mongo.Collection('groups');
 
+Messages = new Meteor.Collection('messages');
 /*
 Groups.attachSchema(new SimpleSchema({
   name: {

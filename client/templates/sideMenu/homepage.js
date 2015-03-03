@@ -98,6 +98,42 @@ Template.groupsShow.helpers({
     var members = Groups.findOne(this._id).members;
     return members;
   },
+  currentUserName: function () {
+	  var user = Meteor.user();
+	  console.log (user.profile.firstName);
+	  return user.profile.firstName;
+  },
+});
+
+Template.groupsShow.messages = function() {
+  return Messages.find({}, {
+    sort: {
+      time: -1
+    }
+  });
+};
+
+Template.groupsShow.events({
+    'keyup #messageBox': function(event) {
+      var name, new_message;
+      if (event.type === "keyup" && event.which === 13) {
+        new_message = $("#messageBox");
+        //name = $("#name");
+
+		var userName = Meteor.user().profile.firstName;
+		//console.log ('name is, ', name.val());
+		console.log ('msg is, ', new_message.val());
+
+		Messages.insert({
+		  name: userName, //name.val(),
+		  message: new_message.val(),
+		  created: new Date()
+		});
+
+		new_message.val("");
+		new_message.focus();
+      }
+    },
 });
 
 Template.updates.helpers({
