@@ -3,7 +3,6 @@ Template.tagInput.helpers({
     var skills = _.map(profile.skills.values, function(value) {
       return value.skill;
     });
-    console.log(skills);
     return skills;
   }
 });
@@ -20,14 +19,13 @@ Template.tagInput.rendered = function () {
     create: false,
     render: {
         item: function(item, escape) {
-          console.log(item);
             return '<div>' +
               (item.name ? '<span class="name">' + escape(item.name) + '</span>' : '') +
             '</div>';
         },
         option: function(item, escape) {
             var name = item.name;
-            var caption = item.name;
+            var caption = item.nRef;
             return '<div>' +
                 '<span class="name">' + escape(name) + '</span>&nbsp;' +
                 (caption ? '<span class="badge">' + escape(caption) + '</span>' : '') +

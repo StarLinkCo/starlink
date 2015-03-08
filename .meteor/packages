@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 insecure
 accounts-password
 fourseven:scss
@@ -25,4 +24,7 @@ jamesfirst:linkedin
 accounts-ui
 service-configuration
 patrickleet:tags
-chhib:selectize-bootstrap-3
+jeremy:selectize
+comerc:autoform-selectize
+coffeescript
+aldeed:autoform-bs-button-group-input

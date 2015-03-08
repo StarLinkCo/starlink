@@ -1,3 +1,6 @@
+Tags.TagsMixin(Meteor.users);
+Meteor.users.allowTags(function(){return true;});
+
 Posts = new Mongo.Collection('posts');
 
 Posts.attachSchema(new SimpleSchema({
@@ -23,7 +26,7 @@ Posts.attachSchema(new SimpleSchema({
     }
   }
 }));
-
+Tags.TagsMixin(Posts);
 Groups = new Mongo.Collection('groups');
 
 Groups.attachSchema(new SimpleSchema({
@@ -43,7 +46,7 @@ Groups.attachSchema(new SimpleSchema({
   },
   count: {
     type: Number,
-  },  
+  },
   members: {
     type: [Object],
   }

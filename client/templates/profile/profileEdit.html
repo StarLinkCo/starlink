@@ -1,0 +1,16 @@
+<template name="profileEdit">
+  {{#ionModal customTemplate=true}}
+    {{#autoForm schema=profileFormSchema id="profile-edit-form" type="method" doc=profile meteormethod="updateProfile"}}
+      <div class="bar bar-header bar-stable">
+        <button data-dismiss="modal" type="button" class="button button-clear">Cancel</button>
+        <h2 class="title">Edit Profile</h2>
+        <button type="submit" class="button button-positive button-clear">Save</button>
+      </div>
+      <div class="content has-header overflow-scroll">
+        {{> afQuickField name="roles" type="select-checkbox"}}
+        {{> afQuickField name="areas" type="selectize" style="width:50%" selectizeOptions=areasOptions}}
+        {{> afQuickField name="interests" type="selectize" style="width:50%" selectizeOptions=interestsOptions}}
+      </div>
+    {{/autoForm}}
+  {{/ionModal}}
+</template>
