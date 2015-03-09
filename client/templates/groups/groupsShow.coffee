@@ -11,8 +11,9 @@ Template.groupsShow.helpers
 
 Template.groupsShow.events
   'keyup #messageBox': (event) ->
+    console.log('msg is, ', event);
     if (event.type == "keyup" && event.which == 13)
-      newMessage = template.$("#messageBox")
+      newMessage = $("#messageBox")
 
       if newMessage
         userName = Meteor.user().profile.firstName
