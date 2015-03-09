@@ -1,0 +1,9 @@
+<template name="_groupItem">
+  {{#with group}}
+    {{#if memberOf this}}
+      {{> _joinedGroup}}
+    {{else}}
+      {{> _newGroup}}
+    {{/if}}
+  {{/with}}
+</template>

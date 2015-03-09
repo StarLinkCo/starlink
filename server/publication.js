@@ -10,4 +10,12 @@ Meteor.publish("userData", function () {
 
 Meteor.publish("tags", function() {
   return Meteor.tags.find();
-})
+});
+
+Meteor.publish("groups", function() {
+  return Groups.find();
+});
+
+Meteor.publish("messages", function() {
+  return Messages.find();
+});

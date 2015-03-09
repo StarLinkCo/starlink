@@ -1,0 +1,42 @@
+<template name="groupsShow">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Profile of @{{group.name}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#with group}}
+        <div class="padding">
+          <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
+          <h2>{{name}} ({{count}}人)</h2>
+          <p>{{desc}} </p>
+
+          {{#each members}}
+            <a href="{{id}}" class="item-avatar" style='position:relative'>
+              <img src="{{picture}}" height="40" width="40">
+            </a>
+          {{/each}}
+
+          <p>&nbsp;</p>
+
+  			<h2>Group chat</h2>
+  			<div id="chat" style='position:relative'>
+  			  {{#each messages}}
+            <p>{{name}}: {{message}} </p>
+  			  {{/each}}
+  			</div>
+      </div>
+      {{/with}}
+
+    {{/ionContent}}
+
+    {{#ionFooterBar class="bar-dark"}}
+	    <!-- <input type="text" id="name" placeholder="Your name"> -->
+	    <input type="text" id="messageBox" placeholder="What do you want to say?">
+    {{/ionFooterBar}}
+  {{/ionView}}
+</template>

@@ -29,6 +29,8 @@ Posts.attachSchema(new SimpleSchema({
 Tags.TagsMixin(Posts);
 Groups = new Mongo.Collection('groups');
 
+Messages = new Meteor.Collection('messages');
+/*
 Groups.attachSchema(new SimpleSchema({
   name: {
     type: String,
@@ -51,3 +53,4 @@ Groups.attachSchema(new SimpleSchema({
     type: [Object],
   }
 }));
+*/
