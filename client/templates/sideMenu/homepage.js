@@ -22,167 +22,16 @@ Template.homepage.events({
 });
 
 
-Template.groups.helpers({
-  times: function () {
-    var times = [];
-    _(10).times(function(n){
-      times.push(n);
-    });
-    return times;
-  }
-});
-
 Template.calendar.helpers({
   tmplName: function () {
-    return Session.get('tmplName');  
+    return Session.get('tmplName');
   }
 });
 
-Template.profile.helpers({
-  tmplName: function () {
-    return Session.get('tmplName');  
-  },
-  user: function () {
-    var u = Meteor.user();
-    console.log (u);
-    return u;
-  },
-  getid: function  (url) {
-    // body...
-    //console.log(url);
-    //var idRegex = /.*id=(\d+)&.*/;
-   
-    return url? url.match(/.*id=(\d+)&.*/)[1] : undefined;
-  },
-  notprivate: function  (friend) {
-    // body...
-    if (friend.firstName == "private")
-      return false;
-    else
-      return true;
-  }
-});
 
-Template.groups.helpers({
-  tmplName: function () {
-    return Session.get('tmplName');  
-  },
-  groups: function () {
-    /*
-    var gs = [];
-    gs.push({_id:1, name:'group1', count:100, desc:'No.1 group'});
-    gs.push({_id:2, name:'group2', count:200, desc:'No.2 group'});
-    gs.push({_id:3, name:'group3', count:300, desc:'No.3 group'});
-    gs.push({_id:4, name:'group4', count:400, desc:'No.4 group'});
-    gs.push({_id:5, name:'group5', count:500, desc:'No.5 group'});
-    gs.push({_id:6, name:'group6', count:600, desc:'No.6 group'});
-    gs.push({_id:7, name:'group7', count:700, desc:'No.7 group'});
-    gs.push({_id:8, name:'group8', count:800, desc:'No.8 group'});
-    gs.push({_id:9, name:'group9', count:900, desc:'No.9 group'});    
-    console.log(gs);
-    return gs;
-    */
-    return Groups.find();
-  },
-});
-
-Template.groupsShow.helpers({
-  members: function () {
-    /*
-    var members = [];
-    _(this.count).times(function(n){
-      members.push(n);
-    });
-    */
-    console.log ('members is :', this._id);
-    var members = Groups.findOne(this._id).members;
-    return members;
-  },
-  currentUserName: function () {
-	  var user = Meteor.user();
-	  console.log (user.profile.firstName);
-	  return user.profile.firstName;
-  },
-});
-
-Template.groupsShow.messages = function() {
-  return Messages.find({}, {
-    sort: {
-      time: -1
-    }
-  });
-};
-
-Template.groupsShow.events({
-    'keyup #messageBox': function(event) {
-      var name, new_message;
-      if (event.type === "keyup" && event.which === 13) {
-        new_message = $("#messageBox");
-        //name = $("#name");
-
-		var userName = Meteor.user().profile.firstName;
-		//console.log ('name is, ', name.val());
-		console.log ('msg is, ', new_message.val());
-
-		Messages.insert({
-		  name: userName, //name.val(),
-		  message: new_message.val(),
-		  created: new Date()
-		});
-
-		new_message.val("");
-		new_message.focus();
-      }
-    },
-});
 
 Template.updates.helpers({
   tmplName: function () {
-    return Session.get('tmplName');  
+    return Session.get('tmplName');
   }
-});
-
-Template.groups.events({
-  'click button': function (event, template) {
-    console.log ("Join groups clicked!");
-    console.log (this);
-
-    if (Meteor.user() == null) {
-      console.log ('Login First before you join');
-      alert('Login first');
-      return;
-    }
-
-    for (i = 0; i < this.members.length; i++) {
-      var m = this.members[i];
-      console.log("m id: ", m.id);
-      console.log("current id:", Meteor.userId());
-      if (m.id == Meteor.userId())
-      {
-        console.log ('you are in this group');
-        alert('you are in this group Already');
-        return;
-      }
-    }
-
-    var g = this;
-    console.log ("join id: ", Meteor.userId());
-    console.log ("join picture: ", Meteor.user().profile.pictureUrl);
-    g.members.push({ id: Meteor.userId(), picture: Meteor.user().profile.pictureUrl });
-
-    var modifies = {
-      count: g.members.length,
-      members: g.members,
-    }
-
-
-    Groups.update(this._id, {$set: modifies}, function(error) {
-      if (error) {
-        // display the error to the user
-        alert(error.reason);
-      } else {
-        Router.go('groups');
-      }
-    });
-  },
 });
