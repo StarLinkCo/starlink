@@ -21,65 +21,37 @@
     {{#ionContent}}
       <div class="padding">
         {{#if currentUser}}
-            {{#with user}}
-                 <table style="width:100%">
-                 <tr>
-                 <th colspan="2" text-align=center> <h1>Current User Profile</h1> </th>
-                 </tr>
-                    <tr>
-                     <th colspan="2" text-align=center>
-                         <h3>id= {{_id}}</h3> </th>
-                 </tr>
-                  {{#with profile}}
-                 <tr width=100%>
-                     <td width='35%'> <img src="{{pictureUrl}}" height="220px"/>
-                     </td>
-
-                 <td width="65%">
-                     <table style="width:100%" align="left">
-                         <tr>
-                         <td> <h3>{{firstName}} {{lastName}}</h3> </td>
-                         </tr>
-
-                          <tr>
-                            <td text-align=left> <h4>{{emailAddress}} </h4> </td>
-                          </tr>
-
-                         <tr>
-                          <td text-align=left> <h5>{{headline}}</h5> </td>
-                         </tr>
-
-                        <tr>
-                          <td> <h5> {{location.name }} | Connections: {{numConnections}} </h5></td>
-                        </tr>
-
-                     </table>
-                  </td>
-                 </tr>
-
-                         <tr>
-                           <td text-align=left> <h4> My Skills: total {{skills.values.length}}</h4> </td>
-                           {{> tagInput}}
-                        </tr>
-
-                            {{/with}}
-                 </table>
-
-                  {{#with profile}}
-                    <h4>Connections total = {{values.length}} </h4>
-                    {{#ionList}}
-                      {{#each values}}
-                         {{#if notprivate this}}
-                          {{#ionItem buttonRight=true avatar=true}}
-                          <img src="{{pictureUrl}}" />
-                            {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}
-                          {{/ionItem}}
-                        {{/if}}
-                      {{/each}}
-                    {{/ionList}}
-                  {{/with}}
-                {{/with}}
-
+          {{#with user}}
+            {{#with profile}}
+              {{#ionList}}
+              <div class="item item-divider">
+                Personal Info:
+              </div>
+              {{#ionItem class="item-thumbnail item-thumbnail-left"}}
+                <img src="{{pictureUrl}}"/>
+                <h2>{{firstName}} {{lastName}}</h2>
+                <p>{{emailAddress}}</p>
+                <h5>{{headline}}</h5>
+                <h5> {{location.name }} | Connections: {{numConnections}} </h5>
+                <div class="item item-divider">
+                  <h3>Skills</h3>
+                  {{> tagInput}}
+                </div>
+              {{/ionItem}}
+                <div class="item item-divider">
+                  Connections:
+                </div>
+                {{#each values}}
+                   {{#if notprivate this}}
+                    {{#ionItem buttonRight=true avatar=true}}
+                    <img src="{{pictureUrl}}" />
+                      {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}
+                    {{/ionItem}}
+                  {{/if}}
+                {{/each}}
+              {{/ionList}}
+            {{/with}}
+          {{/with}}
         {{else}}
           {{> atForm}}
         {{/if}}
