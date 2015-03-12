@@ -16,12 +16,14 @@ Template.groupsShow.events
 
       if newMessage
         userName = Meteor.user().profile.firstName
-        console.log('msg is, ', newMessage.val())
+        avatar = Meteor.user().profile.pictureUrl
+        console.log('msg = ', newMessage.val())
 
       	Messages.insert
-      	  name: userName
-      	  message: newMessage.val()
-      	  created: new Date()
+          name: userName
+          message: newMessage.val()
+          created: new Date()
+          avatar: avatar
 
         newMessage.val("")
         newMessage.focus()

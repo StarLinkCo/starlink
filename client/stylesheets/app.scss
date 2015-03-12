@@ -39,6 +39,15 @@ $positive: #DE4F4F;
   line-height: 45px;
 }
 
+.selectize-control.multi .selectize-input > div {
+  float: left;
+}
+
+.narrow-padding-vertical {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 #chat {
   height: 600px;
   width: 440px;
