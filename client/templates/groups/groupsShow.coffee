@@ -27,3 +27,6 @@ Template.groupsShow.events
 
         newMessage.val("")
         newMessage.focus()
+
+        # Make sure new chat messages are visible
+        $("#chat").scrollTop 9999999;
