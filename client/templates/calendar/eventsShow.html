@@ -10,7 +10,23 @@
   {{#ionView}}
     {{#ionContent}}
       {{#with event}}
-        {{{ description }}}
+        <div class="card">
+          <div class="item item-divider">
+            时间: {{ start_date }} ~ {{ end_date }}
+          </div>
+          <div class="item item-divider">
+            人数: {{ num_attendee_rows }}
+          </div>
+          <div class="item item-divider">
+            状态: {{ status }}
+          </div>
+          <div class="item item-divider">
+            链接: {{ url }}
+          </div>
+          <div class="item item-text-wrap">
+            {{{ description }}}
+          </div>
+        </div>
       {{/with}}
     {{/ionContent}}
   {{/ionView}}
