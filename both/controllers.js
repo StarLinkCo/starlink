@@ -13,3 +13,11 @@ GroupsShowController = AppController.extend({
     }
   }
 });
+
+EventsShowController = AppController.extend({
+  data: function () {
+    return {
+      event: Events.findOne({_id: this.params._id})
+    }
+  }
+})

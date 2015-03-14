@@ -15,6 +15,10 @@ Router.route('/groups/:_id', {
   name: 'groups.show'
 });
 
+Router.route('/events/:_id', {
+  name: 'events.show'
+});
+
 /*
 Router.route('/', {
   name: 'profile'
