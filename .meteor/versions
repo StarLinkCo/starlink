@@ -4,14 +4,14 @@ accounts-password@1.0.6
 accounts-ui@1.1.4
 accounts-ui-unstyled@1.1.6
 aldeed:autoform@4.2.2
-aldeed:autoform-bs-button-group-input@1.0.1
+aldeed:autoform-bs-button-group-input@1.0.2
 aldeed:collection2@2.3.2
 aldeed:simple-schema@1.3.0
 anti:fake@0.4.1
 application-configuration@1.0.4
 autoupdate@1.1.5
 base64@1.0.2
-bengott:avatar@0.7.3
+bengott:avatar@0.7.5
 binary-heap@1.0.2
 blaze@2.0.4
 blaze-tools@1.0.2
@@ -26,7 +26,7 @@ ejson@1.0.5
 email@1.0.5
 fastclick@1.0.2
 follower-livedata@1.0.3
-fourseven:scss@2.0.0_1
+fourseven:scss@2.0.1_2
 geojson-utils@1.0.2
 html-tools@1.0.3
 htmljs@1.0.3
@@ -42,7 +42,7 @@ iron:middleware-stack@1.0.7
 iron:router@1.0.7
 iron:url@1.0.7
 jamesfirst:accounts-linkedin@1.1.2
-jamesfirst:linkedin@1.1.6
+jamesfirst:linkedin@1.1.9
 jeremy:selectize@0.12.1
 jparker:crypto-core@0.1.0
 jparker:crypto-md5@0.1.1
@@ -60,7 +60,7 @@ meteor-platform@1.2.1
 meteorhacks:kadira@2.19.6
 meteorhacks:meteorx@1.3.1
 meteoric:autoform-ionic@0.1.5
-meteoric:ionic@0.1.16
+meteoric:ionic@0.1.17
 meteoric:ionic-sass@0.1.9
 meteoric:ionicons-sass@0.1.6
 minifiers@1.1.3
