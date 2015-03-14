@@ -3,7 +3,7 @@ Template.groupsShow.helpers
     console.log('members is :', this._id)
     Groups.findOne(this._id).members
   currentUserName: ->
-	  Meteor.user().profile.firstName
+    Meteor.user().profile.firstName
   messages: ->
     Messages.find {},
       sort:
@@ -19,11 +19,11 @@ Template.groupsShow.events
         avatar = Meteor.user().profile.pictureUrl
         console.log('msg = ', newMessage.val())
 
-      	Messages.insert
-          name: userName
-          message: newMessage.val()
-          created: new Date()
-          avatar: avatar
+      Messages.insert
+        name: userName
+        message: newMessage.val()
+        created: new Date()
+        avatar: avatar
 
         newMessage.val("")
         newMessage.focus()

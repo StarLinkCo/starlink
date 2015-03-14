@@ -19,3 +19,11 @@ Meteor.publish("groups", function() {
 Meteor.publish("messages", function() {
   return Messages.find();
 });
+/*
+Meteor.publish("organizers", function() {
+    return Organizers.find();
+});
+*/
+Meteor.publish("events", function() {
+    return Events.find();
+});
