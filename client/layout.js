@@ -48,5 +48,5 @@ Template.ionBody.events({
     Session.set('tmplName', "logout");
     AccountsTemplates.logout();
     IonSideMenu.snapper.close();
-  },
+  }
 });
