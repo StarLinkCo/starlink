@@ -1,0 +1,17 @@
+<template name="eventsShow">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">{{event.title}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#with event}}
+        {{{ description }}}
+      {{/with}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>
