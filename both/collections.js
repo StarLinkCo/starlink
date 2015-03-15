@@ -102,5 +102,13 @@ Links.attachSchema(new SimpleSchema({
   userId: {
     type: String,
     optional: true
+  },
+  userEmail: {
+    type: String,
+    optional: true
+  },
+  createdAt: {
+    type: Date,
+    optional: true
   }
 }));

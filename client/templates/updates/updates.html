@@ -26,7 +26,8 @@
         {{#each links}}
 
           {{#ionItem path="links.show"}}
-            {{title}}
+            <h2>{{title}}</h2>
+            <p>{{userEmail}} posted at {{createdAt}}</p>
           {{/ionItem}}
 
         {{/each}}
