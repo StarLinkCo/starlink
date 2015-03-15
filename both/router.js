@@ -70,3 +70,17 @@ Router.map(function() {
   this.route('tabs.four', {path: '/tabs/four', layoutTemplate: 'tabsLayout'});
   this.route('userAccounts');
 });
+
+var requireLoginHook = function () {
+  if (!Meteor.userId()) {
+    // if the user is not logged in, render the Login template
+    this.render('userAccounts');
+  } else {
+    // otherwise don't hold up the rest of hooks or our route/action function
+    // from running
+    this.next();
+  }
+};
+Router.onBeforeAction(requireLoginHook, {
+  only: ['links.submit']
+});
