@@ -98,5 +98,9 @@ Links.attachSchema(new SimpleSchema({
       rows: 10,
       'label-type': 'stacked'
     }
+  },
+  userId: {
+    type: String,
+    optional: true
   }
 }));
