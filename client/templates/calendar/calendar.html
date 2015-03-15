@@ -19,7 +19,11 @@
 
         {{#each events}}
           {{#ionItem path="events.show"}}
-            {{ title }}
+            <h2>{{ title }}</h2>
+            <p>{{ start_date }} ~ {{ end_date }}</p>
+            {{#if venue}}
+              <p>{{ venue.address }} {{ venue.address_2 }}, {{ venue.city }}, {{ venue.country }}</p>
+            {{/if}}
           {{/ionItem}}
         {{/each}}
 
