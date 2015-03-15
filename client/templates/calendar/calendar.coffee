@@ -3,4 +3,4 @@ Template.calendar.helpers
     Meteor.user()
   events: ->
     now = new Date()
-    Events.find({ startDate: { $gt: now } }, { sort: { startDate: 1 } })
+    Events.find({ startDate: { $gt: now }, status: { $ne: 'Draft' } }, { sort: { startDate: 1 } })
