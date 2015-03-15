@@ -1,0 +1,17 @@
+<template name="linksSubmit">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">New Post</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+      {{> quickForm collection="Links" id="linkForm" type="insert" buttonContent="Create Post"}}
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>

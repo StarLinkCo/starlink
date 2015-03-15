@@ -21,3 +21,16 @@ EventsShowController = AppController.extend({
     }
   }
 })
+LinksShowController = AppController.extend({
+  data: function () {
+    return {
+      link: Links.findOne({_id: this.params._id})
+    }
+  }
+});
+LinksSubmitController = AppController.extend({
+  data: function () {
+    return {
+    }
+  }
+});

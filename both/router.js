@@ -19,6 +19,12 @@ Router.route('/events/:_id', {
   name: 'events.show'
 });
 
+Router.route('/links/submit', {
+  name: 'links.submit'
+});
+Router.route('/links/:_id', {
+  name: 'links.show'
+});
 /*
 Router.route('/', {
   name: 'profile'

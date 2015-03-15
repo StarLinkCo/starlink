@@ -75,3 +75,28 @@ Events = new Mongo.Collection('events');
 Events.before.insert(function (userId, doc) {
   doc.startDate = new Date(doc.start_date);
 });
+Links = new Meteor.Collection('links');
+Links.attachSchema(new SimpleSchema({
+  url: {
+    type: String,
+    max: 200,
+    regEx: SimpleSchema.RegEx.Url,
+    autoform: {
+      'label-type': 'stacked'
+    }
+  },
+  title: {
+    type: String,
+    max: 200,
+    autoform: {
+      'label-type': 'stacked'
+    }
+  },
+  body: {
+    type: String,
+    autoform: {
+      rows: 10,
+      'label-type': 'stacked'
+    }
+  }
+}));

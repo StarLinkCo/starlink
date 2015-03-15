@@ -1,0 +1,28 @@
+<template name="linksShow">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="updates"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">{{link.title}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+      {{#with link}}
+        <div class="card">
+          <div class="item item-text-wrap">
+            {{ body }}
+          </div>
+        </div>
+        <div class="padding">
+          <a class="button button-block button-positive" href="{{ url }}">
+            Visit Original Page
+          </a>
+        </div>
+      {{/with}}
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>
