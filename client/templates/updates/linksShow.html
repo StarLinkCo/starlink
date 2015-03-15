@@ -13,6 +13,9 @@
       {{#with link}}
         <div class="card">
           <div class="item item-text-wrap">
+            <a href="{{url}}">{{ url }}</a>
+          </div>
+          <div class="item item-text-wrap">
             {{ userEmail }}
           </div>
           <div class="item item-text-wrap">
@@ -22,13 +25,27 @@
             {{ body }}
           </div>
         </div>
-        <div class="padding">
-          <a class="button button-block button-positive" href="{{ url }}">
-            Visit Original Page
-          </a>
-        </div>
       {{/with}}
-
+      <div class="card">
+        <div class="item item-divider">
+          Comments ({{commentsCount}})
+        </div>
+        {{#ionList}}
+          {{#each comments}}
+            <div class="item">
+              <h2>{{ userEmail}}</h2>
+              <p>{{timeAgo createdAt}}</p>
+              <p>{{content}}</p>
+            </div>
+          {{/each}}
+        {{/ionList}}
+        <form class="comment-form">
+          <label class="item item-input">
+            <textarea placeholder="Add your comment" name="commentContent"></textarea>
+          </label>
+          <input class="button button-block button-positive add-comment" value="Add Comment" type="submit"/>
+        </form>
+      </div>
     {{/ionContent}}
   {{/ionView}}
 </template>

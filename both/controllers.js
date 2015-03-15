@@ -24,7 +24,9 @@ EventsShowController = AppController.extend({
 LinksShowController = AppController.extend({
   data: function () {
     return {
-      link: Links.findOne({_id: this.params._id})
+      link: Links.findOne({_id: this.params._id}),
+      comments: Comments.find({ linkId: this.params._id }),
+      commentsCount: Comments.find({ linkId: this.params._id }).count()
     }
   }
 });

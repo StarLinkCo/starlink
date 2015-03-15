@@ -5,3 +5,4 @@ Meteor.subscribe("groups");
 Meteor.subscribe("messages");
 Meteor.subscribe("events");
 Meteor.subscribe("links");
+Meteor.subscribe("comments");

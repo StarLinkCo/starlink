@@ -31,3 +31,7 @@ Meteor.publish("events", function() {
 Meteor.publish("links", function() {
   return Links.find();
 });
+
+Meteor.publish("comments", function() {
+  return Comments.find();
+});

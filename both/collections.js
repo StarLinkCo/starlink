@@ -112,3 +112,5 @@ Links.attachSchema(new SimpleSchema({
     optional: true
   }
 }));
+
+Comments = new Meteor.Collection('comments');
