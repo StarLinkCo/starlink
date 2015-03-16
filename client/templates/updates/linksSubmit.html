@@ -1,0 +1,27 @@
+<template name="linksSubmit">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">New Post</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+      {{#autoForm collection="Links" id="linkForm" type="insert"}}
+        {{> afQuickField name='url'}}
+        {{> afQuickField name='title'}}
+        {{> afQuickField name='body' rows=6}}
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Thumbnail</span>
+          <input type="hidden" value="" name="thumbnail" data-schema-key="thumbnail"/>
+          <img src="" alt="" class="thumbnail-img"/>
+        </label>
+        <button type="submit" class="button button-full button-positive">Create Post</button>
+      {{/autoForm}}
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>

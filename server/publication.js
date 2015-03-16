@@ -27,3 +27,11 @@ Meteor.publish("organizers", function() {
 Meteor.publish("events", function() {
     return Events.find();
 });
+
+Meteor.publish("links", function() {
+  return Links.find();
+});
+
+Meteor.publish("comments", function() {
+  return Comments.find();
+});

@@ -1,0 +1,41 @@
+<template name="updates">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+    <a class="button button-clear pull-right" href="{{pathFor 'links.submit' }}">
+      <i class="icon ion-plus-round"></i>
+    </a>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Updates</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+
+        {{#each links}}
+
+          {{#ionItem path="links.show"}}
+            {{#if thumbnail}}
+              <img src="{{thumbnail}}" alt="" class="links-list-thumbnail"/>
+            {{/if}}
+            <h2>{{title}}</h2>
+            <p>{{userEmail}} posted at {{timeAgo createdAt}}</p>
+          {{/ionItem}}
+
+        {{/each}}
+
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>
