@@ -22,35 +22,43 @@
       <div class="padding">
         {{#if currentUser}}
           {{#with user}}
-            {{#with profile}}
+            {{#if profile}}
+              {{#with profile}}
+                {{#ionList}}
+                <div class="item item-divider">
+                  Personal Info:
+                </div>
+                {{#ionItem class="item-thumbnail item-thumbnail-left"}}
+                  <img src="{{pictureUrl}}"/>
+                  <h2>{{firstName}} {{lastName}}</h2>
+                  <p>{{emailAddress}}</p>
+                  <h5>{{headline}}</h5>
+                  <h5> {{location.name }} | Connections: {{numConnections}} </h5>
+                  <div class="item item-divider">
+                    <h3>Skills</h3>
+                    {{> tagInput}}
+                  </div>
+                {{/ionItem}}
+                  <div class="item item-divider">
+                    Connections:
+                  </div>
+                  {{#each values}}
+                     {{#if notprivate this}}
+                      {{#ionItem buttonRight=true avatar=true}}
+                      <img src="{{pictureUrl}}" />
+                        {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}
+                      {{/ionItem}}
+                    {{/if}}
+                  {{/each}}
+                {{/ionList}}
+              {{/with}}
+            {{else}}
               {{#ionList}}
-              <div class="item item-divider">
-                Personal Info:
-              </div>
-              {{#ionItem class="item-thumbnail item-thumbnail-left"}}
-                <img src="{{pictureUrl}}"/>
-                <h2>{{firstName}} {{lastName}}</h2>
-                <p>{{emailAddress}}</p>
-                <h5>{{headline}}</h5>
-                <h5> {{location.name }} | Connections: {{numConnections}} </h5>
                 <div class="item item-divider">
-                  <h3>Skills</h3>
-                  {{> tagInput}}
+                  Email: {{ userEmail user}}
                 </div>
-              {{/ionItem}}
-                <div class="item item-divider">
-                  Connections:
-                </div>
-                {{#each values}}
-                   {{#if notprivate this}}
-                    {{#ionItem buttonRight=true avatar=true}}
-                    <img src="{{pictureUrl}}" />
-                      {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}
-                    {{/ionItem}}
-                  {{/if}}
-                {{/each}}
               {{/ionList}}
-            {{/with}}
+            {{/if}}
           {{/with}}
         {{else}}
           {{> atForm}}
