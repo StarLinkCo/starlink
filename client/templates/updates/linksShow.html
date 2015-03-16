@@ -29,6 +29,9 @@
       <div class="card">
         <div class="item item-divider">
           Comments ({{link.commentsCount}})
+          {{#with link}}
+            <i class="icon ion-thumbsup upvote-button {{upvotedClass}}"></i>  ({{votesCount}})
+          {{/with}}
         </div>
         {{#ionList}}
           {{#each comments}}

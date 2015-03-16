@@ -21,3 +21,10 @@ Meteor.methods
     catch error
       console.log(error)
       return null
+
+  upvoteLink: (linkId)->
+    link = Links.findOne(linkId)
+    Links.update(link._id, {
+      $addToSet: {upvoters: this.userId},
+      $inc: {votesCount: 1}
+    })

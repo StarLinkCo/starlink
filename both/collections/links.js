@@ -43,6 +43,14 @@ Links.attachSchema(new SimpleSchema({
   commentsCount: {
     type: Number,
     optional: true
+  },
+  upvoters: {
+    type: [String],
+    optional: true
+  },
+  votesCount: {
+    type: Number,
+    optional: true
   }
 }));
 
