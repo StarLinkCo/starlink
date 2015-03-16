@@ -88,12 +88,14 @@ Links.attachSchema(new SimpleSchema({
   title: {
     type: String,
     max: 200,
+    optional: true,
     autoform: {
       'label-type': 'stacked'
     }
   },
   body: {
     type: String,
+    optional: true,
     autoform: {
       rows: 10,
       'label-type': 'stacked'
@@ -104,6 +106,10 @@ Links.attachSchema(new SimpleSchema({
     optional: true
   },
   userEmail: {
+    type: String,
+    optional: true
+  },
+  thumbnail: {
     type: String,
     optional: true
   },

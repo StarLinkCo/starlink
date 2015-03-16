@@ -6,6 +6,17 @@ AutoForm.addHooks(
         doc.userId = Meteor.userId();
         doc.userEmail = Meteor.user().emails[0].address;
         doc.createdAt = Date.now();
+
+        result = Meteor.call('extractInfoFromUrl', doc.url);
+
+        if (result != null) {
+          doc.title = result.data.title;
+          doc.body = result.data.description
+          if (result.data.images.length > 0) {
+            doc.thumbnail = result.data.images.url;
+          }
+        }
+
         return doc;
       }
     },
