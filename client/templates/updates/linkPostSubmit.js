@@ -4,7 +4,7 @@ AutoForm.addHooks(
     before: {
       insert: function (doc) {
         doc.userId = Meteor.userId();
-        doc.userEmail = Meteor.user().emails[0].address;
+        doc.userEmail = Meteor.user().profile ? Meteor.user().profile.emailAddress : Meteor.user().emails[0].address;
         doc.createdAt = Date.now();
 
         result = Meteor.call('extractInfoFromUrl', doc.url);
