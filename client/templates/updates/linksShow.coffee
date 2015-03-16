@@ -8,6 +8,6 @@ Template.linksShow.events
       content: content
       createdAt: Date.now()
       userId: Meteor.userId()
-      userEmail: Meteor.user().emails[0].address
+      userEmail: if Meteor.user().profile then Meteor.user().profile.emailAddress else Meteor.user().emails[0].address
     })
     e.target.commentContent.value = ''
