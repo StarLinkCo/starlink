@@ -1,7 +1,9 @@
 Template.linksSubmit.events
   "change input[name='url']": (e)->
     url = $(e.target).val()
+    IonLoading.show()
     Meteor.call('extractInfoFromUrl', url, (error, result)->
+      IonLoading.hide()
       if result
         $titleField = $('[name="title"]')
         $bodyField = $('[name="body"]')
