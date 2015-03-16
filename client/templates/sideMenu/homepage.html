@@ -28,31 +28,6 @@
   {{/ionView}}
 </template>
 
-<template name="calendar">
-  {{#contentFor "headerButtonLeft"}}
-    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
-      {{#if isAndroid}}
-        {{> ionIcon icon='android-more-vertical'}}
-      {{else}}
-        {{> ionIcon icon='navicon'}}
-      {{/if}}
-    </button>
-  {{/contentFor}}
-
-  {{#contentFor "headerTitle"}}
-    <h1 class="title">Calendar</h1>
-  {{/contentFor}}
-
-  {{#ionView}}
-    {{#ionContent}}
-      <div class="padding">
-       {{tmplName}}
-      </div>
-    {{/ionContent}}
-  {{/ionView}}
-
-</template>
-
 <template name="updates">
   {{#contentFor "headerButtonLeft"}}
     <button class="button button-clear pull-left" data-ion-menu-toggle="left">

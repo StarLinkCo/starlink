@@ -1,0 +1,35 @@
+<template name="calendar">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Calendar</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+
+        {{#each events}}
+          {{#ionItem path="events.show" class="item-icon-right"}}
+            <h2>{{ title }}</h2>
+            <p>{{ start_date }} ~ {{ end_date }}</p>
+            {{#if venue}}
+              <p>{{ venue.address }} {{ venue.address_2 }}, {{ venue.city }}, {{ venue.country }}</p>
+            {{/if}}
+            <i class="icon ion-chevron-right"></i>
+          {{/ionItem}}
+        {{/each}}
+
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>

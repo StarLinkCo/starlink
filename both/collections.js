@@ -54,3 +54,24 @@ Groups.attachSchema(new SimpleSchema({
   }
 }));
 */
+
+Organizers = new Mongo.Collection('organizers');
+/*
+OrganizerSchema = new SimpleSchema({
+    name: {
+        type: String,
+        label: "Name",
+        max: 200
+    },
+    organizer_id: {
+        type: String,
+        label: "ID",
+        max: 20
+    }
+});
+*/
+
+Events = new Mongo.Collection('events');
+Events.before.insert(function (userId, doc) {
+  doc.startDate = new Date(doc.start_date);
+});

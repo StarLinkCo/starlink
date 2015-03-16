@@ -1,0 +1,33 @@
+<template name="eventsShow">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">{{event.title}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#with event}}
+        <div class="card">
+          <div class="item item-divider">
+            时间: {{ start_date }} ~ {{ end_date }}
+          </div>
+          <div class="item item-divider">
+            人数: {{ num_attendee_rows }}
+          </div>
+          <div class="item item-divider">
+            状态: {{ status }}
+          </div>
+          <div class="item item-divider">
+            链接: <a href="{{url}}">{{ url }}</a>
+          </div>
+          <div class="item item-text-wrap">
+            {{{ description }}}
+          </div>
+        </div>
+      {{/with}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>
