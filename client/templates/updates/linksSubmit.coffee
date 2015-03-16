@@ -5,7 +5,13 @@ Template.linksSubmit.events
       if result
         $titleField = $('[name="title"]')
         $bodyField = $('[name="body"]')
+        $thumbnailField = $('[name="thumbnail"]')
+
         $titleField.val(result.data.title)
         $bodyField.val(result.data.description)
-        
+
+        thumbnailUrl = result.data.images[0]?.url
+        if thumbnailUrl
+          $thumbnailField.val(thumbnailUrl)
+          $('.thumbnail-img').attr('src', thumbnailUrl)
     )
