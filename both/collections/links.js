@@ -39,6 +39,10 @@ Links.attachSchema(new SimpleSchema({
   createdAt: {
     type: Date,
     optional: true
+  },
+  commentsCount: {
+    type: Number,
+    optional: true
   }
 }));
 

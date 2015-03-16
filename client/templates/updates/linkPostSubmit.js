@@ -6,6 +6,7 @@ AutoForm.addHooks(
         doc.userId = Meteor.userId();
         doc.userEmail = getUserEmail(Meteor.user());
         doc.createdAt = Date.now();
+        doc.commentsCount = 0;
 
         result = Meteor.call('extractInfoFromUrl', doc.url);
 

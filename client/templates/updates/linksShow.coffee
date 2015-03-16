@@ -10,4 +10,5 @@ Template.linksShow.events
       userId: Meteor.userId()
       userEmail: getUserEmail(Meteor.user())
     })
+    Links.update(this.link._id, { $inc: { commentsCount: 1 } })
     e.target.commentContent.value = ''
