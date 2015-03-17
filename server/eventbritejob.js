@@ -7,7 +7,7 @@
 SyncedCron.add({
     name: 'Pull Eventbrite events to Event collection',
     schedule: function(parser) {
-        //return parser.text('every 10 seconds');
+        //return parser.text('every 30 seconds');
         return parser.text('every 30 minutes');
         //return parser.text('at 5:00 am every 1 day');
     },
