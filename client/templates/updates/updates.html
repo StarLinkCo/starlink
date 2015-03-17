@@ -20,7 +20,7 @@
   {{/contentFor}}
 
   {{#ionView}}
-    {{#ionContent}}
+    {{#ionContent class="updates-wrapper"}}
       {{#ionList}}
 
         {{#each links}}
@@ -29,7 +29,7 @@
             {{#if thumbnail}}
               <img src="{{thumbnail}}" alt="" class="links-list-thumbnail"/>
             {{/if}}
-            <h2>{{title}}</h2>
+            <h2>{{title}}  <span class="link-domain">{{domain}}</span></h2>
             <p>{{userEmail}} posted at {{timeAgo createdAt}}  <i class="icon ion-chatbubble"></i>  ({{commentsCount}})  <i class="icon ion-thumbsup upvote-button {{upvotedClass}}"></i>  ({{votesCount}})</p>
           {{/ionItem}}
 
