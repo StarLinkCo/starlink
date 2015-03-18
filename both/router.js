@@ -84,7 +84,11 @@ Router.map(function() {
   this.route('tabs.two', {path: '/tabs/two', layoutTemplate: 'tabsLayout'});
   this.route('tabs.three', {path: '/tabs/three', layoutTemplate: 'tabsLayout'});
   this.route('tabs.four', {path: '/tabs/four', layoutTemplate: 'tabsLayout'});
-  this.route('userAccounts');
+  this.route('userAccounts', {
+    data: function() {
+      return {};
+    }
+  });
 });
 
 var requireLoginHook = function () {
