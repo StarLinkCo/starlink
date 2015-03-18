@@ -33,7 +33,10 @@ Router.route('/links/submit', {
   name: 'links.submit'
 });
 Router.route('/links/:_id', {
-  name: 'links.show'
+  name: 'links.show',
+  waitOn: function() {
+    return Meteor.subscribe('comments', this.params._id);
+  }
 });
 Router.route('/profile/:_id', {
   name: 'user.profile'

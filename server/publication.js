@@ -33,6 +33,7 @@ Meteor.publish("links", function(limit) {
   return Links.find({}, { limit: limit });
 });
 
-Meteor.publish("comments", function() {
-  return Comments.find();
+Meteor.publish("comments", function(linkId) {
+  check(linkId, String);
+  return Comments.find({linkId: linkId});
 });
