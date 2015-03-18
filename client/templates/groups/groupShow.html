@@ -1,0 +1,27 @@
+<template name="groupShow">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">@{{name}}</h1>
+  {{/contentFor}}
+  {{#contentFor "headerButtonRight"}}
+    {{#linkTo class="button group-edit button-clear" route="group.edit" data=id}}
+      {{> ionIcon icon="ios-gear-outline"}}
+    {{/linkTo}}
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+		  {{#each messages}}
+        <p>{{name}}: {{message}} </p>
+		  {{/each}}
+    {{/ionContent}}
+
+    {{#ionFooterBar class="bar-dark"}}
+	    <!-- <input type="text" id="name" placeholder="Your name"> -->
+	    <input type="text" id="messageBox" placeholder="What do you want to say?">
+    {{/ionFooterBar}}
+  {{/ionView}}
+</template>

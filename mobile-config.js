@@ -4,7 +4,7 @@
 App.info({
     name: 'StarLink',
     description: 'Online Startups Community',
-    version: '0.1.1'
+    version: '0.1.2'
 });
 
 App.icons({

@@ -32,3 +32,4 @@ aldeed:autoform-bs-button-group-input
 percolate:synced-cron
 momentjs:moment
 http
+percolate:paginated-subscription

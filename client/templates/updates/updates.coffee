@@ -1,3 +1,5 @@
+linksHandle = Meteor.subscribeWithPagination('links', 10)
+
 Template.updates.helpers
   links: ->
     Links.find()
@@ -22,5 +24,5 @@ Template.updates.events
 Template.updates.rendered = ->
   $('.updates-wrapper').scroll(->
     if ($(this).scrollTop() + $(this).innerHeight()>=$(this)[0].scrollHeight)
-      console.log 'load more'
+      linksHandle.loadNextPage()
   )

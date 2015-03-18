@@ -1,0 +1,30 @@
+<template name="groupEdit">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">@{{name}} ({{members.length}}人)</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      <div class="padding">
+        <p>{{desc}} </p>
+
+        {{#each members}}
+          <a href="{{profilePath}}" class="item-avatar" style='position:relative'>
+            <img src="{{picture}}" height="40" width="40">
+          </a>
+        {{/each}}
+
+        <p>&nbsp;</p>
+    </div>
+
+    {{/ionContent}}
+
+    {{#ionFooterBar class="bar-dark"}}
+      <button class="button leave-group button-positive pull-right" >Leave</button>
+    {{/ionFooterBar}}
+  {{/ionView}}
+</template>

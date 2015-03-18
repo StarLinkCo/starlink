@@ -42,12 +42,18 @@
             </div>
           {{/each}}
         {{/ionList}}
+        {{#if currentUser}}
         <form class="comment-form">
           <label class="item item-input">
             <textarea placeholder="Add your comment" name="commentContent"></textarea>
           </label>
           <input class="button button-block button-positive add-comment" value="Add Comment" type="submit"/>
         </form>
+        {{else}}
+          <div class="item">
+            Need <a href="{{ pathFor "userAccounts"}}">login </a>to comment.
+          </div>
+        {{/if}}
       </div>
     {{/ionContent}}
   {{/ionView}}
