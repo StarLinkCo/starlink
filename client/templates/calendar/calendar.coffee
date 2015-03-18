@@ -1,6 +1,13 @@
+eventsHandle = Meteor.subscribeWithPagination('events', 10)
+
 Template.calendar.helpers
   user: ->
     Meteor.user()
   events: ->
-    now = new Date()
-    Events.find({ startDate: { $gte: now }, status: { $ne: 'Draft' } }, { sort: { startDate: 1 } })
+    Events.find({}, { sort: { startDate: 1 } })
+
+Template.calendar.rendered = ->
+  $('.events-wrapper').scroll(->
+    if ($(this).scrollTop() + $(this).innerHeight()>=$(this)[0].scrollHeight)
+      eventsHandle.loadNextPage()
+  )
