@@ -11,9 +11,19 @@ Meteor.startup(function () {
   }
 });
 
-Router.route('/groups/:_id', {
-  name: 'groups.show'
-});
+var groupFunc = {
+  waitOn: function() {
+    // add the subscription to the waitlist
+    return this.subscribe('groups', this.params._id);
+  },
+  data: function() {
+    return Groups.findOne({_id: this.params._id});
+  }
+};
+Router.route('/groups/:_id', 
+  _.extend({name: 'group.show'}, groupFunc));
+Router.route('/groups/:_id/edit',
+  _.extend({name: 'group.edit'}, groupFunc));
 
 Router.route('/events/:_id', {
   name: 'events.show'
@@ -24,6 +34,9 @@ Router.route('/links/submit', {
 });
 Router.route('/links/:_id', {
   name: 'links.show'
+});
+Router.route('/profile/:_id', {
+  name: 'user.profile'
 });
 /*
 Router.route('/', {
