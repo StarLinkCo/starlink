@@ -11,8 +11,15 @@
     {{#ionContent}}
       <div class="padding">
         {{#ionList}}
-          <div class="item">
-            Email: {{ getUserEmail user }}
+          <div class="summary-wrapper">
+            <div class="item">
+              Email: {{ getUserEmail user }}
+            </div>
+          </div>
+          <div class="detail-wrapper hide">
+            {{#if user.profile}}
+              {{>_profileDetails profile=user.profile}}
+            {{/if}}
           </div>
         {{/ionList}}
       </div>
