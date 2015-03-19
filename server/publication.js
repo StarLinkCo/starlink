@@ -42,3 +42,12 @@ Meteor.publish("singleUser", function(userId) {
   check(userId, String);
   return Meteor.users.find({ _id: userId });
 });
+
+Meteor.publish("follows", function(opts) {
+  if (opts == null) {
+    opts = {};
+  }
+  check(opts.followingId, String);
+  check(opts.followerId, String);
+  return Follows.find({ followingId: opts.followingId, followerId: opts.followerId });
+});

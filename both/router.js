@@ -60,7 +60,11 @@ Router.map(function() {
   this.route('public_profile/:_id', {
     name: 'publicProfile',
     waitOn: function() {
-      return Meteor.subscribe('singleUser', this.params._id);
+      var subscriptions = [Meteor.subscribe('singleUser', this.params._id)];
+      if(Meteor.userId() != null) {
+        subscriptions.push(Meteor.subscribe('follows', { followingId: this.params._id, followerId: Meteor.userId() }))
+      }
+      return subscriptions;
     },
     data: function() {
       return {

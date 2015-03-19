@@ -28,3 +28,11 @@ Meteor.methods
       $addToSet: {upvoters: this.userId},
       $inc: {votesCount: 1}
     })
+
+  followUser: (followingId)->
+    console.log followingId
+    console.log 'call follow user'
+    Follows.insert({
+      followingId: followingId
+      followerId: Meteor.userId()
+    })

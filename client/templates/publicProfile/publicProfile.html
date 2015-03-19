@@ -16,6 +16,19 @@
               Email: {{ getUserEmail user }}
             </div>
           </div>
+          {{#if currentUser }}
+            {{#if isNotCurrentUser user }}
+              {{#if isFollowing user }}
+                <button class="button button-block">
+                  Following
+                </button>
+              {{else}}
+                <button class="button button-block button-positive follow-button">
+                  Follow
+                </button>
+              {{/if}}
+            {{/if}}
+          {{/if}}
           <div class="detail-wrapper hide">
             {{#if user.profile}}
               {{>_profileDetails profile=user.profile}}
