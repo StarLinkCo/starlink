@@ -57,6 +57,17 @@ Router.map(function() {
   this.route('homepage');
   this.route('calendar');
   this.route('profile');
+  this.route('public_profile/:_id', {
+    name: 'publicProfile',
+    waitOn: function() {
+      return Meteor.subscribe('singleUser', this.params._id);
+    },
+    data: function() {
+      return {
+        user: Meteor.users.findOne(this.params._id)
+      }
+    }
+  });
   this.route('groups');
   this.route('updates');
   this.route('actionSheet');

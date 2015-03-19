@@ -37,3 +37,8 @@ Meteor.publish("comments", function(linkId) {
   check(linkId, String);
   return Comments.find({linkId: linkId});
 });
+
+Meteor.publish("singleUser", function(userId) {
+  check(userId, String);
+  return Meteor.users.find({ _id: userId });
+});

@@ -13,9 +13,11 @@
     <h1 class="title">Profile</h1>
   {{/contentFor}}
 
-  {{#contentFor "headerButtonRight"}}
-    <button class="button button-clear" data-ion-modal="profileEdit">{{> ionIcon icon="ios-gear-outline"}}</button>
-  {{/contentFor}}
+  {{#if currentUser}}
+    {{#contentFor "headerButtonRight"}}
+      <button class="button button-clear" data-ion-modal="profileEdit">{{> ionIcon icon="ios-gear-outline"}}</button>
+    {{/contentFor}}
+  {{/if}}
 
   {{#ionView}}
     {{#ionContent}}
