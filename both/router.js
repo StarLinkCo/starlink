@@ -20,7 +20,7 @@ var groupFunc = {
     return Groups.findOne({_id: this.params._id});
   }
 };
-Router.route('/groups/:_id', 
+Router.route('/groups/:_id',
   _.extend({name: 'group.show'}, groupFunc));
 Router.route('/groups/:_id/edit',
   _.extend({name: 'group.edit'}, groupFunc));
