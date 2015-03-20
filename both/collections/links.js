@@ -59,3 +59,15 @@ Comments = new Meteor.Collection('comments');
 getUserEmail = function(user) {
   return user.profile ? user.profile.emailAddress : user.emails[0].address;
 };
+
+getUserName = function(user) {
+  return user.profile ? (user.profile.firstName + " " + user.profile.lastName) : '';
+};
+
+getUserHeadline = function(user) {
+  return user.profile ? user.profile.headline : '';
+};
+
+getUserPicture = function(user) {
+  return user.profile ? user.profile.pictureUrl : '';
+};

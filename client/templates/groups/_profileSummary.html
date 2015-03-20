@@ -1,7 +1,12 @@
 <template name="_profileSummary">
   {{#ionModal title=title}}
     <div class="padding">
-      <img src="{{user.picture}}" alt="" />
+      <div class="item">
+        <img src="{{getUserPicture user}}" alt="" />
+      </div>
+      <div class="item">
+        {{ getUserHeadline user }}
+      </div>
       <button class="button button-block button-positive profile-button"> More Info </button>
     </div>
   {{/ionModal}}

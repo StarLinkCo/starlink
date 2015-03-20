@@ -36,4 +36,5 @@ Template.groupEdit.events
     Router.go('group.edit', {_id: @_id})
 
   'click .member-link': (e)->
-    IonModal.open('_profileSummary', { user: this })
+    user = Meteor.users.findOne(this.id)
+    IonModal.open('_profileSummary', { user: user })
