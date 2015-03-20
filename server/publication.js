@@ -25,8 +25,14 @@ Meteor.publish("organizers", function() {
 });
 */
 Meteor.publish("events", function(limit) {
-    var now = new Date()
-    return Events.find({ startDate: { $gte: now }, status: { $ne: 'Draft' } }, {limit: limit});
+  if (this.userId) {
+    var now = new Date();
+    var hash = {startDate: {$gte: now}, status: {$ne: 'Draft'}};
+    if (!Roles.userIsInRole(this.userId, 'admin')) {
+      hash = _.extend({hidden: {$ne: true}}, hash)
+    }
+    return Events.find(hash, {limit: limit});
+  }
 });
 
 Meteor.publish("links", function(limit) {

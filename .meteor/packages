@@ -33,3 +33,4 @@ percolate:synced-cron
 momentjs:moment
 http
 percolate:paginated-subscription
+alanning:roles

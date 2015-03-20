@@ -4,7 +4,9 @@ Template.calendar.helpers
   user: ->
     Meteor.user()
   events: ->
-    Events.find({}, { sort: { startDate: 1 } })
+    Events.find({}, { sort: { marked: -1, startDate: 1 } })
+  itemClass: ->
+    if @highlighted then 'positive' else ''
 
 Template.calendar.rendered = ->
   $('.events-wrapper').scroll(->

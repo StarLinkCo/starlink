@@ -6,9 +6,11 @@
   {{#contentFor "headerTitle"}}
     <h1 class="title">{{event.title}}</h1>
   {{/contentFor}}
-
-  {{#ionView}}
+  {{#ionView buttonRight=true}}
     {{#ionContent}}
+      {{#if isInRole 'admin'}}
+        {{> _adminActions}}
+      {{/if}}
       {{#with event}}
         <div class="card">
           <div class="item item-divider">
