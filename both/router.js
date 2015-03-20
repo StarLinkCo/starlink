@@ -56,7 +56,15 @@ Router.map(function() {
 //  this.route('homepage', {path: '/'});
   this.route('homepage');
   this.route('calendar');
-  this.route('profile');
+  this.route('profile', {
+    waitOn: function() {
+      var subscriptions = [];
+      if(Meteor.user().profile) {
+        subscriptions.push(Meteor.subscribe('linkedin_connections', Meteor.user().profile.id))
+      }
+      return subscriptions;
+    }
+  });
   this.route('public_profile/:_id', {
     name: 'publicProfile',
     waitOn: function() {
