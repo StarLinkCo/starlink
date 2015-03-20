@@ -34,3 +34,6 @@ Template.groupEdit.events
 
   'click button.group-edit': (event, template) ->
     Router.go('group.edit', {_id: @_id})
+
+  'click .member-link': (e)->
+    IonModal.open('_profileSummary', { user: this })
