@@ -13,9 +13,11 @@
     <h1 class="title">Profile</h1>
   {{/contentFor}}
 
-  {{#contentFor "headerButtonRight"}}
-    <button class="button button-clear" data-ion-modal="profileEdit">{{> ionIcon icon="ios-gear-outline"}}</button>
-  {{/contentFor}}
+  {{#if currentUser}}
+    {{#contentFor "headerButtonRight"}}
+      <button class="button button-clear" data-ion-modal="profileEdit">{{> ionIcon icon="ios-gear-outline"}}</button>
+    {{/contentFor}}
+  {{/if}}
 
   {{#ionView}}
     {{#ionContent}}
@@ -23,35 +25,7 @@
         {{#if currentUser}}
           {{#with user}}
             {{#if profile}}
-              {{#with profile}}
-                {{#ionList}}
-                <div class="item item-divider">
-                  Personal Info:
-                </div>
-                {{#ionItem class="item-thumbnail item-thumbnail-left"}}
-                  <img src="{{pictureUrl}}"/>
-                  <h2>{{firstName}} {{lastName}}</h2>
-                  <p>{{emailAddress}}</p>
-                  <h5>{{headline}}</h5>
-                  <h5> {{location.name }} | Connections: {{numConnections}} </h5>
-                  <div class="item item-divider">
-                    <h3>Skills</h3>
-                    {{> tagInput}}
-                  </div>
-                {{/ionItem}}
-                  <div class="item item-divider">
-                    Connections:
-                  </div>
-                  {{#each values}}
-                     {{#if notprivate this}}
-                      {{#ionItem buttonRight=true avatar=true}}
-                      <img src="{{pictureUrl}}" />
-                        {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getid siteStandardProfileRequest.url}}
-                      {{/ionItem}}
-                    {{/if}}
-                  {{/each}}
-                {{/ionList}}
-              {{/with}}
+              {{> _profileDetails profile=profile}}
             {{else}}
               {{#ionList}}
                 <div class="item item-divider">

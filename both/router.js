@@ -57,6 +57,21 @@ Router.map(function() {
   this.route('homepage');
   this.route('calendar');
   this.route('profile');
+  this.route('public_profile/:_id', {
+    name: 'publicProfile',
+    waitOn: function() {
+      var subscriptions = [Meteor.subscribe('singleUser', this.params._id)];
+      if(Meteor.userId() != null) {
+        subscriptions.push(Meteor.subscribe('follows', { followingId: this.params._id, followerId: Meteor.userId() }))
+      }
+      return subscriptions;
+    },
+    data: function() {
+      return {
+        user: Meteor.users.findOne(this.params._id)
+      }
+    }
+  });
   this.route('groups');
   this.route('updates');
   this.route('actionSheet');

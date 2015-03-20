@@ -1,0 +1,41 @@
+<template name="publicProfile">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Public Profile</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      <div class="padding">
+        {{#ionList}}
+          <div class="summary-wrapper">
+            <div class="item">
+              Email: {{ getUserEmail user }}
+            </div>
+          </div>
+          {{#if currentUser }}
+            {{#if isNotCurrentUser user }}
+              {{#if isFollowing user }}
+                <button class="button button-block">
+                  Following
+                </button>
+              {{else}}
+                <button class="button button-block button-positive follow-button">
+                  Follow
+                </button>
+              {{/if}}
+            {{/if}}
+          {{/if}}
+          <div class="detail-wrapper hide">
+            {{#if user.profile}}
+              {{>_profileDetails profile=user.profile}}
+            {{/if}}
+          </div>
+        {{/ionList}}
+      </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>

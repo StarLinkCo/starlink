@@ -27,11 +27,9 @@ Template.groups.events
     if UI._globalHelpers.memberOf(this)
       alert('you are in this group already')
       return
-    console.log("join id: ", Meteor.userId())
-    console.log("join picture: ", Meteor.user().profile.pictureUrl)
     this.members.push
       id: Meteor.userId()
-      picture: Meteor.user().profile.pictureUrl
+      picture: (if Meteor.user().profile then Meteor.user().profile.pictureUrl)
 
     modifies =
       count: @members.length

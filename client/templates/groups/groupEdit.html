@@ -13,7 +13,7 @@
         <p>{{desc}} </p>
 
         {{#each members}}
-          <a href="{{profilePath}}" class="item-avatar" style='position:relative'>
+          <a href="/public_profile/{{this.id}}" class="item-avatar" style='position:relative'>
             <img src="{{picture}}" height="40" width="40">
           </a>
         {{/each}}
