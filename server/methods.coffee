@@ -36,3 +36,14 @@ Meteor.methods
       followingId: followingId
       followerId: Meteor.userId()
     })
+
+  toggleEvent: (eventId, attribute, value) ->
+    console.log eventId
+    console.log "#{attribute}"
+    console.log value
+    if Roles.userIsInRole(Meteor.userId(), 'admin')
+      modifier = {$set: {}}
+      modifier['$set'][attribute] = value
+      Events.update({_id: eventId}, modifier)
+    else
+      throw new Meteor.Error(403, "Not authorized")

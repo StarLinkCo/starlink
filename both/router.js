@@ -14,13 +14,13 @@ Meteor.startup(function () {
 var groupFunc = {
   waitOn: function() {
     // add the subscription to the waitlist
-    return this.subscribe('groups', this.params._id);
+    return [Meteor.subscribe('groups', this.params._id), Meteor.subscribe('groupUsers', this.params._id)];
   },
   data: function() {
     return Groups.findOne({_id: this.params._id});
   }
 };
-Router.route('/groups/:_id', 
+Router.route('/groups/:_id',
   _.extend({name: 'group.show'}, groupFunc));
 Router.route('/groups/:_id/edit',
   _.extend({name: 'group.edit'}, groupFunc));

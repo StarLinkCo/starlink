@@ -11,11 +11,6 @@
     {{#ionContent}}
       <div class="padding">
         {{#ionList}}
-          <div class="summary-wrapper">
-            <div class="item">
-              Email: {{ getUserEmail user }}
-            </div>
-          </div>
           {{#if currentUser }}
             {{#if isNotCurrentUser user }}
               {{#if isFollowing user }}
@@ -29,7 +24,7 @@
               {{/if}}
             {{/if}}
           {{/if}}
-          <div class="detail-wrapper hide">
+          <div class="detail-wrapper">
             {{#if user.profile}}
               {{>_profileDetails profile=user.profile}}
             {{/if}}
