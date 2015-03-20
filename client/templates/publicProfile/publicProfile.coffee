@@ -1,8 +1,4 @@
 Template.publicProfile.events
-  "click .summary-wrapper": ->
-    $(".summary-wrapper").addClass('hide')
-    $(".detail-wrapper").removeClass('hide')
-
   "click .follow-button": ->
     Meteor.call('followUser', this.user._id)
 

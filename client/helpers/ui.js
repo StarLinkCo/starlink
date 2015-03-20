@@ -5,3 +5,9 @@ UI.registerHelper('timeAgo', function(datetime) {
 UI.registerHelper('getUserEmail', function(user) {
   return getUserEmail(user);
 })
+UI.registerHelper('getUserHeadline', function(user) {
+  return getUserHeadline(user);
+})
+UI.registerHelper('getUserPicture', function(user) {
+  return getUserPicture(user);
+})
