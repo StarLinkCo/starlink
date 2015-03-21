@@ -12,6 +12,7 @@ Package.onUse(function(api) {
   api.use('http@1.0.10', ['client', 'server']);
   api.use(['underscore@1.0.2', 'service-configuration@1.0.3'], ['client', 'server']);
   api.use(['random@1.0.2', 'templating@1.0.11'], 'client');
+  api.use('vsivsi:queue-async');
   api.use('mongo');
 
   api.addFiles('linkedin_connections.js', ['client', 'server']);

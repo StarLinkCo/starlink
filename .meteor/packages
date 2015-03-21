@@ -33,3 +33,4 @@ momentjs:moment
 http
 percolate:paginated-subscription
 alanning:roles
+vsivsi:queue-async

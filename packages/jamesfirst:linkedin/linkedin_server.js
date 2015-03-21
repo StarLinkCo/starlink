@@ -31,7 +31,15 @@ OAuth.registerService('linkedin', 2, null, function (query) {
     fields = getExtraData(accessToken, extraFields, fields);
     fields = getProfile(accessToken, fields);
 
-    getConnection(accessToken, fields);
+    var _callback = Meteor.bindEnvironment(function() {
+        getConnection(accessToken, fields);
+    });
+    var q = QueueAsync();
+    q.defer(function() {
+      setTimeout(function(){
+        _callback();
+      }, 2000);
+    });
 
     _.extend(serviceData, fields);
 
