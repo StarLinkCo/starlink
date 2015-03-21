@@ -64,3 +64,7 @@ Meteor.publish("follows", function(opts) {
   check(opts.followerId, String);
   return Follows.find({ followingId: opts.followingId, followerId: opts.followerId });
 });
+
+Meteor.publish("linkedin_connections", function(userLinkedInId) {
+  return Meteor.linkedinConnections.find({userLinkedInId: userLinkedInId});
+})

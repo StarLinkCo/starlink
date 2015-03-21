@@ -3,3 +3,5 @@ Template._profileDetails.helpers
     url.match(/.*id=(\d+)&.*/)[1] if url?
   notprivate: (friend) ->
     !(friend.firstName == "private")
+  connections: ->
+    Meteor.linkedinConnections.find()
