@@ -59,7 +59,7 @@ Router.map(function() {
   this.route('profile', {
     waitOn: function() {
       var subscriptions = [];
-      if(Meteor.user().profile) {
+      if(Meteor.user() && Meteor.user().profile) {
         subscriptions.push(Meteor.subscribe('linkedin_connections', Meteor.user().profile.id))
       }
       return subscriptions;
