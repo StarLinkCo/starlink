@@ -1,7 +1,7 @@
 Groups = new Mongo.Collection('groups');
 
 Messages = new Meteor.Collection('messages');
-/*
+
 Groups.attachSchema(new SimpleSchema({
   name: {
     type: String,
@@ -19,9 +19,10 @@ Groups.attachSchema(new SimpleSchema({
   },
   count: {
     type: Number,
+    optional: true
   },
   members: {
     type: [Object],
+    optional: true
   }
 }));
-*/
