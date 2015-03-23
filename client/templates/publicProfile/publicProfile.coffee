@@ -3,6 +3,8 @@ Template.publicProfile.events
     Meteor.call('followUser', this.user._id)
 
 Template.publicProfile.helpers
+  sharedGroups: ->
+    this.sharedGroups
   isNotCurrentUser: (user)->
     Meteor.userId() != user._id
 

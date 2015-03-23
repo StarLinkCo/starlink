@@ -70,14 +70,17 @@ Router.map(function() {
     waitOn: function() {
       var subscriptions = [Meteor.subscribe('singleUser', this.params._id)];
       if(Meteor.userId() != null) {
-        subscriptions.push(Meteor.subscribe('follows', { followingId: this.params._id, followerId: Meteor.userId() }))
+        subscriptions.push(Meteor.subscribe('follows', { followingId: this.params._id, followerId: Meteor.userId() }));
+      //if (this.params._id != Meteor.userId())
+        subscriptions.push(Meteor.subscribe('sharedGroups', this.params._id));
       }
       return subscriptions;
     },
     data: function() {
-      return {
-        user: Meteor.users.findOne(this.params._id)
-      }
+      var dataSet = {user: Meteor.users.findOne(this.params._id)};
+      if (Meteor.userId() != this.params._id)
+        dataSet.sharedGroups = Groups.find({'members.id': {$all: [Meteor.userId(), this.params._id]}});
+      return dataSet;
     }
   });
   this.route('groups');
