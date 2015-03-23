@@ -63,7 +63,7 @@ var getExtraData = function (accessToken, extraFields, fields) {
 }
 
 var getConnection = function (accessToken, fields) {
-    var url = 'https://api.linkedin.com/v1/people/~/connections?modified=new';
+    var url = 'https://api.linkedin.com/v1/people/~/connections:(id,first-name,last-name,maiden-name,headline,location,industry,num-connections,summary,specialties,positions,picture-url,public-profile-url)';
     var response = Meteor.http.get(url, {
         params: {
             oauth2_access_token: accessToken,
