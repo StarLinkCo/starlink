@@ -5,59 +5,80 @@
 // https://github.com/percolatestudio/meteor-synced-cron
 // http://bunkat.github.io/later/parsers.html
 SyncedCron.add({
-    name: 'Pull Eventbrite events to Event collection',
+    name: 'Pull Eventbrite/Meetup events to Event collection',
     schedule: function(parser) {
         //return parser.text('every 10 seconds');
         //return parser.text('every 30 minutes');
-        return parser.text('every 2 hours');
+        return parser.text('every 30 minutes');
         //return parser.text('at 5:00 am every 1 day');
     },
 
     job: function() {
-        _.each(Organizers.find().fetch(), function(organizer) {
-            if (organizer.flag != 'active') return;
-            console.log("===========================================================");
-            console.log("Organizer: " + organizer.name);
-            var events = EJSON.parse(Meteor.http.call(
-                "GET",
-                "https://www.eventbrite.com/json/organizer_list_events?id=" +
-                organizer.organizer_id +
-                "&app_key=" +
-                Meteor.settings.eventbrite).content);
-
-            _.each(events.events, function(event) {
-                console.log("Event: " + event.event.title);
-                if (Events.find({id: event.event.id}).count() > 0 ||
-                    // event exists already
-                    // Status: Completed, Draft, Live, Canceled
-                    event.event.status != "Live") {
-                    return;
-                }
-
-                if (!event.event.venue) {
-                    event.event.status = "No_Venue";
-                    console.log("Venue is null.");
-                } else {
-                    var zip = event.event.venue.postal_code;
-                    if (isEmpty(zip)) {
-                        zip = getZip(event.event.venue.latitude, event.event.venue.longitude);
-                        event.event.venue.postal_code = zip;
-                        console.log("Zip: " + zip);
-                    }
-                    // SF Bay Area events only for now
-                    if (isEmpty(zip) || 5 != zip.length || zip.indexOf('94') != 0) {
-                        event.event.status = "Not_Bay_Area";
-                        console.log("Zip is not in bay area: " + zip);
-                    }
-                }
-
-                Events.insert(event.event);
-            });
-        });
+        // fetch events from eventbrite
+        fetchEventsFromEventbrite();
+        fetchEventsFromMeetup();
     }
 });
 
 SyncedCron.start();
+
+fetchEventsFromEventbrite = function () {
+    _.each(Organizers.find({ $or: [ { source: null}, { source: 'eventbrite'}]}).fetch(), function(organizer) {
+        if (organizer.flag != 'active') return;
+        console.log("===========================================================");
+        console.log("Organizer: " + organizer.name);
+        var events = EJSON.parse(Meteor.http.call(
+            "GET",
+            "https://www.eventbrite.com/json/organizer_list_events?id=" +
+            organizer.organizer_id +
+            "&app_key=" +
+            Meteor.settings.eventbrite).content);
+
+        _.each(events.events, function(event) {
+            console.log("Event: " + event.event.title);
+            if (Events.find({id: event.event.id}).count() > 0 ||
+                // event exists already
+                // Status: Completed, Draft, Live, Canceled
+                event.event.status != "Live") {
+                return;
+            }
+
+            if (!event.event.venue) {
+                event.event.status = "No_Venue";
+                console.log("Venue is null.");
+            } else {
+                var zip = event.event.venue.postal_code;
+                if (isEmpty(zip)) {
+                    zip = getZip(event.event.venue.latitude, event.event.venue.longitude);
+                    event.event.venue.postal_code = zip;
+                    console.log("Zip: " + zip);
+                }
+                // SF Bay Area events only for now
+                if (isEmpty(zip) || 5 != zip.length || zip.indexOf('94') != 0) {
+                    event.event.status = "Not_Bay_Area";
+                    console.log("Zip is not in bay area: " + zip);
+                }
+            }
+
+            Events.insert(_.extend(event.event, { event_source: 'eventbrite'}));
+        });
+    });
+};
+
+fetchEventsFromMeetup = function() {
+    _.each(Organizers.find({ source: 'meetup'}).fetch(), function(organizer) {
+        var events = EJSON.parse(Meteor.http.call(
+            "GET",
+            "https://api.meetup.com/2/events?key="+
+            Meteor.settings.meetup +
+            "&group_urlname="+
+            organizer.groupurlname +
+            "&sign=true&format=json&page=5&order=time&status=upcoming").content);
+        for(var i = 0; i < events.results.length; i ++) {
+          Events.update({ id: events.results[i].id }, _.extend(events.results[i], { event_source: 'meetup'}), {upsert: true})
+        }
+    });
+};
 
 getZip = function(lat, lng) {
     console.log("Lat/Lng to Zip: " + lat + " / " + lng);
