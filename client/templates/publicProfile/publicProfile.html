@@ -26,7 +26,7 @@
           {{/if}}
           <div class="detail-wrapper">
             {{#if user.profile}}
-              {{>_profileDetails profile=user.profile}}
+              {{>_profileDetails profile=user.profile sharedGroups=sharedGroups}}
             {{/if}}
           </div>
         {{/ionList}}

@@ -1,8 +1,11 @@
 <template name="_joinedGroup">
-  {{#ionItem path="group.show" buttonRight=true avatar=true}}
-    <img src="http://www.churchteams.com/ct/Data/Sites/1/group.jpg" width='120px'>
+  {{log}}
+  {{#ionItem path="group.show" buttonRight=true class="item-icon-left"}}
+    {{> ionIcon icon='person-stalker'}}
     <h2>{{name}} ({{count}}人)</h2>
     <p>{{desc}} </p>
-    <button class="button leave-group button-positive pull-right" >Leave</button>
+    {{#unless shared}}
+      <button class="button leave-group button-positive icon-left ion-ios-close-outline"></button>
+    {{/unless}}
   {{/ionItem}}
 </template>

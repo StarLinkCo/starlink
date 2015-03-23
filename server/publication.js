@@ -67,4 +67,9 @@ Meteor.publish("follows", function(opts) {
 
 Meteor.publish("linkedin_connections", function(userLinkedInId) {
   return Meteor.linkedinConnections.find({userLinkedInId: userLinkedInId});
-})
+});
+Meteor.publish("sharedGroups", function(userId) {
+  check(userId, String);
+  //console.log(Groups.find({'members.id': {$all: [this.userId, userId]}}).fetch());
+  return Groups.find({'members.id': {$all: [this.userId, userId]}});
+});
