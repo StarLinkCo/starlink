@@ -1,10 +1,8 @@
-Template.publicProfile.events
+Template._followButton.events
   "click .follow-button": ->
     Meteor.call('followUser', this.user._id)
 
-Template.publicProfile.helpers
-  sharedGroups: ->
-    this.sharedGroups
+Template._followButton.helpers
   isNotCurrentUser: (user)->
     Meteor.userId() != user._id
 

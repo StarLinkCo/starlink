@@ -71,8 +71,8 @@ Router.map(function() {
       var subscriptions = [Meteor.subscribe('singleUser', this.params._id)];
       if(Meteor.userId() != null) {
         subscriptions.push(Meteor.subscribe('follows', { followingId: this.params._id, followerId: Meteor.userId() }));
-      //if (this.params._id != Meteor.userId())
         subscriptions.push(Meteor.subscribe('sharedGroups', this.params._id));
+        subscriptions.push(Meteor.subscribe('meetships', Meteor.userId()));
       }
       return subscriptions;
     },

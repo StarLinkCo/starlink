@@ -1,0 +1,17 @@
+<template name="_meetButton">
+  {{#if currentUser }}
+    {{#if hasMet user}}
+      <button class="button button-block">Met</button>
+    {{else}}
+      {{#if meetToAccept user }}
+        <button class="button button-block button-positive accept-meet-button">Accept Meet</button>
+      {{else}}
+        {{#if meetRequested user}}
+          <button class="button button-block">Meet Sent</button>
+        {{else}}
+          <button class="button button-block button-positive meet-button">Meet</button>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  {{/if}}
+</template>

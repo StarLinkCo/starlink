@@ -1,0 +1,15 @@
+<template name="_followButton">
+  {{#if currentUser }}
+    {{#if isNotCurrentUser user }}
+      {{#if isFollowing user }}
+        <button class="button button-block">
+          Following
+        </button>
+      {{else}}
+        <button class="button button-block button-positive follow-button">
+          Follow
+        </button>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+</template>

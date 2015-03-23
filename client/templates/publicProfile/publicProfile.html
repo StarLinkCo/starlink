@@ -11,20 +11,9 @@
     {{#ionContent}}
       <div class="padding">
         {{#ionList}}
-          {{#if currentUser }}
-            {{#if isNotCurrentUser user }}
-              {{#if isFollowing user }}
-                <button class="button button-block">
-                  Following
-                </button>
-              {{else}}
-                <button class="button button-block button-positive follow-button">
-                  Follow
-                </button>
-              {{/if}}
-            {{/if}}
-          {{/if}}
           <div class="detail-wrapper">
+            {{>_followButton user=user}}
+            {{>_meetButton user=user}}
             {{#if user.profile}}
               {{>_profileDetails profile=user.profile sharedGroups=sharedGroups}}
             {{/if}}
