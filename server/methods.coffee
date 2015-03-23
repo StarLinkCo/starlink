@@ -49,3 +49,15 @@ Meteor.methods
       Events.update({_id: eventId}, modifier)
     else
       throw new Meteor.Error(403, "Not authorized")
+
+  meetUser: (meetUserId)->
+    Meetships.insert({
+      userId: Meteor.userId(),
+      meetUserId: meetUserId,
+      connected: false
+    })
+
+  acceptMeet: (userId)->
+    meetship = Meetships.findOne({userId: userId, meetUserId: Meteor.userId(), connected: false})
+    if meetship
+      Meetships.update(meetship._id, {userId: userId, meetUserId: Meteor.userId(), connected: true})

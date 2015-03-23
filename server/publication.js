@@ -73,3 +73,7 @@ Meteor.publish("sharedGroups", function(userId) {
   //console.log(Groups.find({'members.id': {$all: [this.userId, userId]}}).fetch());
   return Groups.find({'members.id': {$all: [this.userId, userId]}});
 });
+
+Meteor.publish("meetships", function(userId) {
+  return Meetships.find({ $or: [{ userId: userId}, {meetUserId: userId}] });
+});
