@@ -64,3 +64,10 @@ Meteor.methods
 
   kickUserFromGroup: (opts={})->
     Groups.update(opts.group._id, { $pull: { 'members': { id: opts.user._id }}})
+
+  addQuestion: (opts={})->
+    Questions.insert(_.extend(opts, {
+      authorId: Meteor.userId()
+      createdAt: Date.now(),
+      answersCount: 0
+    }))

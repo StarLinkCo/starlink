@@ -26,7 +26,7 @@
         {{#each questions}}
           {{#ionItem path="qa.show"}}
             <h2>{{content}}</h2>
-            <p>{{ timeAgo createdAt }} Answers({{answersCount}})</p>
+            <p>{{ timeAgo createdAt }} Answers({{answersCount}}) {{#each tags}} {{ this }} {{/each}}</p>
           {{/ionItem}}
         {{/each}}
 

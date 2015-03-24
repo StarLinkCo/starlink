@@ -20,6 +20,10 @@ Questions.attachSchema(new SimpleSchema({
   answersCount: {
     type: Number,
     optional: true
+  },
+  tags: {
+    type: [String],
+    optional: true
   }
 }));
 
