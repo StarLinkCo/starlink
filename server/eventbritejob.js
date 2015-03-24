@@ -75,7 +75,7 @@ fetchEventsFromMeetup = function() {
             organizer.groupurlname +
             "&sign=true&format=json&page=5&order=time&status=upcoming").content);
         for(var i = 0; i < events.results.length; i ++) {
-          Events.update({ id: events.results[i].id }, _.extend(events.results[i], { event_source: 'meetup'}), {upsert: true})
+          Events.update({ id: events.results[i].id }, _.extend(events.results[i], { startDate: new Date(events.results[i].time), event_source: 'meetup'}), {upsert: true})
         }
     });
 };
