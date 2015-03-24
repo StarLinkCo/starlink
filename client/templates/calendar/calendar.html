@@ -18,12 +18,19 @@
       {{#ionList}}
         {{#each events}}
           {{#ionItem path="events.show" class="item-icon-right"}}
-            <h2 class={{itemClass}}>{{ title }}</h2>
-            <p class={{itemClass}}>{{ start_date }} ~ {{ end_date }}</p>
-            {{#if venue}}
-              <p class={{itemClass}}>{{ venue.address }} {{ venue.address_2 }}, {{ venue.city }}, {{ venue.country }}</p>
+            {{#if meetupEvent }}
+              <h2 class={{itemClass}}>{{ name }}</h2>
+              <p class={{itemClass}}>{{ startDate }}</p>
+              {{#if venue}}
+                <p class={{itemClass}}>{{ venue.address_1 }}, {{ venue.address_2 }}, {{ venue.city }}, {{ venue.country }}</p>
+              {{/if}}
+            {{else}}
+              <h2 class={{itemClass}}>{{ title }}</h2>
+              <p class={{itemClass}}>{{ start_date }} ~ {{ end_date }}</p>
+              {{#if venue}}
+                <p class={{itemClass}}>{{ venue.address }}, {{ venue.address_2 }}, {{ venue.city }}, {{ venue.country }}</p>
+              {{/if}}
             {{/if}}
-            <i class="icon ion-chevron-right"></i>
           {{/ionItem}}
         {{/each}}
 

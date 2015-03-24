@@ -27,7 +27,7 @@ Meteor.publish("organizers", function() {
 Meteor.publish("events", function(limit) {
   if (this.userId) {
     var now = new Date();
-    var hash = {startDate: {$gte: now}, status: {$eq: 'Live'}};
+    var hash = {startDate: {$gte: now}, status: { $in: ['Live', 'upcoming']}};
     if (!Roles.userIsInRole(this.userId, 'admin')) {
       hash = _.extend({hidden: {$ne: true}}, hash)
     }
