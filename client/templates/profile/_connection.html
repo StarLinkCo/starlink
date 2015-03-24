@@ -1,0 +1,8 @@
+<template name="_connection">
+      {{#if notPrivate this}}
+        {{#ionItem buttonRight=true avatar=true}}
+        <img src="{{pictureUrl}}" />
+          {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getLinkedinProfieId siteStandardProfileRequest.url}}
+        {{/ionItem}}
+      {{/if}}
+</template>

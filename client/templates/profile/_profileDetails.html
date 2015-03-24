@@ -1,21 +1,33 @@
 <template name="_profileDetails">
   {{#ionList}}
-    {{#with profile}}
+    <div class="item item-divider">
+      Personal Info:
+    </div>
+    {{#ionItem class="item-thumbnail item-thumbnail-left"}}
+      {{#with profile}}
+      <img src="{{pictureUrl}}"/>
+      <h2>{{firstName}} {{lastName}}</h2>
+      <p>{{emailAddress}}</p>
+      <h5>{{headline}}</h5>
+      <h5> {{location.name }} | Connections: {{numConnections}} </h5>
       <div class="item item-divider">
-        Personal Info:
+        <h3>Roles</h3>
+        {{> tagInput tags=roles}}
       </div>
-      {{#ionItem class="item-thumbnail item-thumbnail-left"}}
-        <img src="{{pictureUrl}}"/>
-        <h2>{{firstName}} {{lastName}}</h2>
-        <p>{{emailAddress}}</p>
-        <h5>{{headline}}</h5>
-        <h5> {{location.name }} | Connections: {{numConnections}} </h5>
-        <div class="item item-divider">
-          <h3>Skills</h3>
-          {{> tagInput}}
-        </div>
-      {{/ionItem}}
-    {{/with}}
+      {{/with}}
+      <div class="item item-divider">
+        <h3>Areas</h3>
+        {{> tagInput tags=areas}}
+      </div>
+      <div class="item item-divider">
+        <h3>Interests</h3>
+        {{> tagInput tags=interests}}
+      </div>
+      <div class="item item-divider">
+        <h3>Skills</h3>
+        {{> tagInput tags=skills}}
+      </div>
+    {{/ionItem}}
     {{#if sharedGroups}}
     <div class="item item-divider">
       Shared Groups:
@@ -24,16 +36,19 @@
       {{/each}}
     </div>
     {{/if}}
+    {{#if sharedConnections}}
+    <div class="item item-divider">
+      Shared Connections:
+      {{#each sharedConnections}}
+        {{> _connection}}
+      {{/each}}
+    </div>
+    {{/if}}
     <div class="item item-divider">
       Connections:
     </div>
     {{#each connections}}
-      {{#if notprivate this}}
-        {{#ionItem buttonRight=true avatar=true}}
-        <img src="{{pictureUrl}}" />
-          {{firstName}}, {{lastName}}, {{headline}}, {{id}}, {{getLinkedinProfieId siteStandardProfileRequest.url}}
-        {{/ionItem}}
-      {{/if}}
+      {{> _connection}}
     {{/each}}
   {{/ionList}}
 </template>
