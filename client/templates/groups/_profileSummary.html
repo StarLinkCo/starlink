@@ -8,6 +8,9 @@
         {{ getUserHeadline user }}
       </div>
       <button class="button button-block button-positive profile-button"> More Info </button>
+      {{#if isGroupCreator }}
+        <button class="button button-block button-positive kick-user-button">Kick User Out</button>
+      {{/if}}
     </div>
   {{/ionModal}}
 </template>

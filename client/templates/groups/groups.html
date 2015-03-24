@@ -9,6 +9,14 @@
     </button>
   {{/contentFor}}
 
+  {{#if isInRole 'admin' }}
+    {{#contentFor "headerButtonRight"}}
+      <a class="button button-clear pull-right" href="{{pathFor 'groups.submit' }}">
+        <i class="icon ion-plus-round"></i>
+      </a>
+    {{/contentFor}}
+  {{/if}}
+
   {{#contentFor "headerTitle"}}
     <h1 class="title">Groups</h1>
   {{/contentFor}}

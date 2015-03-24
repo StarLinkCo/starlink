@@ -61,3 +61,6 @@ Meteor.methods
     meetship = Meetships.findOne({userId: userId, meetUserId: Meteor.userId(), connected: false})
     if meetship
       Meetships.update(meetship._id, {userId: userId, meetUserId: Meteor.userId(), connected: true})
+
+  kickUserFromGroup: (opts={})->
+    Groups.update(opts.group._id, { $pull: { 'members': { id: opts.user._id }}})
