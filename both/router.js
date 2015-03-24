@@ -60,7 +60,7 @@ Router.map(function() {
     waitOn: function() {
       var subscriptions = [];
       if(Meteor.user() && Meteor.user().profile) {
-        subscriptions.push(Meteor.subscribe('linkedin_connections', Meteor.user().profile.id))
+        subscriptions.push(Meteor.subscribe('linkedin_connections', Meteor.userId()))
       }
       return subscriptions;
     }
@@ -72,18 +72,24 @@ Router.map(function() {
       if(Meteor.userId() != null) {
         subscriptions.push(Meteor.subscribe('follows', { followingId: this.params._id, followerId: Meteor.userId() }));
         subscriptions.push(Meteor.subscribe('sharedGroups', this.params._id));
+        subscriptions.push(Meteor.subscribe('sharedConnections', this.params._id));
         subscriptions.push(Meteor.subscribe('meetships', Meteor.userId()));
+        subscriptions.push(Meteor.subscribe('linkedin_connections', this.params._id))        
       }
       return subscriptions;
     },
     data: function() {
       var dataSet = {user: Meteor.users.findOne(this.params._id)};
-      if (Meteor.userId() != this.params._id)
-        dataSet.sharedGroups = Groups.find({'members.id': {$all: [Meteor.userId(), this.params._id]}});
+      //if (Meteor.userId() != this.params._id)
+        dataSet.sharedGroups = Groups.find();//{'members.id': {$all: [Meteor.userId(), this.params._id]}});
       return dataSet;
     }
   });
-  this.route('groups');
+  this.route('groups', {
+    waitOn: function() {
+      Meteor.subscribe('groups');
+    }
+  });
   this.route('updates');
   this.route('actionSheet');
   this.route('backdrop');

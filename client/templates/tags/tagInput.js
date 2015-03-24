@@ -1,12 +1,3 @@
-Template.tagInput.helpers({
-  profileSkills: function(profile) {
-    var skills = _.map(profile.skills.values, function(value) {
-      return value.skill;
-    });
-    return skills;
-  }
-});
-
 Template.tagInput.rendered = function () {
   var that = this;
   this.$('.tag-input').selectize({
