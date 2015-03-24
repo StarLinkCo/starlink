@@ -1,0 +1,17 @@
+<template name="qaSubmit">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="qa"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">New QA</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+      {{> quickForm collection="Questions" id="questionForm" type="insert" fields='content'}}
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>

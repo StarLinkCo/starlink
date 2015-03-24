@@ -1,0 +1,36 @@
+<template name="qaShow">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="qa"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Startup Q&A</h1>
+  {{/contentFor}}
+
+  {{#ionView buttonRight=true}}
+    {{#ionContent}}
+      <div class="card">
+        <div class="item">
+          {{content}}
+        </div>
+        <div class="item item-divider">
+          New Answer
+        </div>
+        <div class="item">
+          {{#autoForm collection="Answers" id="answerForm" type="insert" fields='content'}}
+            {{> afQuickField name='content'}}
+            <input type="hidden" name="questionId" data-schema-key="questionId" value="{{this._id}}"/>
+          {{/autoForm}}
+        </div>
+        <div class="item item-divider">
+          Answers
+        </div>
+        {{#each answers}}
+          <div class="item">
+            {{content}}
+          </div>
+        {{/each}}
+      </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>

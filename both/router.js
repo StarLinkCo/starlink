@@ -45,6 +45,27 @@ Router.route('/links/:_id', {
 Router.route('/profile/:_id', {
   name: 'user.profile'
 });
+
+Router.route('/qa', {
+  name: 'qa',
+  waitOn: function() {
+    return Meteor.subscribe('questions');
+  }
+});
+
+Router.route('/qa/submit', {
+  name: 'qa.submit'
+});
+
+Router.route('/qa/:_id', {
+  name: 'qa.show',
+  waitOn: function() {
+    return [Meteor.subscribe('questions', this.params._id), Meteor.subscribe('answers', this.params._id)];
+  },
+  data: function() {
+    return Questions.findOne(this.params._id);
+  }
+});
 /*
 Router.route('/', {
   name: 'profile'
