@@ -11,3 +11,7 @@ UI.registerHelper('getUserHeadline', function(user) {
 UI.registerHelper('getUserPicture', function(user) {
   return getUserPicture(user);
 })
+
+UI.registerHelper('isMeetupEvent', function(e) {
+  return e.event_source == 'meetup';
+})
