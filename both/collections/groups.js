@@ -2,6 +2,17 @@ Groups = new Mongo.Collection('groups');
 
 Messages = new Meteor.Collection('messages');
 
+MemberSchema = new SimpleSchema({
+  id: {
+    type: String,
+    optional: true
+  },
+  picture: {
+    type: String ,
+    optional: true
+  }
+});
+
 Groups.attachSchema(new SimpleSchema({
   name: {
     type: String,
@@ -22,7 +33,7 @@ Groups.attachSchema(new SimpleSchema({
     optional: true
   },
   members: {
-    type: [Object],
+    type: [MemberSchema],
     optional: true
   }
 }));
