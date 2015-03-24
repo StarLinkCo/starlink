@@ -60,15 +60,7 @@ Router.map(function() {
 //  this.route('homepage', {path: '/'});
   this.route('homepage');
   this.route('calendar');
-  this.route('profile', {
-    waitOn: function() {
-      var subscriptions = [];
-      if(Meteor.user() && Meteor.user().profile) {
-        subscriptions.push(Meteor.subscribe('linkedin_connections', Meteor.userId()))
-      }
-      return subscriptions;
-    }
-  });
+  this.route('profile');
   this.route('public_profile/:_id', {
     name: 'publicProfile',
     waitOn: function() {

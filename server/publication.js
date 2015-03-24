@@ -65,9 +65,10 @@ Meteor.publish("follows", function(opts) {
   return Follows.find({ followingId: opts.followingId, followerId: opts.followerId });
 });
 
-Meteor.publish("linkedin_connections", function(userId) {
-  userLinkedInId = Meteor.users.findOne(userId).profile.id;
-  return Meteor.linkedinConnections.find({userLinkedInId: userLinkedInId}, {limit: 20});
+Meteor.publish("linkedin_connections", function(userId, limit) {
+  var userLinkedInId = Meteor.users.findOne(userId).profile.id;
+  var limit = limit || 20;
+  return Meteor.linkedinConnections.find({userLinkedInId: userLinkedInId}, {limit: limit});
 });
 Meteor.publish("sharedGroups", function(userId) {
   check(userId, String);
