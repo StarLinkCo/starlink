@@ -1,0 +1,21 @@
+<template name="_meetupShow">
+  {{#with event}}
+    <div class="card">
+      <div class="item item-divider">
+        时间: {{ startDate }}
+      </div>
+      <div class="item item-divider">
+        人数: {{ headcount }}
+      </div>
+      <div class="item item-divider">
+        状态: {{ status }}
+      </div>
+      <div class="item item-divider">
+        链接: <a href="{{event_url}}">{{ event_url }}</a>
+      </div>
+      <div class="item item-text-wrap">
+        {{{ description }}}
+      </div>
+    </div>
+  {{/with}}
+</template>

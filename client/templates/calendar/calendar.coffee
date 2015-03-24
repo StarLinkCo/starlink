@@ -8,6 +8,9 @@ Template.calendar.helpers
   itemClass: ->
     if @highlighted then 'positive' else ''
 
+  meetupEvent: ->
+    this.event_source == 'meetup'
+
 Template.calendar.rendered = ->
   $('.events-wrapper').scroll(->
     if ($(this).scrollTop() + $(this).innerHeight()>=$(this)[0].scrollHeight)
