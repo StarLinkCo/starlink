@@ -77,6 +77,9 @@ Meteor.publish("sharedGroups", function(userId) {
 });
 Meteor.publish("sharedConnections", function(userId) {
   check(userId, String);
+  if (!Meteor.users.findOne(this.userId).profile) {
+    return [];
+  }
   me = Meteor.users.findOne(this.userId).profile.id;
   myConnections = Meteor.linkedinConnections.find({userLinkedInId: me, id: {$ne: 'private'}},
     {fields: {id:1, _id: 0}}).fetch();
@@ -91,6 +94,14 @@ Meteor.publish("sharedConnections", function(userId) {
 });
 Meteor.publish("meetships", function(userId) {
   return Meetships.find({ $or: [{ userId: userId}, {meetUserId: userId}] });
+});
+
+Meteor.publish('notifications', function(userId){
+  if (userId) {
+    return Notifications.find({userId: userId});
+  } else {
+    return [];
+  }
 });
 
 Meteor.publish("singleQuestions", function(questionId) {

@@ -54,5 +54,15 @@ Template.ionBody.events({
     Session.set('tmplName', "logout");
     AccountsTemplates.logout();
     IonSideMenu.snapper.close();
+  },
+  'click [data-menu-notifications]': function(event) {
+    IonSideMenu.snapper.close();
+    Router.go('notifications');
+  }
+});
+
+Template.layout.helpers({
+  notificationsCount: function() {
+    return Notifications.find({userId: Meteor.userId}).count();
   }
 });
