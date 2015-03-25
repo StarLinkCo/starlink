@@ -8,6 +8,7 @@ Template.qaSubmit.events
       )
 
 Template.qaSubmit.rendered = ->
+  tags = []
   $(".tags-input").selectize(
     delimiter: ',',
     persist: false,
