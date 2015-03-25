@@ -2,7 +2,7 @@ Template.qaShow.helpers
   answers: ->
     Answers.find({questionId: this._id})
   comments: ->
-    QaComments.find({questionId: this._id})
+    QaComments.find({questionId: this._id, answerId: {$exists: false}})
 
 Template.qaShow.events
   "click .show-comments-button": (e)->
