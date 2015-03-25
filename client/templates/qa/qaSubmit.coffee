@@ -11,7 +11,7 @@ Template.qaSubmit.rendered = ->
   $(".tags-input").selectize(
     delimiter: ',',
     persist: false,
-    items: ['ABC', "DEF"],
+    items: [],
     create: (input)->
       value: input,
       text: input

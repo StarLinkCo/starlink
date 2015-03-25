@@ -66,8 +66,12 @@ Meteor.methods
     Groups.update(opts.group._id, { $pull: { 'members': { id: opts.user._id }}})
 
   addQuestion: (opts={})->
-    Questions.insert(_.extend(opts, {
-      authorId: Meteor.userId()
+    questionId = Questions.insert({
+      content: opts.content,
+      authorId: Meteor.userId(),
       createdAt: Date.now(),
       answersCount: 0
-    }))
+    })
+    question = Questions.findOne(questionId)
+    _.each opts.tags, (tag)->
+      Questions.addTag(tag, { _id: question._id })

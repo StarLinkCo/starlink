@@ -1,6 +1,12 @@
 Questions = new Mongo.Collection('questions');
 Answers = new Mongo.Collection('answers');
 
+Tags.TagsMixin(Questions);
+
+Questions.allowTags(function () {
+  return true;
+});
+
 Questions.attachSchema(new SimpleSchema({
   content: {
     type: String,
