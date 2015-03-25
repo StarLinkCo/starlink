@@ -30,6 +30,14 @@ Questions.attachSchema(new SimpleSchema({
   tags: {
     type: [String],
     optional: true
+  },
+  upvoters: {
+    type: [String],
+    optional: true
+  },
+  votesCount: {
+    type: Number,
+    optional: true
   }
 }));
 

@@ -75,3 +75,10 @@ Meteor.methods
     question = Questions.findOne(questionId)
     _.each opts.tags, (tag)->
       Questions.addTag(tag, { _id: question._id })
+
+  upvoteQuestion: (questionId)->
+    question = Questions.findOne(questionId)
+    Questions.update(question._id, {
+      $addToSet: {upvoters: this.userId},
+      $inc: {votesCount: 1}
+    })
