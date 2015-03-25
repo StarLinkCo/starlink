@@ -1,0 +1,34 @@
+<template name="notifications">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Notifications</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+
+        {{#each notifications}}
+          <div class="item item-button-right">
+            <a href="/public_profile/{{meetUserId}}">User: {{meetUserName}} </a> want to meet you.
+            {{#unless read }}
+              <button class="button button-positive read-button">
+                <i class="icon ion-email-unread"></i>
+              </button>
+            {{/unless}}
+          </div>
+        {{/each}}
+
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>

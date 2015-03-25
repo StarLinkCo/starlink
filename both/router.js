@@ -125,6 +125,7 @@ Router.map(function() {
       return {};
     }
   });
+  this.route('notifications');
 });
 
 var requireLoginHook = function () {

@@ -56,6 +56,7 @@ Meteor.methods
       meetUserId: meetUserId,
       connected: false
     })
+    createMeetNotification(meetUserId)
 
   acceptMeet: (userId)->
     meetship = Meetships.findOne({userId: userId, meetUserId: Meteor.userId(), connected: false})
@@ -64,3 +65,6 @@ Meteor.methods
 
   kickUserFromGroup: (opts={})->
     Groups.update(opts.group._id, { $pull: { 'members': { id: opts.user._id }}})
+
+  markNoticationRead: (notificationId)->
+    Notifications.update({_id: notificationId}, { $set: { read: true }})
