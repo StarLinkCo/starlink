@@ -82,6 +82,10 @@ QaComments.attachSchema(new SimpleSchema({
     type: String,
     optional: true
   },
+  answerId: {
+    type: String,
+    optional: true
+  },
   authorId: {
     type: String,
     optional: true

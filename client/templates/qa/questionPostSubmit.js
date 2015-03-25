@@ -33,6 +33,7 @@ AutoForm.addHooks(
       insert: function (doc) {
         doc.authorId = Meteor.userId();
         doc.createdAt = Date.now();
+        doc.commentsCount = 0;
         Questions.update(doc.questionId, { $inc: { commentsCount: 1 } })
         return doc;
       }

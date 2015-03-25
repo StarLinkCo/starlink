@@ -92,6 +92,9 @@ Meteor.publish("meetships", function(userId) {
   return Meetships.find({ $or: [{ userId: userId}, {meetUserId: userId}] });
 });
 
+Meteor.publish("singleQuestions", function(questionId) {
+  return Questions.find({_id: questionId});
+});
 Meteor.publish("questions", function(limit) {
   return Questions.find({}, {limit: limit});
 });
