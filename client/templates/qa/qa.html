@@ -1,0 +1,36 @@
+<template name="qa">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+    <a class="button button-clear pull-right" href="{{pathFor "qa.submit"}}">
+      <i class="icon ion-plus-round"></i>
+    </a>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Startup Q&A</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent class="qa-wrapper"}}
+      {{#ionList}}
+
+        {{#each questions}}
+          {{#ionItem path="qa.show"}}
+            <h2>{{content}}</h2>
+            <p>{{ timeAgo createdAt }} Answers({{answersCount}}) <i class="icon ion-chatbubble"></i>  ({{commentsCount}}) {{#each tags}} {{ this }} {{/each}} <i class="icon ion-thumbsup upvote-button {{upvotedClass}}"></i>  ({{votesCount}})</p>
+          {{/ionItem}}
+        {{/each}}
+
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+</template>

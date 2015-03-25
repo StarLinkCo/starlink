@@ -1,0 +1,16 @@
+<template name="_answerComments">
+  <div class="card answer-comments">
+    <form>
+      <div class="item">
+        <label>Content</label>
+        <input type="text" class="answer-comment-content" name="answerCommentContent"/>
+        <button type="submit" class="button button-positive button-block comment-answer-button">Comment Answer</button>
+      </div>
+    </form>
+    {{#each comments}}
+      <div class="item">
+        {{ content }}
+      </div>
+    {{/each}}
+  </div>
+</template>

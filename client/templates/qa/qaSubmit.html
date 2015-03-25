@@ -1,0 +1,31 @@
+<template name="qaSubmit">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="qa"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">New QA</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Content</span>
+          <input type="text" name='content'>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Tags</span>
+        </label>
+        <div class="padding">
+          <input type="text" placeholder="Suhr" class="tags-input">
+        </div>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive submit-button">Create Question</button>
+      </div>
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>

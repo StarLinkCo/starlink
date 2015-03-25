@@ -92,3 +92,16 @@ Meteor.publish("sharedConnections", function(userId) {
 Meteor.publish("meetships", function(userId) {
   return Meetships.find({ $or: [{ userId: userId}, {meetUserId: userId}] });
 });
+
+Meteor.publish("singleQuestions", function(questionId) {
+  return Questions.find({_id: questionId});
+});
+Meteor.publish("questions", function(limit) {
+  return Questions.find({}, {limit: limit});
+});
+Meteor.publish("answers", function(questionId) {
+  return Answers.find({questionId: questionId});
+});
+Meteor.publish("qa_comments", function(questionId) {
+  return QaComments.find({questionId: questionId});
+});
