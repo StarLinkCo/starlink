@@ -47,10 +47,7 @@ Router.route('/profile/:_id', {
 });
 
 Router.route('/qa', {
-  name: 'qa',
-  waitOn: function() {
-    return Meteor.subscribe('questions');
-  }
+  name: 'qa'
 });
 
 Router.route('/qa/submit', {
