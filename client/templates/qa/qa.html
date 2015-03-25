@@ -26,7 +26,7 @@
         {{#each questions}}
           {{#ionItem path="qa.show"}}
             <h2>{{content}}</h2>
-            <p>{{ timeAgo createdAt }} Answers({{answersCount}}) {{#each tags}} {{ this }} {{/each}} <i class="icon ion-thumbsup upvote-button {{upvotedClass}}"></i>  ({{votesCount}})</p>
+            <p>{{ timeAgo createdAt }} Answers({{answersCount}}) Comments({{commentsCount}}) {{#each tags}} {{ this }} {{/each}} <i class="icon ion-thumbsup upvote-button {{upvotedClass}}"></i>  ({{votesCount}})</p>
           {{/ionItem}}
         {{/each}}
 

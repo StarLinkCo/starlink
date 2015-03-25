@@ -1,5 +1,6 @@
 Questions = new Mongo.Collection('questions');
 Answers = new Mongo.Collection('answers');
+QaComments = new Mongo.Collection('qa_comments');
 
 Tags.TagsMixin(Questions);
 
@@ -38,6 +39,10 @@ Questions.attachSchema(new SimpleSchema({
   votesCount: {
     type: Number,
     optional: true
+  },
+  commentsCount: {
+    type: Number,
+    optional: true
   }
 }));
 
@@ -60,4 +65,29 @@ Answers.attachSchema(new SimpleSchema({
     type: Date,
     optional: true
   },
+  commentsCount: {
+    type: Number,
+    optional: true
+  }
+}));
+
+QaComments.attachSchema(new SimpleSchema({
+  content: {
+    type: String,
+    autoform: {
+      'label-type': 'stacked'
+    }
+  },
+  questionId: {
+    type: String,
+    optional: true
+  },
+  authorId: {
+    type: String,
+    optional: true
+  },
+  createdAt: {
+    type: Date,
+    optional: true
+  }
 }));

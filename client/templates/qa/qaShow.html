@@ -25,12 +25,31 @@
           {{#autoForm collection="Answers" id="answerForm" type="insert" fields='content'}}
             {{> afQuickField name='content'}}
             <input type="hidden" name="questionId" data-schema-key="questionId" value="{{this._id}}"/>
+            <button class="button button-positive button-block">Submit</button>
           {{/autoForm}}
         </div>
         <div class="item item-divider">
           Answers
         </div>
         {{#each answers}}
+          <div class="item">
+            {{content}}
+          </div>
+        {{/each}}
+        <div class="item item-divider">
+          New Comment
+        </div>
+        <div class="item">
+          {{#autoForm collection="QaComments" id="qaCommentForm" type="insert" fields='content'}}
+            {{> afQuickField name='content'}}
+            <input type="hidden" name="questionId" data-schema-key="questionId" value="{{this._id}}"/>
+            <button class="button button-positive button-block">Submit</button>
+          {{/autoForm}}
+        </div>
+        <div class="item item-divider">
+          Comments
+        </div>
+        {{#each comments}}
           <div class="item">
             {{content}}
           </div>

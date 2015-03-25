@@ -98,3 +98,6 @@ Meteor.publish("questions", function(limit) {
 Meteor.publish("answers", function(questionId) {
   return Answers.find({questionId: questionId});
 });
+Meteor.publish("qa_comments", function(questionId) {
+  return QaComments.find({questionId: questionId});
+});

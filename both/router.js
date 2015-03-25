@@ -57,7 +57,7 @@ Router.route('/qa/submit', {
 Router.route('/qa/:_id', {
   name: 'qa.show',
   waitOn: function() {
-    return [Meteor.subscribe('questions', this.params._id), Meteor.subscribe('answers', this.params._id)];
+    return [Meteor.subscribe('answers', this.params._id), Meteor.subscribe('qa_comments', this.params._id)];
   },
   data: function() {
     return Questions.findOne(this.params._id);

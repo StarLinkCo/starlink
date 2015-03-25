@@ -26,3 +26,16 @@ AutoForm.addHooks(
     }
   }
 );
+AutoForm.addHooks(
+  'qaCommentForm',
+  {
+    before: {
+      insert: function (doc) {
+        doc.authorId = Meteor.userId();
+        doc.createdAt = Date.now();
+        Questions.update(doc.questionId, { $inc: { commentsCount: 1 } })
+        return doc;
+      }
+    }
+  }
+);
