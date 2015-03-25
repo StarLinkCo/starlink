@@ -68,3 +68,32 @@ Meteor.methods
 
   markNoticationRead: (notificationId)->
     Notifications.update({_id: notificationId}, { $set: { read: true }})
+
+  addQuestion: (opts={})->
+    questionId = Questions.insert({
+      content: opts.content,
+      authorId: Meteor.userId(),
+      createdAt: Date.now(),
+      commentsCount: 0,
+      answersCount: 0
+    })
+    question = Questions.findOne(questionId)
+    _.each opts.tags, (tag)->
+      Questions.addTag(tag, { _id: question._id })
+
+  upvoteQuestion: (questionId)->
+    question = Questions.findOne(questionId)
+    Questions.update(question._id, {
+      $addToSet: {upvoters: this.userId},
+      $inc: {votesCount: 1}
+    })
+
+  addAnswerComment: (opts={})->
+    QaComments.insert({
+      content: opts.content
+      questionId: opts.answer.questionId
+      answerId: opts.answer._id
+      authorId: Meteor.userId()
+      createdAt: Date.now()
+    })
+    Answers.update(opts.answer._id, { $inc: { commentsCount: 1 } })

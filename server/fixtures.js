@@ -57,54 +57,6 @@ if (Organizers.find({source: 'meetup'}).count() == 0) {
 }
 
 /*
-{
-    "_id" : "5bGaNnGgsAm6xKyHP",
-    "name" : "SVIEF",
-    "flag" : "active",
-    "organizer_id" : "4302207107"
-}
-
-{
-    "_id" : "FG9uqqsyh3WNewQcW",
-    "name" : "TIPark Silicon Valley",
-    "flag" : "active",
-    "organizer_id" : "5628397911"
-}
-
-{
-    "_id" : "nRWWPbLK7oodYfgQQ",
-    "name" : "JayWSalon",
-    "flag" : "active",
-    "organizer_id" : "6428799777"
-}
-
-{
-    "_id" : "Joz2xKBx2WjyGzrPk",
-    "name" : "SVACE",
-    "flag" : "active",
-    "organizer_id" : "7462438955"
-}
-
-{
-    "_id" : "CKP4baLWJjH9SR35H",
-    "name" : "AngelsGlobal",
-    "flag" : "active",
-    "organizer_id" : "7684502595"
-}
-
-{
-    "_id" : "QPknSy7CvzrXNztFH",
-    "name" : "HYSTA",
-    "flag" : "active",
-    "organizer_id" : "7768017133"
-}
-
-{
-    "_id" : "yzzXE5BaEY4jCbZA8",
-    "name" : "SV Cafe",
-    "flag" : "active",
-    "organizer_id" : "7905018476"
-}
 
 {
     "_id" : ObjectId("55052f9d6a4c3c3694035a18"),

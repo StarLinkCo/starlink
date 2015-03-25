@@ -45,6 +45,24 @@ Router.route('/links/:_id', {
 Router.route('/profile/:_id', {
   name: 'user.profile'
 });
+
+Router.route('/qa', {
+  name: 'qa'
+});
+
+Router.route('/qa/submit', {
+  name: 'qa.submit'
+});
+
+Router.route('/qa/:_id', {
+  name: 'qa.show',
+  waitOn: function() {
+    return [Meteor.subscribe('singleQuestions', this.params._id), Meteor.subscribe('answers', this.params._id), Meteor.subscribe('qa_comments', this.params._id)];
+  },
+  data: function() {
+    return Questions.findOne(this.params._id);
+  }
+});
 /*
 Router.route('/', {
   name: 'profile'
@@ -60,15 +78,7 @@ Router.map(function() {
 //  this.route('homepage', {path: '/'});
   this.route('homepage');
   this.route('calendar');
-  this.route('profile', {
-    waitOn: function() {
-      var subscriptions = [];
-      if(Meteor.user() && Meteor.user().profile) {
-        subscriptions.push(Meteor.subscribe('linkedin_connections', Meteor.userId()))
-      }
-      return subscriptions;
-    }
-  });
+  this.route('profile');
   this.route('public_profile/:_id', {
     name: 'publicProfile',
     waitOn: function() {

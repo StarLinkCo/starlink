@@ -20,12 +20,12 @@
   {{/if}}
 
   {{#ionView}}
-    {{#ionContent}}
+    {{#ionContent class="profile-wrapper"}}
       <div class="padding">
         {{#if currentUser}}
           {{#with user}}
             {{#if profile}}
-              {{> _profileDetails profile=profile areas=areasTags interests=interestsTags}}
+              {{> _profileDetails profile=profile areas=areasTags interests=interestsTags user=this}}
             {{else}}
               {{#ionList}}
                 <div class="item item-divider">

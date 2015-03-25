@@ -43,6 +43,12 @@ Template.ionBody.events({
     Router.go('/updates');
     IonSideMenu.snapper.close();
   },
+  'click [data-ion-menu-qa]': function (event, template) {
+    console.log ("menu-qa clicked!");
+    Session.set('tmplName', "qa");
+    Router.go('/qa');
+    IonSideMenu.snapper.close();
+  },
   'click [data-ion-menu-logout]': function (event, template) {
     console.log ("menu-logout clicked!");
     Session.set('tmplName', "logout");
