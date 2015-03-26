@@ -12,7 +12,6 @@
       <div class="padding">
         {{#ionList}}
           <div class="detail-wrapper">
-            {{>_followButton user=user}}
             {{>_meetButton user=user}}
             {{#if user.profile}}
               {{>_profileDetails profile=user.profile interests=user.interestsTags areas=user.areasTags sharedGroups=sharedGroups sharedConnections=sharedConnections}}
