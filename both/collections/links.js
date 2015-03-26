@@ -6,12 +6,12 @@ Links.attachSchema(new SimpleSchema({
     regEx: SimpleSchema.RegEx.Url,
     autoform: {
       'label-type': 'stacked'
-    }
+    },
+    optional: true
   },
   title: {
     type: String,
     max: 200,
-    optional: true,
     autoform: {
       'label-type': 'stacked'
     }
