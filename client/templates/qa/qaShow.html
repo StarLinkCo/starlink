@@ -23,42 +23,56 @@
         <div class="item">
           {{authorName}} {{timeAgo createdAt}}
         </div>
-        <div class="item item-divider">
-          New Answer
-        </div>
-        <div class="item">
-          {{#autoForm collection="Answers" id="answerForm" type="insert" fields='content'}}
-            {{> afQuickField name='content'}}
-            <input type="hidden" name="questionId" data-schema-key="questionId" value="{{this._id}}"/>
-            <button class="button button-positive button-block">Submit</button>
-          {{/autoForm}}
-        </div>
-        <div class="item item-divider">
-          Answers
-        </div>
-        {{#each answers}}
-          <div class="item">
-            {{content}} {{authorName}} {{timeAgo createdAt}} <a class="show-comments-button"><i class="icon ion-chatbubble"></i>({{commentsCount}})</a>
+        <div class="qa-tabs">
+          <div class="tab-head">
+            <div class="tab-head-item active" data-tab="answers">
+              <h4>Answers</h4>
+            </div>
+            <div class="tab-head-item" data-tab="comments">
+              <h4>Comments</h4>
+            </div>
           </div>
-        {{/each}}
-        <div class="item item-divider">
-          New Comment
-        </div>
-        <div class="item">
-          {{#autoForm collection="QaComments" id="qaCommentForm" type="insert" fields='content'}}
-            {{> afQuickField name='content'}}
-            <input type="hidden" name="questionId" data-schema-key="questionId" value="{{this._id}}"/>
-            <button class="button button-positive button-block">Submit</button>
-          {{/autoForm}}
-        </div>
-        <div class="item item-divider">
-          Comments
-        </div>
-        {{#each comments}}
-          <div class="item">
-            {{ content }} {{authorName}} {{timeAgo createdAt}}
+          <div class="answers-tab">
+            <div class="item item-divider">
+              New Answer
+            </div>
+            <div class="item">
+              {{#autoForm collection="Answers" id="answerForm" type="insert" fields='content'}}
+                {{> afQuickField name='content'}}
+                <input type="hidden" name="questionId" data-schema-key="questionId" value="{{this._id}}"/>
+                <button class="button button-positive button-block">Submit</button>
+              {{/autoForm}}
+            </div>
+            <div class="item item-divider">
+              Answers
+            </div>
+            {{#each answers}}
+              <div class="item">
+                {{content}} {{authorName}} {{timeAgo createdAt}} <a class="show-comments-button"><i class="icon ion-chatbubble"></i>({{commentsCount}})</a>
+              </div>
+            {{/each}}
           </div>
-        {{/each}}
+          <div class="comments-tab hide">
+            <div class="item item-divider">
+              New Comment
+            </div>
+            <div class="item">
+              {{#autoForm collection="QaComments" id="qaCommentForm" type="insert" fields='content'}}
+                {{> afQuickField name='content'}}
+                <input type="hidden" name="questionId" data-schema-key="questionId" value="{{this._id}}"/>
+                <button class="button button-positive button-block">Submit</button>
+              {{/autoForm}}
+            </div>
+            <div class="item item-divider">
+              Comments
+            </div>
+            {{#each comments}}
+              <div class="item">
+                {{ content }} {{authorName}} {{timeAgo createdAt}}
+              </div>
+            {{/each}}
+          </div>
+        </div>
       </div>
     {{/ionContent}}
   {{/ionView}}

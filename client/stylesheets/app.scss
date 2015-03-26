@@ -55,3 +55,15 @@ $positive: #DE4F4F;
   padding: 10px 10px 40px 10px;
   border: 1px black solid;
 }
+.qa-tabs {
+  .hide {
+    display: none;
+  }
+  .tab-head {
+    .tab-head-item {
+      display: inline-block;
+      text-align: center;
+      width: 45%;
+    }
+  }
+}

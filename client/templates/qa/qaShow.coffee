@@ -10,3 +10,12 @@ Template.qaShow.events
       Template.instance().$(".answer-comments").remove()
     else
       Blaze.renderWithData(Template._answerComments, this, $(e.target).closest('.item').get(0))
+
+  "click .tab-head-item": (e)->
+    tab = $(e.target).closest('.tab-head-item').attr('data-tab')
+    if tab == 'answers'
+      $(".answers-tab").removeClass('hide')
+      $(".comments-tab").addClass('hide')
+    else
+      $(".answers-tab").addClass('hide')
+      $(".comments-tab").removeClass('hide')
