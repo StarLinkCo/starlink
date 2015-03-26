@@ -71,7 +71,7 @@ var getConnection = function (accessToken, fields) {
         }
     }).data;
     var values = response.values;
-    if(values.length && fields.id) {
+    if(!!values && values.length && fields.id) {
       for(var i=0; i < values.length; i ++) {
         Meteor.linkedinConnections.update({id: values[i].id, userLinkedInId: fields.id}, _.extend(values[i], { userLinkedInId: fields.id}), {upsert: true});
       }

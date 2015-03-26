@@ -75,6 +75,7 @@ oauth2@1.1.3
 observe-sequence@1.0.5
 ordered-dict@1.0.3
 patrickleet:tags@1.1.3
+percolate:intercom@1.2.8
 percolate:paginated-subscription@0.2.4
 percolate:synced-cron@1.2.0
 random@1.0.3

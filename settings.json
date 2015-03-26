@@ -11,6 +11,15 @@
   "mailchimp":        "00af37243cc3fb970f1c89b34ff3e62d-us10",
   "geocoding":        "AIzaSyBIhDgq4Sb7jmlTZYoWh0kepny2D3z21c4",
 
+  "intercom": {
+      "secret":        "4e67cddcb6de928d9b9a6c855ddd51359a8a3792"
+  },
+  "public": {
+    "intercom": {
+      "id":           "nntrjk3y"
+    }
+  },
+
   "sikka": {
     "rateLimits": {
       "perIp":        "20"
