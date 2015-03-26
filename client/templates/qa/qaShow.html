@@ -13,10 +13,15 @@
         <div class="item">
           {{content}}
         </div>
+        {{#if tags}}
         <div class="item">
           {{#each tags}}
             {{ this }}
           {{/each}}
+        </div>
+        {{/if}}
+        <div class="item">
+          {{authorName}} {{timeAgo createdAt}}
         </div>
         <div class="item item-divider">
           New Answer
@@ -33,7 +38,7 @@
         </div>
         {{#each answers}}
           <div class="item">
-            {{content}} <a class="show-comments-button"><i class="icon ion-chatbubble"></i>({{commentsCount}})</a>
+            {{content}} {{authorName}} {{timeAgo createdAt}} <a class="show-comments-button"><i class="icon ion-chatbubble"></i>({{commentsCount}})</a>
           </div>
         {{/each}}
         <div class="item item-divider">
@@ -51,7 +56,7 @@
         </div>
         {{#each comments}}
           <div class="item">
-            {{content}}
+            {{ content }} {{authorName}} {{timeAgo createdAt}}
           </div>
         {{/each}}
       </div>

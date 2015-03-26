@@ -108,11 +108,11 @@ Meteor.publish("singleQuestions", function(questionId) {
   return Questions.find({_id: questionId});
 });
 Meteor.publish("questions", function(limit) {
-  return Questions.find({}, {limit: limit});
+  return Questions.find({}, {limit: limit, createdAt: -1});
 });
 Meteor.publish("answers", function(questionId) {
-  return Answers.find({questionId: questionId});
+  return Answers.find({questionId: questionId}, {createdAt: -1});
 });
 Meteor.publish("qa_comments", function(questionId) {
-  return QaComments.find({questionId: questionId});
+  return QaComments.find({questionId: questionId}, {createdAt: -1});
 });
