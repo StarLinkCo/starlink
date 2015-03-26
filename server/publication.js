@@ -35,6 +35,10 @@ Meteor.publish("events", function(limit) {
   }
 });
 
+Meteor.publish("singleEvent", function(eventId) {
+  return Events.find({_id: eventId});
+});
+
 Meteor.publish("links", function(limit) {
   return Links.find({}, { limit: limit });
 });

@@ -26,6 +26,9 @@ GroupsEditController = AppController.extend({
 });
 
 EventsShowController = AppController.extend({
+  waitOn: function() {
+    return Meteor.subscribe('singleEvent', this.params._id);
+  },
   data: function () {
     return {
       event: Events.findOne({_id: this.params._id})
