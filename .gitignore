@@ -5,4 +5,5 @@ server/config.js
 settings.local.json
 /.project
 *~
+npm-debug.log
 

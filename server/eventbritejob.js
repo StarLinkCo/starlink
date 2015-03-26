@@ -9,7 +9,7 @@ SyncedCron.add({
     schedule: function(parser) {
         //return parser.text('every 10 seconds');
         //return parser.text('every 30 minutes');
-        return parser.text('every 30 minutes');
+        return parser.text('every 2 hours');
         //return parser.text('at 5:00 am every 1 day');
     },
 
@@ -96,7 +96,7 @@ getZip = function(lat, lng) {
         "GET",
         url).content);
     //console.log(addresses);
-    var address_components = addresses.results[0].address_components;
+    var address_components = !addresses.results[0].address_components ? addresses.results[0].address_components : undefined;
     if (!!address_components) {
         _.each(address_components, function(address_component) {
             //console.log(address_component);
@@ -106,7 +106,7 @@ getZip = function(lat, lng) {
             result = address_component.short_name;
         });
     } else {
-        console.log("address_components is null: " + addresses.result[0]);
+        console.log("address_components is null.");
     }
     return result;
 };
@@ -114,3 +114,6 @@ getZip = function(lat, lng) {
 function isEmpty(str) {
     return (!str || 0 === str.length);
 }
+
+//https://www.eventbrite.com/json/user_list_events?user=james@yangwang.us&app_key=GLBT6I4SRNEXK5TGZZ
+//https://www.eventbrite.com/json/organizer_get?id=2300226659&app_key=GLBT6I4SRNEXK5TGZZ
