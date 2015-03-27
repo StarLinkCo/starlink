@@ -1,7 +1,7 @@
 Handle = {}
 Template._profileDetails.helpers
   skills: ->
-    if @profile?
+    if @profile? and @profile.skills?
       _.map @profile.skills.values, (value) ->
         value.skill.name
     else
