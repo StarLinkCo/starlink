@@ -31,6 +31,14 @@
        </div>
      </label>
     {{/ionItem}}
+    {{#unless event.groupId}}
+      {{#ionItem class="item-button-right"}}
+        Create Event Group
+        <button class="button button-positive create-group">
+          <i class="icon ion-chatbubbles"></i>
+        </button>
+      {{/ionItem}}
+    {{/unless}}
   {{/ionList}}
 </div>
 </template>

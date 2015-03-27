@@ -35,5 +35,9 @@ Groups.attachSchema(new SimpleSchema({
   members: {
     type: [MemberSchema],
     optional: true
+  },
+  eventId: {
+    type: String,
+    optional: true
   }
 }));

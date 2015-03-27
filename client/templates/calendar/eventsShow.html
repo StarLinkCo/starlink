@@ -12,6 +12,18 @@
       {{#if isInRole 'admin'}}
         {{> _adminActions}}
       {{/if}}
+      {{#if event.groupId}}
+        {{#ionItem class="item-button-right"}}
+          {{#if member}}
+            Go to Event Group
+          {{else}}
+            Join Event Group
+          {{/if}}
+          <button class="button button-positive join-group">
+            <i class="icon ion-person-stalker"></i>
+          </button>
+        {{/ionItem}}
+      {{/if}}
       {{#if isMeetupEvent event}}
         {{>_meetupShow event=event }}
       {{else}}
