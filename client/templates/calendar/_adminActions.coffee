@@ -7,3 +7,6 @@ Template._adminActions.events
 
   'change input.highlight': (event, template) ->
     Meteor.call('toggleEvent', @event._id, 'highlighted', event.target.checked)
+
+  'click button.create-group': (event, template) ->
+    Meteor.call('createEventGroup', @event._id)

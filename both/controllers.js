@@ -26,15 +26,19 @@ GroupsEditController = AppController.extend({
 });
 
 EventsShowController = AppController.extend({
-  waitOn: function() {
-    return Meteor.subscribe('singleEvent', this.params._id);
+  waitOn: function () {
+    var subs = [Meteor.subscribe('eventGroup', this.params._id)];
+    subs.push(Meteor.subscribe('singleEvent', this.params._id));
+    return subs;
   },
   data: function () {
+    var event = Events.findOne(this.params._id);
     return {
-      event: Events.findOne({_id: this.params._id})
+      event: event,
+      group: Groups.findOne(event.groupId)
     }
   }
-})
+});
 LinksShowController = AppController.extend({
   data: function () {
     return {

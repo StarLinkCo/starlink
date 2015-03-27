@@ -93,7 +93,7 @@ Meteor.publish("sharedConnections", function(userId) {
     {fields: {id:1, _id: 0}}).fetch();
   userConnections = _.map(userConnections, function(c) {return c.id});
   common = _.intersection(myConnections, userConnections).slice(0,10);
-  console.log(Meteor.linkedinConnections.find({'id': {$in: common}, userLinkedInId: me}).fetch());
+  //console.log(Meteor.linkedinConnections.find({'id': {$in: common}, userLinkedInId: me}).fetch());
   return Meteor.linkedinConnections.find({'id': {$in: common}, userLinkedInId: me});
 });
 Meteor.publish("meetships", function(userId) {
@@ -119,4 +119,8 @@ Meteor.publish("answers", function(questionId) {
 });
 Meteor.publish("qa_comments", function(questionId) {
   return QaComments.find({questionId: questionId}, {createdAt: -1});
+});
+Meteor.publish("eventGroup", function(eventId) {
+  var event = Events.findOne(eventId);
+  return Groups.find({_id: event.groupId});
 });

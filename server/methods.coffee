@@ -3,7 +3,7 @@ Meteor.methods
     #Important server-side check for security and data integrity
     check(doc, Schema.profile)
     Meteor.users.update(id, {$set: {"profile.roles": doc.roles}})
-    console.log(Meteor.users.findOne(id).profile.roles)
+    #console.log(Meteor.users.findOne(id).profile.roles)
 
   extractInfoFromUrl: (url)->
     extractBase = 'http://api.embed.ly/1/extract'
@@ -45,7 +45,7 @@ Meteor.methods
       else
         modifier = {$unset: {}}
         modifier['$unset'][attribute] = value
-        
+
       Events.update({_id: eventId}, modifier)
     else
       throw new Meteor.Error(403, "Not authorized")
@@ -99,3 +99,27 @@ Meteor.methods
       createdAt: Date.now()
     })
     Answers.update(opts.answer._id, { $inc: { commentsCount: 1 } })
+
+  createEventGroup: (eventId)->
+    if Roles.userIsInRole(Meteor.userId(), 'admin')
+      event = Events.findOne(eventId)
+      console.log event
+      unless event.groupId
+        name = event.title
+        time = event.startDate
+        if event.venue
+          address = "#{event.venue.address},#{event.venue.address_2},#{event.venue.city}, #{event.venue.region}, #{event.venue.postal_code}"
+        if event.event_source == 'meetup'
+          name = event.name
+          if event.venue
+            address = "#{event.venue.address_1},#{event.venue.address_2},#{event.venue.city}, #{event.venue.state}, #{event.venue.zip}"
+        console.log(name)
+        console.log(address)
+        groupId = Groups.insert({
+          name: name
+          desc: "time: #{time}\naddress: #{address}"
+          count: 0
+          members: []
+          eventId: eventId
+        })
+        Events.update({_id: eventId}, {$set: {groupId: groupId}})
