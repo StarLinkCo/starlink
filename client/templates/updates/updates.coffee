@@ -17,6 +17,9 @@ Template.updates.helpers
 Template.updates.events
   "click .upvote-button": (e)->
     e.preventDefault()
+    if !Meteor.user()
+      Router.go('/')
+      return
     if $(e.target).hasClass('disabled')
       return
     Meteor.call('upvoteLink', this._id)
