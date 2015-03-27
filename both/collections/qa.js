@@ -20,6 +20,10 @@ Questions.attachSchema(new SimpleSchema({
     type: String,
     optional: true
   },
+  authorName: {
+    type: String,
+    optional: true
+  },
   createdAt: {
     type: Date,
     optional: true
@@ -61,6 +65,10 @@ Answers.attachSchema(new SimpleSchema({
     type: String,
     optional: true
   },
+  authorName: {
+    type: String,
+    optional: true
+  },
   createdAt: {
     type: Date,
     optional: true
@@ -87,6 +95,10 @@ QaComments.attachSchema(new SimpleSchema({
     optional: true
   },
   authorId: {
+    type: String,
+    optional: true
+  },
+  authorName: {
     type: String,
     optional: true
   },

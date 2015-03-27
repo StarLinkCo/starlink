@@ -12,6 +12,10 @@ UI.registerHelper('getUserPicture', function(user) {
   return getUserPicture(user);
 })
 
+UI.registerHelper('getUserName', function(user) {
+  return getUserName(user);
+})
+
 UI.registerHelper('isMeetupEvent', function(e) {
   return e.event_source == 'meetup';
 })

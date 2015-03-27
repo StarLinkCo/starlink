@@ -18,7 +18,6 @@ Template.qaSubmit.rendered = ->
       text: input
     onItemAdd: (value, $item)->
       tags.push(value)
-      console.log $item
     onItemRemove: (value)->
       _.remove(tags, (v)->v==value)
     onClear: (value)->

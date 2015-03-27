@@ -73,6 +73,7 @@ Meteor.methods
     questionId = Questions.insert({
       content: opts.content,
       authorId: Meteor.userId(),
+      authorName: getUserName(Meteor.user()),
       createdAt: Date.now(),
       commentsCount: 0,
       answersCount: 0
@@ -94,6 +95,7 @@ Meteor.methods
       questionId: opts.answer.questionId
       answerId: opts.answer._id
       authorId: Meteor.userId()
+      authorName: getUserName(Meteor.user()),
       createdAt: Date.now()
     })
     Answers.update(opts.answer._id, { $inc: { commentsCount: 1 } })

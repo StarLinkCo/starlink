@@ -9,7 +9,7 @@
     </form>
     {{#each comments}}
       <div class="item">
-        {{ content }}
+        {{ content }} {{authorName}} {{timeAgo createdAt}}
       </div>
     {{/each}}
   </div>

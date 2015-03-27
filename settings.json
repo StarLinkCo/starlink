@@ -9,6 +9,24 @@
   "mailgun_private":  "key-01872b1880f6c8566df6e82a0d1cf99c",
   "mailgun_public":   "pubkey-60b456adc566ac7a451b985fa4383ecb",
   "mailchimp":        "00af37243cc3fb970f1c89b34ff3e62d-us10",
-  "geocoding":        "AIzaSyBIhDgq4Sb7jmlTZYoWh0kepny2D3z21c4"
+  "geocoding":        "AIzaSyBIhDgq4Sb7jmlTZYoWh0kepny2D3z21c4",
+
+  "intercom": {
+      "secret":        "4e67cddcb6de928d9b9a6c855ddd51359a8a3792"
+  },
+  "public": {
+    "intercom": {
+      "id":           "nntrjk3y"
+    }
+  },
+
+  "sikka": {
+    "rateLimits": {
+      "perIp":        "20"
+    },
+    "times": {
+      "blockIpFor":   "120000"
+    }
+  }
 }
 
