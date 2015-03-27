@@ -122,6 +122,5 @@ Meteor.publish("qa_comments", function(questionId) {
 });
 Meteor.publish("eventGroup", function(eventId) {
   var event = Events.findOne(eventId);
-  console.log(Groups.findOne({_id: event.groupId}));
   return Groups.find({_id: event.groupId});
 });
