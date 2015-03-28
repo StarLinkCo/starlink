@@ -30,8 +30,26 @@ LinkedIn.requestCredential = function (options, credentialRequestCompleteCallbac
         '&redirect_uri=' + encodeURIComponent(Meteor.absoluteUrl('_oauth/linkedin?close')) +
         '&scope=' + scope + '&state=' + OAuth._stateParam(loginStyle, credentialToken);
 
-  OAuth.showPopup(
-    loginUrl,
-    _.bind(credentialRequestCompleteCallback, null, credentialToken)
-  );
+    //https://github.com/meteor/meteor/tree/devel/packages/oauth
+    //https://github.com/meteor/meteor/blob/devel/packages/oauth/oauth_cordova.js
+    //https://github.com/meteor/meteor/tree/devel/packages/oauth1
+    //https://github.com/meteor/meteor/tree/devel/packages/oauth2
+    OAuth.showPopup(
+        loginUrl,
+        _.bind(credentialRequestCompleteCallback, null, credentialToken)
+    );
 };
+
+//https://meteor.hackpad.com/OAuth-redirect-flow-spec-PeziTcaNPDP
+//https://meteor.hackpad.com/OAuth-redirect-flow-part-II-vswwUKP4vXe
+
+/*
+ function isWeiXin(){
+ var ua = window.navigator.userAgent.toLowerCase();
+ if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+ return true;
+ }else{
+ return false;
+ }
+ }
+ */
