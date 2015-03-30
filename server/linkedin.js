@@ -7,7 +7,7 @@ ServiceConfiguration.configurations.upsert(
     {
         $set: {
             clientId: Meteor.settings.linkedin_api,
-            loginStyle: "popup",
+            loginStyle: "redirect",
             secret: Meteor.settings.linkedin_secret
         }
     }

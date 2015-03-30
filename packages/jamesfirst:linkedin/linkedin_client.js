@@ -34,10 +34,13 @@ LinkedIn.requestCredential = function (options, credentialRequestCompleteCallbac
     //https://github.com/meteor/meteor/blob/devel/packages/oauth/oauth_cordova.js
     //https://github.com/meteor/meteor/tree/devel/packages/oauth1
     //https://github.com/meteor/meteor/tree/devel/packages/oauth2
-    OAuth.showPopup(
-        loginUrl,
-        _.bind(credentialRequestCompleteCallback, null, credentialToken)
-    );
+  OAuth.launchLogin({
+    loginService: "linkedin",
+    loginStyle: loginStyle,
+    loginUrl: loginUrl,
+    credentialRequestCompleteCallback: credentialRequestCompleteCallback,
+    credentialToken: credentialToken
+  });
 };
 
 //https://meteor.hackpad.com/OAuth-redirect-flow-spec-PeziTcaNPDP
