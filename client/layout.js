@@ -1,3 +1,7 @@
+Template.ionBody.rendered = function () {
+    IonSideMenu.snapper.settings({touchToDrag: true});
+};
+
 Template.ionBody.events({
   'click [data-ion-menu-close]': function (event, template) {
     if (!IonSideMenu.snapper) {

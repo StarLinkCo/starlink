@@ -7,3 +7,13 @@ settings.local.json
 *~
 npm-debug.log
 
+client/templates/calendar/_adminActions.js
+client/templates/calendar/_adminActions.js.map
+client/templates/calendar/eventsShow.js
+client/templates/calendar/eventsShow.js.map
+client/templates/updates/updates.js
+client/templates/updates/updates.js.map
+
+server/methods.js
+server/methods.js.map
+
