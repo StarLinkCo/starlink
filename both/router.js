@@ -26,8 +26,8 @@ Router.route('/groups/submit', {
 });
 Router.route('/groups/:_id',
   _.extend({name: 'group.show'}, groupFunc));
-Router.route('/groups/:_id/edit',
-  _.extend({name: 'group.edit'}, groupFunc));
+Router.route('/groups/:_id/chat',
+  _.extend({name: 'group.chat'}, groupFunc));
 
 Router.route('/events/:_id', {
   name: 'events.show'

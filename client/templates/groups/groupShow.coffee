@@ -1,35 +1,40 @@
 Template.groupShow.helpers
-  id: ->
-    _id: @_id
-  members: ->
-    console.log('members is :', @_id)
-    @members
-  currentUserName: ->
-    Meteor.user().profile.firstName
-  messages: ->
-    Messages.find {groupId: @_id},
-      sort:
-        time: -1
+  profilePath: ->
+    UI._globalHelpers.pathFor 'user.profile',
+      hash:
+        data:
+          _id: @_id
 
 Template.groupShow.events
-  'keyup #messageBox': (event) ->
-    if (event.type == "keyup" && event.which == 13)
-      newMessage = Template.instance().$("#messageBox")
+  'click button.leave-group': (event, template) ->
+    console.log(this)
+    event.preventDefault()
 
-      if newMessage
-        userName = Meteor.user().profile.firstName
-        avatar = Meteor.user().profile.pictureUrl
-        console.log('msg = ', newMessage.val())
+    if (Meteor.user() == null)
+      alert('Login first')
+      return
 
-      Messages.insert
-        groupId: @_id
-        name: userName
-        message: newMessage.val()
-        created: new Date()
-        avatar: avatar
+    if !UI._globalHelpers.memberOf(@)
+      alert('you are not in this group')
+      return
+    console.log("leave id: ", Meteor.userId())
+    this.members = _.without this.members,
+      _.findWhere(this.members, {id: Meteor.userId()})
 
-      newMessage.val("")
-      newMessage.focus()
+    modifies =
+      count: @members.length
+      members: @members
 
-      # Make sure new chat messages are visible
-      $(".content").scrollTop 9999999
+
+    Groups.update @_id, {$set: modifies}, (error) ->
+      if (error)
+        alert(error.reason)
+      else
+        Router.go("groups")
+
+  'click button.group-edit': (event, template) ->
+    Router.go('group.edit', {_id: @_id})
+
+  'click .member-link': (e)->
+    user = Meteor.users.findOne(this.id)
+    IonModal.open('_profileSummary', { user: user, group: Router.current().data() })
