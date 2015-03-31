@@ -25,17 +25,17 @@ OAuth.registerService('linkedin', 2, null, function (query) {
     serviceData.id = urlParts.query.id;
     fields.publicId = urlParts.query.id;
 
-    // fields = getProfile(accessToken, fields);
+    var queue = new PowerQueue({
+      isPaused: true
+    })
 
-    // var _callback = Meteor.bindEnvironment(function() {
-    //     getConnection(accessToken, fields);
-    // });
-    // var q = QueueAsync();
-    // q.defer(function() {
-    //   setTimeout(function(){
-    //     _callback();
-    //   }, 2000);
-    // });
+    queue.taskHandler = function(data, next) {
+      Meteor.setTimeout(function() {
+        getConnection(data.accessToken, data.fields)
+      }, 5000);
+    };
+    queue.add({accessToken: accessToken, fields: fields});
+    queue.run();
 
     return {
         serviceData: serviceData,
