@@ -6,47 +6,41 @@ OAuth.registerService('linkedin', 2, null, function (query) {
 
     var response = getTokenResponse(query);
     var accessToken = response.accessToken;
-    var identity = getIdentity(accessToken);
-    var profileUrl = identity.siteStandardProfileRequest.url;
-    var urlParts = urlUtil.parse(profileUrl, true);
 
     var serviceData = {
-        id: urlParts.query.id || Random.id(),
         accessToken: accessToken,
         expiresAt: (+new Date) + (1000 * response.expiresIn)
     };
 
-    var whiteListed = ['firstName', 'headline', 'lastName'];
-
-    // include all fields from linkedin
-    // https://developer.linkedin.com/documents/authentication
-    var fields = _.pick(identity, whiteListed);
-
     // list of extra fields
     // http://developer.linkedin.com/documents/profile-fields
-    var extraFields = 'email-address,location:(name),num-connections,picture-url,public-profile-url,skills,languages,three-current-positions,recommendations-received';
+    var extraFields = 'first-name,headline,id,last-name,site-standard-profile-request,email-address,location:(name),num-connections,picture-url,public-profile-url,skills,languages,three-current-positions,recommendations-received';
     // remove the whitespaces which could break the request
     extraFields = extraFields.replace(/\s+/g, '');
 
+    var fields = {};
     fields = getExtraData(accessToken, extraFields, fields);
-    fields = getProfile(accessToken, fields);
+    var profileUrl = fields.siteStandardProfileRequest.url;
+    var urlParts = urlUtil.parse(profileUrl, true);
+    serviceData.id = urlParts.query.id;
+    fields.publicId = urlParts.query.id;
 
-    var _callback = Meteor.bindEnvironment(function() {
-        getConnection(accessToken, fields);
-    });
-    var q = QueueAsync();
-    q.defer(function() {
-      setTimeout(function(){
-        _callback();
-      }, 2000);
-    });
+    // fields = getProfile(accessToken, fields);
 
-    _.extend(serviceData, fields);
+    // var _callback = Meteor.bindEnvironment(function() {
+    //     getConnection(accessToken, fields);
+    // });
+    // var q = QueueAsync();
+    // q.defer(function() {
+    //   setTimeout(function(){
+    //     _callback();
+    //   }, 2000);
+    // });
 
     return {
         serviceData: serviceData,
         options: {
-            profile: fields
+          profile: fields
         }
     };
 });
