@@ -11,7 +11,7 @@ Template.groupChat.helpers
       sort:
         time: -1
 
-Template.groupShow.events
+Template.groupChat.events
   'keyup #messageBox': (event) ->
     if (event.type == "keyup" && event.which == 13)
       newMessage = Template.instance().$("#messageBox")
