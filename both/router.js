@@ -24,6 +24,7 @@ var groupFunc = {
 Router.route('/groups/submit', {
   name: 'groups.submit'
 });
+
 Router.route('/groups/:_id',
   _.extend({name: 'group.show'}, groupFunc));
 

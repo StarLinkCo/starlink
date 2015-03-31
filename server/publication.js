@@ -54,7 +54,7 @@ Meteor.publish("groupUsers", function(groupId) {
   check(groupId, String);
   var group = Groups.findOne(groupId);
   var userIds = _.map(group.members, function(m) { return m.id });
-  return Meteor.users.find({_id: { $in: userIds }});
+  return Meteor.users.find({_id: { $in: userIds }}, { fields: {'profile.headline': 1, 'profile.pictureUrl': 1}});
 });
 
 Meteor.publish("groupMessages", function(groupId) {
