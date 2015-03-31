@@ -16,6 +16,9 @@ blaze@2.1.1
 blaze-tools@1.0.3
 boilerplate-generator@1.0.3
 callback-hook@1.0.3
+cfs:micro-queue@0.0.6
+cfs:power-queue@0.9.11
+cfs:reactive-property@0.0.4
 check@1.0.5
 chuangbo:cookie@1.1.0
 coffeescript@1.0.6

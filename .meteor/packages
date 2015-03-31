@@ -36,3 +36,5 @@ vsivsi:queue-async
 meteorhacks:sikka
 percolate:intercom
 spiderable
+cfs:power-queue
+cfs:micro-queue
