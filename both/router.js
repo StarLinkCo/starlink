@@ -26,8 +26,20 @@ Router.route('/groups/submit', {
 });
 Router.route('/groups/:_id',
   _.extend({name: 'group.show'}, groupFunc));
-Router.route('/groups/:_id/edit',
-  _.extend({name: 'group.edit'}, groupFunc));
+
+Router.route('/groups/:_id/chat', {
+  name: 'group.chat',
+  waitOn: function() {
+    return [
+      Meteor.subscribe('groups', this.params._id),
+      Meteor.subscribe('groupUsers', this.params._id),
+      Meteor.subscribe('groupMessages', this.params._id)
+    ];
+  },
+  data: function() {
+    return Groups.findOne({_id: this.params._id});
+  }
+})
 
 Router.route('/events/:_id', {
   name: 'events.show'
