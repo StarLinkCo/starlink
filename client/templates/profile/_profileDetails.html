@@ -37,7 +37,7 @@
     <div class="item item-divider">
       Shared Groups:
       {{#each sharedGroups}}
-        {{> _joinedGroup shared=true}}
+        {{> _joinedGroup data=this shared=true}}
       {{/each}}
     </div>
     {{/if}}
