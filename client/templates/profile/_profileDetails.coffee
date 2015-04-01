@@ -7,23 +7,8 @@ Template._profileDetails.helpers
     else
       []
 
-  connections: ->
-    if @profile?
-      Meteor.linkedinConnections.find()
-    else
-      []
-
   isCurrentUserProfile: ->
     Meteor.userId() == this.user._id
-
-Template._profileDetails.rendered = ->
-  if this.data.profile?
-    Handle.instance = Meteor.subscribeWithPagination('linkedin_connections', this.data.user._id, 20)
-
-  $('.profile-wrapper').scroll(->
-    if ($(this).scrollTop() + $(this).innerHeight()>=$(this)[0].scrollHeight)
-      Handle.instance.loadNextPage()
-  )
 
 Template._profileDetails.events
   'click .refresh-profile-button': (e)->

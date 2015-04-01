@@ -72,6 +72,7 @@ Meteor.publish("follows", function(opts) {
 });
 
 Meteor.publish("linkedin_connections", function(userId, limit) {
+  check(userId, String);
   var userLinkedInId = Meteor.users.findOne(userId).profile.id;
   var limit = limit || 20;
   return Meteor.linkedinConnections.find({userLinkedInId: userLinkedInId}, {limit: limit});

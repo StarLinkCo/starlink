@@ -101,7 +101,6 @@ Router.map(function() {
         subscriptions.push(Meteor.subscribe('sharedGroups', this.params._id));
         subscriptions.push(Meteor.subscribe('sharedConnections', this.params._id));
         subscriptions.push(Meteor.subscribe('meetships', Meteor.userId()));
-        subscriptions.push(Meteor.subscribe('linkedin_connections', this.params._id))
       }
       return subscriptions;
     },
