@@ -84,10 +84,11 @@ Meteor.publish("sharedGroups", function(userId) {
 });
 Meteor.publish("sharedConnections", function(userId) {
   check(userId, String);
-  if (!Meteor.users.findOne(this.userId).profile) {
+  user = Meteor.users.findOne(userId)
+  if (!user.profile) {
     return [];
   }
-  me = Meteor.users.findOne(this.userId).profile.id;
+  me = user.profile.id;
   myConnections = Meteor.linkedinConnections.find({userLinkedInId: me, id: {$ne: 'private'}},
     {fields: {id:1, _id: 0}}).fetch();
   myConnections = _.map(myConnections, function(c) {return c.id});
