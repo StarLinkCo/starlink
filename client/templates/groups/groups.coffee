@@ -51,15 +51,17 @@ Template.groups.events
     if !UI._globalHelpers.memberOf(this)
       alert('you are not in this group')
       return
-    console.log("leave id: ", Meteor.userId())
-    this.members = _.without this.members,
-      _.findWhere(this.members, {id: Meteor.userId()})
 
-    modifies =
-      count: @members.length
-      members: @members
+    if confirm("Are you sure?")
+      console.log("leave id: ", Meteor.userId())
+      this.members = _.without this.members,
+        _.findWhere(this.members, {id: Meteor.userId()})
+
+      modifies =
+        count: @members.length
+        members: @members
 
 
-    Groups.update @_id, {$set: modifies}, (error) ->
-      if (error)
-        alert(error.reason)
+      Groups.update @_id, {$set: modifies}, (error) ->
+        if (error)
+          alert(error.reason)
