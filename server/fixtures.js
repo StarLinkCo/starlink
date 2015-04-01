@@ -5,6 +5,13 @@
 if (Organizers.find().count() === 0) {
 
     Organizers.insert({
+        "name" : "F50",
+        "organizer_id" : "4193708899",
+        "flag" : "active",
+        source: 'eventbrite'
+    });
+
+    Organizers.insert({
         name: 'SVIEF',
         organizer_id: "4302207107",
         "flag" : "active",
