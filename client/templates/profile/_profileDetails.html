@@ -27,6 +27,11 @@
         <h3>Skills</h3>
         {{> tagInput tags=skills}}
       </div>
+      {{#if isCurrentUserProfile }}
+        <div class="item">
+          <button class="button button-positive refresh-profile-button">Refresh Profile</button>
+        </div>
+      {{/if}}
     {{/ionItem}}
     {{#if sharedGroups}}
     <div class="item item-divider">

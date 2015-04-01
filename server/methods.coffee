@@ -123,3 +123,20 @@ Meteor.methods
           eventId: eventId
         })
         Events.update({_id: eventId}, {$set: {groupId: groupId}})
+
+  refreshProfile: ()->
+    user = Meteor.users.findOne(Meteor.userId())
+    linkedin = user.services.linkedin
+    if user && linkedin
+      accessToken = linkedin.accessToken
+      expiredDate = new Date(linkedin.expiresAt)
+      if Date.now() < expiredDate
+        extraFields = 'first-name,headline,id,last-name,site-standard-profile-request,email-address,location:(name),num-connections,picture-url,public-profile-url,skills,languages,three-current-positions,recommendations-received'
+        url = 'https://api.linkedin.com/v1/people/~:(' + extraFields + ')'
+        response = Meteor.http.get(url, {
+            params: {
+                oauth2_access_token: accessToken,
+                format: 'json'
+            }
+        }).data
+        Meteor.users.update(Meteor.userId(), { $set: { profile: response }})
