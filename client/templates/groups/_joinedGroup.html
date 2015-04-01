@@ -1,11 +1,13 @@
 <template name="_joinedGroup">
-  {{log}}
-  {{#ionItem path="group.show" buttonRight=true class="item-icon-left"}}
-    {{> ionIcon icon='person-stalker'}}
-    <h2>{{name}} ({{count}}人)</h2>
-    <p>{{desc}} </p>
-    {{#unless shared}}
-      <button class="button leave-group button-positive icon-left ion-ios-close-outline"></button>
-    {{/unless}}
-  {{/ionItem}}
+    {{log}}
+    {{#ionItem path="group.show" data=group buttonRight=true class="item-icon-left"}}
+      {{#with group}}
+        {{> ionIcon icon='person-stalker'}}
+        <h2>{{name}} ({{count}}人)</h2>
+        <p>{{desc}} </p>
+      {{/with}}
+      {{#unless shared}}
+        <button class="button leave-group button-positive icon-left ion-ios-close-outline"></button>
+      {{/unless}}
+    {{/ionItem}}
 </template>

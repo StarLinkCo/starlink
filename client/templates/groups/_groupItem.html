@@ -1,7 +1,7 @@
 <template name="_groupItem">
   {{#with group}}
     {{#if memberOf this}}
-      {{> _joinedGroup}}
+      {{> _joinedGroup group=this}}
     {{else}}
       {{> _newGroup}}
     {{/if}}
