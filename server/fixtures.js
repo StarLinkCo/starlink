@@ -132,6 +132,13 @@ if (Organizers.find().count() === 0) {
     });
 
     Organizers.insert({
+        "name": "东湾创业群",
+        "flag": "active",
+        source: 'eventbrite',
+        "organizer_id": "36243977"
+    });
+
+    Organizers.insert({
         "name": "UP Global",
         "flag": "hold",
         source: 'eventbrite',
