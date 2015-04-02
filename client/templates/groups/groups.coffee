@@ -27,6 +27,8 @@ Template.groups.events
     if UI._globalHelpers.memberOf(this)
       alert('you are in this group already')
       return
+    if !this.members?
+      this.members = []
     this.members.push
       id: Meteor.userId()
       picture: (if Meteor.user().profile then Meteor.user().profile.pictureUrl)
