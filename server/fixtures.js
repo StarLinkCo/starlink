@@ -135,7 +135,7 @@ if (Organizers.find().count() === 0) {
         "name": "东湾创业群",
         "flag": "active",
         source: 'eventbrite',
-        "organizer_id": "36243977"
+        "organizer_id": "7382144803"
     });
 
     Organizers.insert({
