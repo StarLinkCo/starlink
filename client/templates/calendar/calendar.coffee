@@ -15,7 +15,7 @@ Template.calendar.helpers
     return moment(datetime).format('Do')
 
   getDateMonth: (datetime) ->
-    return moment(datetime).format('MMMM')
+    return moment(datetime).format('MMM')
 
   getDay: (datetime) ->
     return moment(datetime).format('ddd')
