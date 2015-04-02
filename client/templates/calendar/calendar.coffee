@@ -5,8 +5,9 @@ Template.calendar.helpers
     Meteor.user()
   events: ->
     Events.find({}, { sort: { marked: -1, startDate: 1 } })
-  itemClass: ->
-    if @highlighted then 'positive' else ''
+
+  background: ->
+    if @highlighted then '#eeeeee' else 'white'
 
   meetupEvent: ->
     this.event_source == 'meetup'

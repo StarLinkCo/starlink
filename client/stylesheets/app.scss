@@ -70,15 +70,16 @@ $positive: #DE4F4F;
 }
 
 .overall {
+  width: 100%;
   .left {
     float: left;
     width: 30%;
-    text-align: center
+    text-align: center;
   }
   .right{
     float:right;
     width:70%;
-    height:80px
+    height:84px;
   }
 }
 

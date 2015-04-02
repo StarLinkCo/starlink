@@ -17,28 +17,28 @@
     {{#ionContent class="events-wrapper"}}
       {{#ionList}}
         {{#each events}}
-          {{#ionItem path="events.show" class="item-icon-right"}}
+          {{#ionItem path="events.show"}}
                 <div class="overall">
-                    <div class="left">
+                    <div class="left" style="background-color:{{ background }};">
                         <div class="date-wrapper">
                             <div class="date-card">
-                                <p class={{itemClass}}>{{ getDateMonth startDate }}</p>
-                                <h1 class={{itemClass}}>{{ getDateDay startDate }}</h1>
-                                <p class={{itemClass}}>{{ getDay startDate }}</p>
+                                <p>{{ getDateMonth startDate }}</p>
+                                <h1>{{ getDateDay startDate }}</h1>
+                                <p>{{ getDay startDate }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="right">
+                    <div class="right" style="background-color:{{ background }};">
                     {{#if meetupEvent }}
-                        <h2 class={{itemClass}}>{{ name }}</h2>
-                        <p class={{itemClass}}>Organizer: <b>{{ group.name }}</b></p>
+                        <h2>{{ name }}</h2>
+                        <p>Organizer: <b>{{ group.name }}</b></p>
                     {{else}}
-                        <h2 class={{itemClass}}>{{ title }}</h2>
-                        <p class={{itemClass}}>Organizer: <b>{{ organizer.name }}</b></p>
+                        <h2>{{ title }}</h2>
+                        <p>Organizer: <b>{{ organizer.name }}</b></p>
                     {{/if}}
-                        <p class={{itemClass}}>Time: <b>{{ getTime startDate }}</b></p>
+                        <p>Time: <b>{{ getTime startDate }}</b></p>
                         {{#if venue}}
-                            <p class={{itemClass}}>City: <b>{{ venue.city }}</b></p>
+                            <p>City: <b>{{ venue.city }}</b></p>
                         {{/if}}
                     </div>
                 </div>
