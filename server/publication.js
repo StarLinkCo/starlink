@@ -94,7 +94,7 @@ Meteor.publish("sharedConnections", function(userId) {
 
   var sharedConnections = Meteor.linkedinConnections.aggregate([
      {
-      $match: { userLinkedInId: { $in: [user.profile.id, currentUser.profile.id] } },
+      $match: { userLinkedInId: { $in: [user.profile.id, currentUser.profile.id] }, id: {$ne: 'private'} },
      },
      {
        $group: {
