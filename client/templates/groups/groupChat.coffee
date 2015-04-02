@@ -1,3 +1,5 @@
+handle = {}
+
 Template.groupChat.helpers
   id: ->
     _id: @_id
@@ -9,7 +11,7 @@ Template.groupChat.helpers
   messages: ->
     Messages.find {groupId: @_id},
       sort:
-        time: -1
+        created: 1
 
 Template.groupChat.events
   'keyup #messageBox': (event) ->
@@ -33,3 +35,13 @@ Template.groupChat.events
 
       # Make sure new chat messages are visible
       $(".content").scrollTop 9999999
+
+Template.groupChat.created = ->
+  handle.instance = Meteor.subscribeWithPagination('groupMessages', this.data._id, 20)
+
+Template.groupChat.rendered = ->
+  $('.group-chat-wrapper').scroll(->
+    if ($(this).scrollTop() == 0)
+      handle.instance.loadNextPage()
+  )
+  $('.group-chat-wrapper').get(0).scrollTop = 1000

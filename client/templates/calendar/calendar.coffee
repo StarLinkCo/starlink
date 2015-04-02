@@ -5,14 +5,24 @@ Template.calendar.helpers
     Meteor.user()
   events: ->
     Events.find({}, { sort: { marked: -1, startDate: 1 } })
-  itemClass: ->
-    if @highlighted then 'positive' else ''
+
+  background: ->
+    if @highlighted then '#eeeeee' else 'white'
 
   meetupEvent: ->
     this.event_source == 'meetup'
 
-  prettifyDate: (datetime) ->
-    return moment(datetime).format('llll')
+  getDateDay: (datetime) ->
+    return moment(datetime).format('Do')
+
+  getDateMonth: (datetime) ->
+    return moment(datetime).format('MMM')
+
+  getDay: (datetime) ->
+    return moment(datetime).format('ddd')
+
+  getTime: (datetime) ->
+    return moment(datetime).format('h:mm a')
 
 Template.calendar.rendered = ->
   $('.events-wrapper').scroll(->
