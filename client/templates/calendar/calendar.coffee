@@ -11,8 +11,17 @@ Template.calendar.helpers
   meetupEvent: ->
     this.event_source == 'meetup'
 
-  prettifyDate: (datetime) ->
-    return moment(datetime).format('llll')
+  getDateDay: (datetime) ->
+    return moment(datetime).format('Do')
+
+  getDateMonth: (datetime) ->
+    return moment(datetime).format('MMMM')
+
+  getDay: (datetime) ->
+    return moment(datetime).format('ddd')
+
+  getTime: (datetime) ->
+    return moment(datetime).format('h:mm a')
 
 Template.calendar.rendered = ->
   $('.events-wrapper').scroll(->

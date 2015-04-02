@@ -19,19 +19,34 @@
         {{#each events}}
           {{#ionItem path="events.show" class="item-icon-right"}}
             {{#if meetupEvent }}
-              <h2 class={{itemClass}}>{{ name }}</h2>
-              <p class={{itemClass}}>{{ group.name }}</p>
-              <p class={{itemClass}}>{{ prettifyDate startDate }}</p>
-              {{#if venue}}
-                <p class={{itemClass}}>{{ venue.city }}</p>
-              {{/if}}
+                <h2 class={{itemClass}}>{{ name }}</h2>
+                <p class={{itemClass}}>{{ group.name }}</p>
+                <p class={{itemClass}}>{{ getDateMonth startDate }}</p>
+                <p class={{itemClass}}>{{ getDateDay startDate }}</p>
+                <p class={{itemClass}}>{{ getDay startDate }}</p>
+                {{#if venue}}
+                    <p class={{itemClass}}>{{ venue.city }}</p>
+                {{/if}}
             {{else}}
-              <h2 class={{itemClass}}>{{ title }}</h2>
-              <p class={{itemClass}}>{{ organizer.name }}</p>
-              <p class={{itemClass}}>{{ prettifyDate start_date }}</p>
-              {{#if venue}}
-                <p class={{itemClass}}>{{ venue.city }}</p>
-              {{/if}}
+                <div class="overall">
+                    <div class="left">
+                        <div class="date-wrapper">
+                            <div class="date-card">
+                                <p class={{itemClass}}>{{ getDateMonth startDate }}</p>
+                                <h1 class={{itemClass}}>{{ getDateDay startDate }}</h1>
+                                <p class={{itemClass}}>{{ getDay startDate }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <h2 class={{itemClass}}>{{ title }}</h2>
+                        <p class={{itemClass}}>Organizer: <b>{{ organizer.name }}</b></p>
+                        <p class={{itemClass}}>Time: <b>{{ getTime startDate }}</b></p>
+                        {{#if venue}}
+                            <p class={{itemClass}}>City: <b>{{ venue.city }}</b></p>
+                        {{/if}}
+                    </div>
+                </div>
             {{/if}}
           {{/ionItem}}
         {{/each}}
@@ -41,3 +56,5 @@
   {{/ionView}}
 
 </template>
+
+

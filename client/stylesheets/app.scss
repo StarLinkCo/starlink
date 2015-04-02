@@ -1,7 +1,8 @@
 $positive: #DE4F4F;
 
-@import '.meteor/local/build/programs/server/assets/packages/meteoric_ionic-sass/ionic';
-@import '.meteor/local/build/programs/server/assets/packages/meteoric_ionicons-sass/ionicons';
+@import '../../.meteor/local/build/programs/server/assets/packages/meteoric_ionic-sass/ionic';
+@import '../../.meteor/local/build/programs/server/assets/packages/meteoric_ionicons-sass/ionicons';
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
 
 .ionic-body.platform-android {
   font-family: "Roboto", sans-serif;
@@ -65,5 +66,56 @@ $positive: #DE4F4F;
       text-align: center;
       width: 45%;
     }
+  }
+}
+
+.overall {
+  .left {
+    float: left;
+    width: 15%;
+    text-align: center
+  }
+  .right{
+    float:right;
+    width:85%;
+    height:80px
+  }
+}
+
+$color2: white;
+$color4: #DE4F4E;
+$color6: black;
+
+.date-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.date-card {
+  margin:  2px 2px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  width: 80px;
+  height: 80px;
+  background-color: $color2;
+  box-shadow: 0px 0px 5px 1px rgba(224, 78, 75, 0.8);
+
+  p {
+    margin:  2px 0px;
+    font-family: 'Lato', sans-serif;
+    font-weight:normal;
+    font-size:15px;
+    color: lighten($color6, 10%);
+  }
+
+  h1 {
+    margin:  5px 5px;
+    font-family: 'Lato', sans-serif;
+    font-weight:bold;
+    font-size:22px;
+    color: $color4;
   }
 }
