@@ -33,8 +33,7 @@ Router.route('/groups/:_id/chat', {
   waitOn: function() {
     return [
       Meteor.subscribe('groups', this.params._id),
-      Meteor.subscribe('groupUsers', this.params._id),
-      Meteor.subscribe('groupMessages', this.params._id)
+      Meteor.subscribe('groupUsers', this.params._id)
     ];
   },
   data: function() {

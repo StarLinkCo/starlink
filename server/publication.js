@@ -57,9 +57,10 @@ Meteor.publish("groupUsers", function(groupId) {
   return Meteor.users.find({_id: { $in: userIds }}, { fields: {'profile.headline': 1, 'profile.pictureUrl': 1}});
 });
 
-Meteor.publish("groupMessages", function(groupId) {
+Meteor.publish("groupMessages", function(groupId, limit) {
   check(groupId, String);
-  return Messages.find({groupId: groupId});
+  limit = limit || 20;
+  return Messages.find({groupId: groupId}, { limit: limit, sort: {created: -1} });
 });
 
 Meteor.publish("follows", function(opts) {
