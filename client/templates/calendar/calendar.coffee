@@ -11,6 +11,9 @@ Template.calendar.helpers
   meetupEvent: ->
     this.event_source == 'meetup'
 
+  prettifyDate: (datetime) ->
+    return moment(datetime).format('llll')
+
 Template.calendar.rendered = ->
   $('.events-wrapper').scroll(->
     if ($(this).scrollTop() + $(this).innerHeight()>=$(this)[0].scrollHeight)

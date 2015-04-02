@@ -20,15 +20,17 @@
           {{#ionItem path="events.show" class="item-icon-right"}}
             {{#if meetupEvent }}
               <h2 class={{itemClass}}>{{ name }}</h2>
-              <p class={{itemClass}}>{{ startDate }}</p>
+              <p class={{itemClass}}>{{ group.name }}</p>
+              <p class={{itemClass}}>{{ prettifyDate startDate }}</p>
               {{#if venue}}
-                <p class={{itemClass}}>{{ venue.address_1 }}, {{ venue.address_2 }}, {{ venue.city }}, {{ venue.country }}</p>
+                <p class={{itemClass}}>{{ venue.city }}</p>
               {{/if}}
             {{else}}
               <h2 class={{itemClass}}>{{ title }}</h2>
-              <p class={{itemClass}}>{{ start_date }} ~ {{ end_date }}</p>
+              <p class={{itemClass}}>{{ organizer.name }}</p>
+              <p class={{itemClass}}>{{ prettifyDate start_date }}</p>
               {{#if venue}}
-                <p class={{itemClass}}>{{ venue.address }}, {{ venue.address_2 }}, {{ venue.region }}, {{ venue.country }}</p>
+                <p class={{itemClass}}>{{ venue.city }}</p>
               {{/if}}
             {{/if}}
           {{/ionItem}}

@@ -2,21 +2,21 @@
   {{#with event}}
     <div class="card">
       <div class="item item-divider">
-        时间: {{ startDate }}
+        Time: {{ startDate }}
       </div>
       <div class="item item-divider">
-        地点: {{ venue.address_1 }},
+        Address: {{ venue.address_1 }},
              {{ venue.address_2}},
              {{ venue.city}} , {{venue.region}}, {{venue.postal_code}}
       </div>      
       <div class="item item-divider">
-        人数: {{ headcount }}
+        Headcount: {{ headcount }}
       </div>
       <div class="item item-divider">
-        状态: {{ status }}
+        Status: {{ status }}
       </div>
       <div class="item item-divider">
-        链接: <a href="{{event_url}}">{{ event_url }}</a>
+        Link: <a href="{{event_url}}">{{ event_url }}</a>
       </div>
       <div class="item item-text-wrap">
         {{{ description }}}
