@@ -87,13 +87,22 @@ $color2: white;
 $color4: #DE4F4E;
 $color6: black;
 
+.event-item {
+  padding-left: 110px;
+}
 .date-wrapper {
+  position: absolute;
+  left: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  text-align: center;
 }
-
+.date-wrapper::before {
+  display: block;
+  width: 80px;
+}
 .date-card {
   margin:  2px 15px;
   border-radius: 15px;
