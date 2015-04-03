@@ -43,5 +43,9 @@ Groups.attachSchema(new SimpleSchema({
   marked: {
     type: Boolean,
     optional: true
+  },
+  hidden: {
+    type: Boolean,
+    optional: true
   }
 }));
