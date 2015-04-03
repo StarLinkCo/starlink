@@ -139,6 +139,13 @@ if (Organizers.find().count() === 0) {
     });
 
     Organizers.insert({
+        "name": "Lifograph",
+        "flag": "active",
+        source: 'eventbrite',
+        "organizer_id": "7861228074"
+    });
+
+    Organizers.insert({
         "name": "UP Global",
         "flag": "hold",
         source: 'eventbrite',
