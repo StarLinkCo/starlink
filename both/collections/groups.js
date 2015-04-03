@@ -39,5 +39,13 @@ Groups.attachSchema(new SimpleSchema({
   eventId: {
     type: String,
     optional: true
+  },
+  marked: {
+    type: Boolean,
+    optional: true
+  },
+  hidden: {
+    type: Boolean,
+    optional: true
   }
 }));

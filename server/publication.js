@@ -13,7 +13,7 @@ Meteor.publish("tags", function() {
 });
 
 Meteor.publish("groups", function() {
-  return Groups.find();
+  return Groups.find({ $or: [{'members.id': this.userId}, { marked: true }], hidden: { $ne: true }}, { sort: {marked: -1}});
 });
 
 /*
