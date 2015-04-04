@@ -50,6 +50,19 @@ Meteor.methods
     else
       throw new Meteor.Error(403, "Not authorized")
 
+  toggleGroup: (groupId, attribute, value) ->
+    if Roles.userIsInRole(Meteor.userId(), 'admin')
+      if value
+        modifier = {$set: {}}
+        modifier['$set'][attribute] = value
+      else
+        modifier = {$unset: {}}
+        modifier['$unset'][attribute] = value
+
+      Groups.update({_id: groupId}, modifier)
+    else
+      throw new Meteor.Error(403, "Not authorized")
+
   meetUser: (meetUserId)->
     Meetships.insert({
       userId: Meteor.userId(),
