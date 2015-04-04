@@ -13,7 +13,14 @@ Meteor.publish("tags", function() {
 });
 
 Meteor.publish("groups", function() {
-  return Groups.find({ $or: [{'members.id': this.userId}, { marked: true }], hidden: { $ne: true }}, { sort: {marked: -1}});
+  if (!this.userId) {
+    return Groups.find({marked: true, hidden: {$ne: true}}, {sort: {marked: -1}})
+  }
+  if (Roles.userIsInRole(this.userId, ['admin'])) {
+    return Groups.find({});
+  } else {
+    return Groups.find({ $or: [{'members.id': this.userId}, { marked: true }], hidden: { $ne: true }}, { sort: {marked: -1}});
+  }
 });
 
 /*
