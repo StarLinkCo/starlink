@@ -9,6 +9,9 @@
 
   {{#ionView}}
     {{#ionContent}}
+      {{#if isInRole 'admin'}}
+        {{> _groupAdminActions}}
+      {{/if}}
       <div class="padding">
         <p>{{desc}} </p>
 

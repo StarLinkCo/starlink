@@ -37,7 +37,8 @@ Meteor.methods
       followerId: Meteor.userId()
     })
 
-  toggleEvent: (eventId, attribute, value) ->
+  toggleEntity: (entityType, entityId, attribute, value)->
+    entityClass = Mongo.Collection.get(entityType)
     if Roles.userIsInRole(Meteor.userId(), 'admin')
       if value
         modifier = {$set: {}}
@@ -46,7 +47,7 @@ Meteor.methods
         modifier = {$unset: {}}
         modifier['$unset'][attribute] = value
 
-      Events.update({_id: eventId}, modifier)
+      entityClass.update({_id: entityId}, modifier)
     else
       throw new Meteor.Error(403, "Not authorized")
 
