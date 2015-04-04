@@ -12,14 +12,16 @@
   "geocoding":        "AIzaSyBIhDgq4Sb7jmlTZYoWh0kepny2D3z21c4",
 
   "intercom": {
-      "secret":        "4e67cddcb6de928d9b9a6c855ddd51359a8a3792"
+      "secret":       "4e67cddcb6de928d9b9a6c855ddd51359a8a3792"
   },
   "public": {
+    "customerio": {
+      "id":           "31cd3fe6167873adfc7d"
+    },
     "intercom": {
       "id":           "nntrjk3y"
     }
   },
-
   "sikka": {
     "rateLimits": {
       "perIp":        "20"
@@ -27,6 +29,9 @@
     "times": {
       "blockIpFor":   "120000"
     }
+  },
+  "customerio": {
+    "key":            "ce15f0c2cc223314d32c"
   }
 }
 
