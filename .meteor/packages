@@ -39,3 +39,4 @@ spiderable
 cfs:power-queue
 cfs:micro-queue
 meteorhacks:aggregate
+dburles:mongo-collection-instances
