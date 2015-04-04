@@ -25,7 +25,17 @@
       </div>
       <div class="item item-divider">
         <h3>Skills</h3>
-        {{> tagInput tags=skills}}
+        <div class="skills-wrapper">
+          {{#each skillsToDisplay }}
+            <span class="skill-name">{{ this }}</span>
+          {{/each}}
+          {{# if skillsToToggle }}
+            <span class="skill-toggle">More...</span>
+              {{#each skillsToToggle }}
+                <span class="skill-name hide">{{ this }}</span>
+              {{/each}}
+          {{/if}}
+        </div>
       </div>
       {{#if isCurrentUserProfile }}
         <div class="item">
