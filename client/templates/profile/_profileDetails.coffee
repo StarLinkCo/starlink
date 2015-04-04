@@ -7,6 +7,17 @@ Template._profileDetails.helpers
     else
       []
 
+  skillsToDisplay: ->
+    skillsName = getSkillsFromProfile(@profile)
+    skillsName[0..10]
+
+  skillsToToggle: (skills)->
+    skillsName = getSkillsFromProfile(@profile)
+    if skillsName.length > 10
+      skillsName[11..-1]
+    else
+      []
+
   isCurrentUserProfile: ->
     Meteor.userId() == this.user._id
 
@@ -20,3 +31,7 @@ Template._profileDetails.events
       if !err?
         $(e.target).text("Refreshed Profile")
     )
+
+  'click .skill-toggle': (e)->
+    $('.skill-toggle').remove()
+    $('.skill-name.hide').removeClass('hide')

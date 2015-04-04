@@ -129,3 +129,25 @@ $color6: black;
     color: $color4;
   }
 }
+.skill-name {
+  background: #1b9dec;
+  display: inline-block;
+  padding: 3px 5px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  float: left;
+  margin: 2px;
+}
+.skill-name.hide {
+  display: none;
+}
+.skill-toggle {
+  display: inline-block;
+  background: #ccc;
+  padding: 3px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  margin: 2px;
+  cursor: pointer;
+}
