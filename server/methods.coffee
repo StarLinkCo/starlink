@@ -140,3 +140,8 @@ Meteor.methods
             }
         }).data
         Meteor.users.update(Meteor.userId(), { $set: { profile: response }})
+
+  increaseLogin: ()->
+    user = Meteor.users.findOne(Meteor.userId())
+    Meteor.users.update(user._id, { $inc: { loginCount: 1} })
+    (user.loginCount || 1)
