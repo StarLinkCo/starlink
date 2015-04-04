@@ -2,6 +2,11 @@
   {{#contentFor "headerButtonLeft"}}
     {{>ionNavBackButton }}
   {{/contentFor}}
+  {{#if currentUser}}
+    {{#contentFor "headerButtonRight"}}
+      <button class="button leave-group button-positive pull-right" >Leave</button>
+    {{/contentFor}}
+  {{/if}}
 
   {{#contentFor "headerTitle"}}
     <h1 class="title">@{{name}} ({{members.length}}人)</h1>
@@ -25,10 +30,5 @@
     </div>
 
     {{/ionContent}}
-
-    {{#ionFooterBar class="bar-dark"}}
-      <a class="button leave-group button-positive pull-left" href="{{pathFor 'group.chat'}}">Chat</a>
-      <button class="button leave-group button-positive pull-right" >Leave</button>
-    {{/ionFooterBar}}
   {{/ionView}}
 </template>

@@ -1,0 +1,9 @@
+<template name="eventLayout">
+  {{#ionBody}}
+    {{> ionNavBar class="bar-positive"}}  
+    {{#ionView}}
+      {{> yield}}
+      {{> _eventTabs}}
+    {{/ionView}}
+  {{/ionBody}}
+</template>

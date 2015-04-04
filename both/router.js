@@ -18,7 +18,8 @@ var groupFunc = {
   },
   data: function() {
     return Groups.findOne({_id: this.params._id});
-  }
+  },
+  layoutTemplate: 'groupLayout'
 };
 
 Router.route('/groups/submit', {
@@ -42,8 +43,10 @@ Router.route('/groups/:_id/chat', {
 })
 
 Router.route('/events/:_id', {
-  name: 'events.show'
+  name: 'events.show',
+  layoutTemplate: 'eventLayout'
 });
+Router.route('events.group', {path: '/groups/groupShow', layoutTemplate: 'eventLayout'});
 
 Router.route('/links/submit', {
   name: 'links.submit'
@@ -80,7 +83,6 @@ Router.route('/', {
   name: 'profile'
 });
 */
-
 Router.route('/', function () {
   this.render('profile');
 });
