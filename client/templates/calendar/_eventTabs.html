@@ -1,0 +1,13 @@
+<template name="_eventTabs">
+  {{#if isAndroid}}
+    {{#ionTabs style="android" class="tabs-background-positive tabs-color-light"}}
+      {{> ionTab title="Event Details" path="events.show" icon="android-home"}}
+      {{> ionTab title="Event Group" class="join-group" icon="person-stalker"}}
+    {{/ionTabs}}
+  {{else}}
+    {{#ionTabs style="ios"}}
+      {{> ionTab title="Event Details" path="events.show" icon="ios-home"}}
+      {{> ionTab title="Event Group" class="join-group" icon="person-stalker"}}
+    {{/ionTabs}}
+  {{/if}}
+</template>

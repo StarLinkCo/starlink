@@ -1,0 +1,13 @@
+<template name="_groupTabs">
+  {{#if isAndroid}}
+    {{#ionTabs style="android" class="tabs-background-positive tabs-color-light"}}
+      {{> ionTab title="Group Details" path="group.show" icon="android-home"}}
+      {{> ionTab title="Group Chat" path="group.chat" icon="chatbubbles"}}
+    {{/ionTabs}}
+  {{else}}
+    {{#ionTabs style="ios"}}
+      {{> ionTab title="Group Details" path="group.show" icon="ios-home"}}
+      {{> ionTab title="Group Chat" path="group.chat" icon="chatbubbles"}}
+    {{/ionTabs}}
+  {{/if}}
+</template>
