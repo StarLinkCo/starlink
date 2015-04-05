@@ -44,4 +44,6 @@ Template.groupChat.rendered = ->
     if ($(this).scrollTop() == 0)
       handle.instance.loadNextPage()
   )
-  $('.group-chat-wrapper').get(0).scrollTop = 1000
+  setTimeout(->
+    $('.group-chat-wrapper').scrollTop(99999)
+  , 800)
