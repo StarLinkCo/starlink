@@ -62,6 +62,10 @@ Template.ionBody.events({
   'click [data-menu-notifications]': function(event) {
     IonSideMenu.snapper.close();
     Router.go('notifications');
+  },
+  'click [data-ion-menu-private-groups]': function(event) {
+    IonSideMenu.snapper.close();
+    Router.go('private_groups');
   }
 });
 

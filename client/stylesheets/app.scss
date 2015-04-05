@@ -151,3 +151,15 @@ $color6: black;
   margin: 2px;
   cursor: pointer;
 }
+.message-item {
+  clear: both;
+  padding: 5px;
+  .avatar {
+    float: left;
+    width: 40px;
+    height: 40px;
+  }
+  .message-content {
+    float: left;
+  }
+}

@@ -25,6 +25,7 @@
               <div class="item item-icon-right" data-ion-menu-groups>
                 Groups {{> ionIcon icon="ios-arrow-right"}}
               </div>
+
 <!--
               <div class="item item-icon-right" data-ion-menu-updates>
                 Board {{> ionIcon icon="ios-arrow-right"}}
@@ -37,6 +38,9 @@
               </div>
 -->
             {{#if currentUser}}
+              <div class="item item-icon-right" data-ion-menu-private-groups>
+                Private Groups {{> ionIcon icon="ios-arrow-right"}}
+              </div>
               <div class="item item-icon-right" data-ion-menu-logout>
                 Logout {{> ionIcon icon="ios-arrow-right"}}
               </div>
