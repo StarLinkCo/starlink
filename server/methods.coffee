@@ -58,6 +58,22 @@ Meteor.methods
       connected: false
     })
     createMeetNotification(this.userId, meetUserId)
+    user = Meteor.users.findOne(Meteor.userId())
+    meetUser = Meteor.users.findOne(meetUserId)
+    PrivateGroups.insert({
+      members: [
+        {
+          id: user._id
+          userName: getUserName(user)
+          picture: getUserPicture(user)
+        },
+        {
+          id: meetUser._id
+          userName: getUserName(meetUser)
+          picture: getUserPicture(meetUser)
+        }
+      ]
+    })
 
   acceptMeet: (userId)->
     meetship = Meetships.findOne({userId: userId, meetUserId: Meteor.userId(), connected: false})

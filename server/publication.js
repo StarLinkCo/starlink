@@ -145,3 +145,10 @@ Meteor.publish("eventGroup", function(eventId) {
   var event = Events.findOne(eventId);
   return Groups.find({_id: event.groupId});
 });
+
+Meteor.publish("private_groups", function(){
+  return PrivateGroups.find({'members.id': this.userId});
+});
+Meteor.publish("private_messages", function(groupId){
+  return PrivateMessages.find({privateGroupId: groupId});
+});

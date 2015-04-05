@@ -78,11 +78,27 @@ Router.route('/qa/:_id', {
     return Questions.findOne(this.params._id);
   }
 });
-/*
-Router.route('/', {
-  name: 'profile'
+
+Router.route('/private_groups', {
+  waitOn: function() {
+    return [Meteor.subscribe('private_groups')];
+  },
+  data: function() {
+    return PrivateGroups.find();
+  }
 });
-*/
+
+Router.route('/private_groups/:_id', {
+  name: 'private_group.show',
+  waitOn: function() {
+    // add the subscription to the waitlist
+    return [Meteor.subscribe('private_groups', this.params._id), Meteor.subscribe('private_messages', this.params._id)];
+  },
+  data: function() {
+    return PrivateGroups.findOne({_id: this.params._id});
+  },
+});
+
 Router.route('/', function () {
   this.render('profile');
 });

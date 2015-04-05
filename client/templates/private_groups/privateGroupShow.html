@@ -1,0 +1,26 @@
+<template name="PrivateGroupShow">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">{{groupName this}}</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent class="group-chat-wrapper"}}
+      
+      {{#each messages}}
+        <div class="message-item">
+          <img src="{{this.avatar}}" alt="" class="avatar"/>
+          <p class="message-content">{{this.message}}</p>
+        </div>
+      {{/each}}
+
+    {{/ionContent}}
+
+    {{#ionFooterBar class="bar-dark"}}
+          <input type="text" id="messageBox" placeholder="What do you want to say?">
+    {{/ionFooterBar}}
+  {{/ionView}}
+</template>
