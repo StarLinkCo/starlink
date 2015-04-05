@@ -26,6 +26,10 @@
     },
     "times": {
       "blockIpFor":   "120000"
+    },
+    "captcha": {
+      "siteKey": "6LfM1gQTAAAAAOLpAJomuhhMWk3Sh4T-AuWiGDDk",
+      "secret": "6LfM1gQTAAAAAGnW-QN9nW59HJllMjyhdUXtAvIi"
     }
   }
 }
