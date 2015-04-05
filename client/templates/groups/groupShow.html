@@ -20,11 +20,13 @@
       <div class="padding">
         <p>{{desc}} </p>
 
-        {{#each members}}
-          <a class="item-avatar member-link" style='position:relative'>
-            <img src="{{picture}}" height="40" width="40">
-          </a>
-        {{/each}}
+        {{#ionSlideBox class="group-member"}}
+          {{#each members}}
+            {{#ionSlide class="dark-bg"}}
+              {{> _profileSummary profileSummary}}
+            {{/ionSlide}}
+          {{/each}}
+        {{/ionSlideBox}}
 
         <p>&nbsp;</p>
     </div>

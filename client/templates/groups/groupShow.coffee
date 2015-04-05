@@ -4,6 +4,9 @@ Template.groupShow.helpers
       hash:
         data:
           _id: @_id
+  profileSummary: (id)->
+    user: Meteor.users.findOne(this.id)
+    group: @
 
 Template.groupShow.events
   'click button.leave-group': (event, template) ->
