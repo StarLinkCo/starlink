@@ -17,6 +17,15 @@ $positive: #DE4F4F;
   }
 }
 
+.ion-slide {
+  text-align: center;
+
+  &.dark-bg {
+    h3 {
+      color: #fff;
+    }
+  }
+}
 .popover {
   height: auto;
 }
