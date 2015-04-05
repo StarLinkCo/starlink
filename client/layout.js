@@ -67,6 +67,6 @@ Template.ionBody.events({
 
 Template.layout.helpers({
   notificationsCount: function() {
-    return Notifications.find({userId: Meteor.userId}).count();
+    return Notifications.find({read: false}).count();
   }
 });

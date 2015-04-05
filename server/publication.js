@@ -121,9 +121,9 @@ Meteor.publish("meetships", function(userId) {
   return Meetships.find({ $or: [{ userId: userId}, {meetUserId: userId}] });
 });
 
-Meteor.publish('notifications', function(userId){
-  if (userId) {
-    return Notifications.find({userId: userId});
+Meteor.publish('notifications', function(){
+  if (this.userId) {
+    return Notifications.find({userId: this.userId});
   } else {
     return [];
   }

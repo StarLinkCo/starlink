@@ -7,12 +7,12 @@ Notifications.allow({
   }
 });
 
-createMeetNotification = function(meetUserId) {
+createMeetNotification = function(currentUserId, meetUserId) {
   var userToMeet = Meteor.users.findOne(meetUserId);
-  var currentUserId = Meteor.userId();
+  var currentUser = Meteor.users.findOne(currentUserId);
   Notifications.insert({
     meetUserId: currentUserId,
-    meetUserName: (Meteor.user.profile ? Meteor.user.profile.firstName : ''),
+    meetUserName: (currentUser.profile ? currentUser.profile.firstName : ''),
     userId: userToMeet._id,
     read: false
   });

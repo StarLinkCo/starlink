@@ -57,7 +57,7 @@ Meteor.methods
       meetUserId: meetUserId,
       connected: false
     })
-    createMeetNotification(meetUserId)
+    createMeetNotification(this.userId, meetUserId)
 
   acceptMeet: (userId)->
     meetship = Meetships.findOne({userId: userId, meetUserId: Meteor.userId(), connected: false})

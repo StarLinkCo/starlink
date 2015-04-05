@@ -2,7 +2,7 @@
 Meteor.subscribe("userData");
 Meteor.subscribe("tags");
 //Meteor.subscribe("groups");
-Meteor.subscribe("notifications", Meteor.userId());
+Meteor.subscribe("notifications");
 
 Accounts.onLogin(function(data) {
   Meteor.call('increaseLogin', function(err, result) {
