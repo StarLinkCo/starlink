@@ -14,6 +14,20 @@ createMeetNotification = function(currentUserId, meetUserId) {
     meetUserId: currentUserId,
     meetUserName: (currentUser.profile ? currentUser.profile.firstName : ''),
     userId: userToMeet._id,
-    read: false
+    read: false,
+    type: 'meet'
   });
 };
+
+createPrivateGroupNotification = function(groupId, currentUserId, meetUserId) {
+  var userToMeet = Meteor.users.findOne(meetUserId);
+  var currentUser = Meteor.users.findOne(currentUserId);
+  Notifications.insert({
+    userId: userToMeet._id,
+    meetUserId: currentUserId,
+    meetUserName: (currentUser.profile ? currentUser.profile.firstName : ''),
+    read: false,
+    privateGroupId: groupId,
+    type: 'private_group'
+  })
+}
