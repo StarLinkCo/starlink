@@ -43,6 +43,8 @@ Template.profileEdit.helpers
     selectizeOptions("interests")
   areasOptions: ->
     selectizeOptions("areas")
+  summary: ->
+    Meteor.user().summary
   update: ->
 
 
