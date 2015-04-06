@@ -1,7 +1,7 @@
 Template.PrivateGroupShow.helpers
 
   groupName: (privateGroup)->
-    if !privateGroup.members?
+    if !privateGroup? || !privateGroup.members?
       return ''
     members = privateGroup.members
     if members[0].id == Meteor.userId()
