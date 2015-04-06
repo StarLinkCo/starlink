@@ -24,6 +24,12 @@ Template.calendar.helpers
   getTime: (datetime) ->
     return moment(datetime).format('h:mm a')
 
+  highlightClass: ->
+    if this.highlighted
+      'highlighted-event'
+    else
+      ''
+
 Template.calendar.rendered = ->
   $('.events-wrapper').scroll(->
     if ($(this).scrollTop() + $(this).innerHeight()>=$(this)[0].scrollHeight)

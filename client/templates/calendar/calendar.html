@@ -17,7 +17,7 @@
     {{#ionContent class="events-wrapper"}}
       {{#ionList}}
         {{#each events}}
-          {{#ionItem path="events.show" class="event-item"}}
+          <a href="{{pathFor 'events.show'}}" class="item event-item {{highlightClass}}">
             <div class="date-wrapper">
               <div class="date-card">
                 <p style="background-color: #3ee5e7">{{ getDateMonth startDate }}</p>
@@ -36,7 +36,7 @@
             {{#if venue}}
             <p>City: <b>{{ venue.city }}</b></p>
             {{/if}}
-          {{/ionItem}}
+          </a>
         {{/each}}
 
       {{/ionList}}
