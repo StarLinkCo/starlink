@@ -11,3 +11,6 @@ Template.publicProfile.helpers
   isFollowing: (user)->
     follow = Follows.findOne({followingId: user._id, followerId: Meteor.userId()})
     follow?
+
+  notCurrentUser: (user)->
+    Meteor.userId() != user._id
