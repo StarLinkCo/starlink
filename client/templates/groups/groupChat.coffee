@@ -26,6 +26,7 @@ Template.groupChat.events
       Messages.insert
         groupId: @_id
         name: userName
+        userId: Meteor.userId()
         message: newMessage.val()
         created: new Date()
         avatar: avatar

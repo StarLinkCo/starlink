@@ -9,9 +9,14 @@
 
   {{#ionView}}
     {{#ionContent class="group-chat-wrapper"}}
-		  {{#each messages}}
-        <p>{{name}}: {{message}} </p>
-		  {{/each}}
+      {{#each messages}}
+        <div class="message-item">
+          <img src="{{avatar}}" alt="{{name}}" class="avatar" />
+          <p class="message-content">
+             {{message}}
+          </p>
+        </div>
+      {{/each}}
     {{/ionContent}}
 
     {{#ionFooterBar class="bar-dark"}}
