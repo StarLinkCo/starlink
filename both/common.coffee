@@ -34,3 +34,7 @@
       type: "selectize"
       afFieldInput:
         multiple: true
+
+  summary:
+    type: String
+    label: "Summary"
