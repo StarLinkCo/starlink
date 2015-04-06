@@ -161,4 +161,11 @@ if (Organizers.find({source: 'meetup'}).count() == 0) {
         "flag": "active",
         source: 'meetup'
     });
+
+    Organizers.insert({
+        "name": "Startup Cofounders",
+        groupurlname: 'cofounder',
+        "flag": "active",
+        source: 'meetup'
+    });
 }
