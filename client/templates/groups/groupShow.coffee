@@ -41,5 +41,8 @@ Template.groupShow.events
 
   'click .member-link': (e)->
     group = Router.current().data()
-    users = Meteor.users.find({_id: { $in: _.map(group.members, (m)-> m.id)}})
+    users = Meteor.users.find({_id: { $in: _.map(group.members, (m)-> m.id)}}).fetch()
+    userIds = _.map(users, (u)->u._id)
+    initialIndex = _.indexOf(userIds, this.id)
+    Session.set('ion-slide-initial-slide', initialIndex)
     IonModal.open('_groupMembers', { users: users, group: Router.current().data() })
