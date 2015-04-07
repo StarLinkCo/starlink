@@ -8,6 +8,7 @@ Template.linksShow.events
       content: content
       createdAt: Date.now()
       userId: Meteor.userId()
+      userName: getUserName(Meteor.user())
       userEmail: getUserEmail(Meteor.user())
     })
     Links.update(this.link._id, { $inc: { commentsCount: 1 } })

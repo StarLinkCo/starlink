@@ -5,6 +5,7 @@ AutoForm.addHooks(
       insert: function (doc) {
         doc.userId = Meteor.userId();
         doc.userEmail = getUserEmail(Meteor.user());
+        doc.userName = getUserName(Meteor.user());
         doc.createdAt = Date.now();
         doc.commentsCount = 0;
         doc.votesCount = 0;

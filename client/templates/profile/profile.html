@@ -26,12 +26,6 @@
           {{#with user}}
             {{#if profile}}
               {{> _profileDetails profile=profile areas=areasTags interests=interestsTags user=this}}
-            {{else}}
-              {{#ionList}}
-                <div class="item item-divider">
-                  Email: {{ getUserEmail user}}
-                </div>
-              {{/ionList}}
             {{/if}}
           {{/with}}
         {{else}}

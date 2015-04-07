@@ -16,7 +16,7 @@
             <a href="{{url}}">{{ url }}</a>
           </div>
           <div class="item item-text-wrap">
-            {{ userEmail }}
+            {{ userName }}
           </div>
           <div class="item item-text-wrap">
             {{ timeAgo createdAt }}
@@ -36,7 +36,7 @@
         {{#ionList}}
           {{#each comments}}
             <div class="item">
-              <h2>{{ userEmail}}</h2>
+              <p>{{userName}}</p>
               <p>{{timeAgo createdAt}}</p>
               <p>{{content}}</p>
             </div>
