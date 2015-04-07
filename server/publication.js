@@ -17,7 +17,7 @@ Meteor.publish("groups", function() {
     return Groups.find({marked: true, hidden: {$ne: true}}, {sort: {marked: -1, name: 1}})
   }
   if (Roles.userIsInRole(this.userId, ['admin'])) {
-    return Groups.find({}, { sort: {name: 1} });
+    return Groups.find({}, { sort: {marked: -1, name: 1} });
   } else {
     return Groups.find({ $or: [{'members.id': this.userId}, { marked: true }], hidden: { $ne: true }}, { sort: {marked: -1, name: 1}});
   }
