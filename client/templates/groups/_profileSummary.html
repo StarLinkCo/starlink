@@ -1,5 +1,5 @@
 <template name="_profileSummary">
-  <h3> {{title}} </h3>
+  {{#ionModal title=title}}
     <div class="padding">
       <div class="item">
         <img src="{{getUserPicture user}}" alt="" />
@@ -15,4 +15,5 @@
         <button class="button button-block button-positive kick-user-button">Kick User Out</button>
       {{/if}}
     </div>
+  {{/ionModal}}
 </template>
