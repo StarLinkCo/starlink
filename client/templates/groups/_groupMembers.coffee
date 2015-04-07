@@ -1,16 +1,19 @@
-Template._profileSummary.helpers
+Template._groupMembers.helpers
   title: ->
-    "Profile of: #{getUserName(this.user)}"
+    "Profile of: #{getUserName(this)}"
 
-  isGroupCreator: ->
-    this.group.createdById == Meteor.userId()
+  isGroupCreator: (group)->
+    group.createdById == Meteor.userId()
 
-Template._profileSummary.events
+  notCurrentUser: (user)->
+    Meteor.userId() != user._id
+
+Template._groupMembers.events
   'click .profile-button': (e)->
     $(".modal-backdrop.active").remove()
     $("body").removeClass('modal-open')
     IonModal.close()
-    Router.go("publicProfile", { _id: this.user._id })
+    Router.go("publicProfile", { _id: this._id })
 
   'click .kick-user-button': (e)->
     Meteor.call('kickUserFromGroup', { group: this.group, user: this.user}, ()->

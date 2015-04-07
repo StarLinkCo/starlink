@@ -14,7 +14,11 @@ Meteor.startup(function () {
 var groupFunc = {
   waitOn: function() {
     // add the subscription to the waitlist
-    return [Meteor.subscribe('groups', this.params._id), Meteor.subscribe('groupUsers', this.params._id)];
+    return [
+      Meteor.subscribe('groups', this.params._id),
+      Meteor.subscribe('groupUsers', this.params._id),
+      Meteor.subscribe('meetships', Meteor.userId())
+    ]
   },
   data: function() {
     return Groups.findOne({_id: this.params._id});
@@ -117,7 +121,6 @@ Router.map(function() {
         subscriptions.push(Meteor.subscribe('follows', { followingId: this.params._id, followerId: Meteor.userId() }));
         subscriptions.push(Meteor.subscribe('sharedGroups', this.params._id));
         subscriptions.push(Meteor.subscribe('sharedConnections', this.params._id));
-        subscriptions.push(Meteor.subscribe('meetships', Meteor.userId()));
       }
       return subscriptions;
     },
