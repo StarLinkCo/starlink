@@ -1,0 +1,30 @@
+<template name="_groupMembers">
+  {{#ionModal title="Members"}}
+    {{#ionSlideBox class="group-member"}}
+      {{#each users}}
+        {{#ionSlide class="dark-bg"}}
+          <div class="padding">
+            <div class="item">
+              {{getUserName this}}
+            </div>
+            <div class="item">
+              <img src="{{getUserPicture this}}" alt="" />
+            </div>
+            <div class="item">
+              {{ getUserHeadline this }}
+            </div>
+            <div class="item">
+              {{ this.summary }}
+            </div>
+            <div class="item">
+              <button class="button button-positive profile-button"> More Info </button>
+              {{#if isGroupCreator ../group}}
+                <button class="button button-positive kick-user-button">Kick User Out</button>
+              {{/if}}
+            </div>
+          </div>
+        {{/ionSlide}}
+      {{/each}}
+    {{/ionSlideBox}}
+  {{/ionModal}}
+</template>
