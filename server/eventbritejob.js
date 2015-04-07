@@ -96,7 +96,7 @@ getZip = function(lat, lng) {
         "GET",
         url).content);
     //console.log(addresses);
-    var address_components = (addresses.results.length > 0 && !addresses.results[0].address_components) ? addresses.results[0].address_components : undefined;
+    var address_components = (addresses.results.length > 0 && addresses.results[0].address_components) ? addresses.results[0].address_components : undefined;
     if (!!address_components) {
         _.each(address_components, function(address_component) {
             //console.log(address_component);
@@ -106,6 +106,7 @@ getZip = function(lat, lng) {
             result = address_component.short_name;
         });
     } else {
+        console.log(address_components);
         console.log("address_components is null.");
     }
     return result;
