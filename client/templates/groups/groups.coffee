@@ -24,6 +24,9 @@ Template.groups.events
       alert('Login first')
       return
 
+    if !confirm("Are you sure?")
+      return
+
     if UI._globalHelpers.memberOf(this)
       alert('you are in this group already')
       return
