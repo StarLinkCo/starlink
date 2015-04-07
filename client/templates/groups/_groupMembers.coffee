@@ -5,6 +5,9 @@ Template._groupMembers.helpers
   isGroupCreator: (group)->
     group.createdById == Meteor.userId()
 
+  notCurrentUser: (user)->
+    Meteor.userId() != user._id
+
 Template._groupMembers.events
   'click .profile-button': (e)->
     $(".modal-backdrop.active").remove()

@@ -18,6 +18,9 @@
             </div>
             <div class="item">
               <button class="button button-positive profile-button"> More Info </button>
+              {{#if notCurrentUser this }}
+                {{>_meetButton user=this}}
+              {{/if}}
               {{#if isGroupCreator ../group}}
                 <button class="button button-positive kick-user-button">Kick User Out</button>
               {{/if}}

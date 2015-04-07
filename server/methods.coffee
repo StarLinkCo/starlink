@@ -58,8 +58,13 @@ Meteor.methods
       connected: false
     })
     createMeetNotification(this.userId, meetUserId)
+
+  acceptMeet: (userId)->
+    meetship = Meetships.findOne({userId: userId, meetUserId: Meteor.userId(), connected: false})
+    if meetship
+      Meetships.update(meetship._id, {userId: userId, meetUserId: Meteor.userId(), connected: true})
     user = Meteor.users.findOne(Meteor.userId())
-    meetUser = Meteor.users.findOne(meetUserId)
+    meetUser = Meteor.users.findOne(userId)
     groupId = PrivateGroups.insert({
       members: [
         {
@@ -76,11 +81,6 @@ Meteor.methods
     })
     createPrivateGroupNotification(groupId, user._id, meetUser._id)
     createPrivateGroupNotification(groupId, meetUser._id, user._id)
-
-  acceptMeet: (userId)->
-    meetship = Meetships.findOne({userId: userId, meetUserId: Meteor.userId(), connected: false})
-    if meetship
-      Meetships.update(meetship._id, {userId: userId, meetUserId: Meteor.userId(), connected: true})
 
   kickUserFromGroup: (opts={})->
     Groups.update(opts.group._id, { $pull: { 'members': { id: opts.user._id }}})
