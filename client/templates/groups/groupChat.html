@@ -12,7 +12,10 @@
       {{#each messages}}
         <div class="message-item">
           <img src="{{avatar}}" alt="{{name}}" class="avatar member-link" />
-          <p class="message-content">
+          <span class="message-user-name">
+            {{name}}
+          </span>
+          <p class="message-content left">
              {{message}}
           </p>
         </div>
