@@ -50,7 +50,8 @@ Router.route('/groups/:_id/members/:_userId', {
   waitOn: function() {
     return [
       Meteor.subscribe('groups', this.params._id),
-      Meteor.subscribe('groupUsers', this.params._id)
+      Meteor.subscribe('groupUsers', this.params._id),
+      Meteor.subscribe('meetships', Meteor.userId())
     ];
   },
   data: function() {

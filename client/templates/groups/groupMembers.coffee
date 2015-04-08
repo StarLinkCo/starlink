@@ -19,5 +19,8 @@ Template.groupMembers.events
     Router.go("publicProfile", { _id: this._id })
 
   'click .kick-user-button': (e)->
+    e.stopPropagation()
     Meteor.call('kickUserFromGroup', { group: this.group, user: this.user})
 
+  'click .profile-slide': (e)->
+    Router.go("publicProfile", { _id: this._id })

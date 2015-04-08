@@ -9,5 +9,6 @@ Template._meetButton.helpers
     Meetships.find({ userId: Meteor.userId(), meetUserId: user._id, connected: false}).count() > 0
 
 Template._meetButton.events
-  "click .meet-button": ->
+  "click .meet-button": (e)->
+    e.stopPropagation()
     Meteor.call('meetUser', this.user._id)
