@@ -26,8 +26,10 @@ createPrivateGroupNotification = function(groupId, currentUserId, meetUserId) {
     userId: userToMeet._id,
     meetUserId: currentUserId,
     meetUserName: (currentUser.profile ? currentUser.profile.firstName : ''),
+    meetUserPicture: getUserPicture(currentUser),
     read: false,
     privateGroupId: groupId,
+    created: Date.now(),
     type: 'private_group'
   })
 }
