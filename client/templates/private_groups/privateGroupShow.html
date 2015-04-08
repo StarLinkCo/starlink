@@ -11,6 +11,7 @@
     {{#ionContent class="group-chat-wrapper"}}
       
       {{#each messages}}
+        <div class="message-item-time">{{ displayMessageTime }}</div>
         <div class="message-item">
           <img src="{{avatar}}" alt="{{name}}" class="avatar member-link" />
           <span class="message-user-name">
