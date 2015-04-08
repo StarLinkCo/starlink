@@ -11,6 +11,3 @@ Template._meetButton.helpers
 Template._meetButton.events
   "click .meet-button": ->
     Meteor.call('meetUser', this.user._id)
-
-  "click .accept-meet-button": ->
-    Meteor.call('acceptMeet', this.user._id)
