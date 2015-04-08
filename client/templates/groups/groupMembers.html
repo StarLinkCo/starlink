@@ -14,14 +14,10 @@
           {{#each users}}
             {{#ionSlide class="dark-bg"}}
               <div class="padding">
-                <div class="item">
-                  {{getUserName this}}
-                </div>
-                <div class="item">
+                <div class="item item-avatar">
                   <img src="{{getUserPicture this}}" alt="" />
-                </div>
-                <div class="item">
-                  {{ getUserHeadline this }}
+                  <h2>{{getUserName this}}</h2>
+                  <p>{{ getUserHeadline this }}</p>
                 </div>
                 <div class="item">
                   {{ this.summary }}
