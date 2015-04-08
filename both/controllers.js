@@ -7,7 +7,6 @@ GroupsShowController = AppController.extend({
     return ;//Meteor.subscribe('group', this.params._id);
   },
   data: function () {
-    console.log("data returned");
     return {
       group: Groups.findOne({_id: this.params._id})
     }
@@ -18,7 +17,6 @@ GroupsEditController = AppController.extend({
     return ;//Meteor.subscribe('group', this.params._id);
   },
   data: function () {
-    console.log("data returned");
     return {
       group: Groups.findOne({_id: this.params._id})
     }

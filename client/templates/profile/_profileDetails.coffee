@@ -27,7 +27,6 @@ Template._profileDetails.events
     $(e.target).attr("disabled", true)
     $(e.target).text("Refreshing Profile")
     Meteor.call('refreshProfile', (err, result)->
-      console.log err
       if !err?
         $(e.target).text("Refreshed Profile")
     )

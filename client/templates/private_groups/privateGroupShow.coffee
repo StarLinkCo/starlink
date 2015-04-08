@@ -20,7 +20,6 @@ Template.PrivateGroupShow.events
       if newMessage
         userName = Meteor.user().profile.firstName
         avatar = Meteor.user().profile.pictureUrl
-        console.log('msg = ', newMessage.val())
 
       PrivateMessages.insert
         privateGroupId: @_id

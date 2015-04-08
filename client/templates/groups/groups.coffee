@@ -17,14 +17,10 @@ Template.groups.helpers
 
 Template.groups.events
   'click button.join-group': (event, template) ->
-    console.log(this)
     event.preventDefault()
 
     if (Meteor.user() == null)
       alert('Login first')
-      return
-
-    if !confirm("Are you sure?")
       return
 
     if UI._globalHelpers.memberOf(this)
@@ -46,7 +42,6 @@ Template.groups.events
         alert(error.reason)
 
   'click button.leave-group': (event, template) ->
-    console.log(this)
     event.preventDefault()
 
     if (Meteor.user() == null)
@@ -58,7 +53,6 @@ Template.groups.events
       return
 
     if confirm("Are you sure?")
-      console.log("leave id: ", Meteor.userId())
       this.members = _.without this.members,
         _.findWhere(this.members, {id: Meteor.userId()})
 

@@ -4,7 +4,6 @@ Template.groupChat.helpers
   id: ->
     _id: @_id
   members: ->
-    console.log('members is :', @_id)
     @members
   currentUserName: ->
     Meteor.user().profile.firstName
@@ -21,7 +20,6 @@ Template.groupChat.events
       if newMessage
         userName = Meteor.user().profile.firstName
         avatar = Meteor.user().profile.pictureUrl
-        console.log('msg = ', newMessage.val())
 
       Messages.insert
         groupId: @_id

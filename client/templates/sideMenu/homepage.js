@@ -14,7 +14,6 @@ Template.homepage.events({
         //IonModal.close();
         //UI.insert(UI.render(Template.signIn), document.body);
         Router.go('/profile');
-        console.log ("redirect ok, now render other pages ", error);
       }
     });
   },

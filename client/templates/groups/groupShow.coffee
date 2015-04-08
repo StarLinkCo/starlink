@@ -10,7 +10,6 @@ Template.groupShow.helpers
 
 Template.groupShow.events
   'click button.leave-group': (event, template) ->
-    console.log(this)
     event.preventDefault()
 
     if confirm("Are you sure?")
@@ -21,7 +20,6 @@ Template.groupShow.events
       if !UI._globalHelpers.memberOf(@)
         alert('you are not in this group')
         return
-      console.log("leave id: ", Meteor.userId())
       this.members = _.without this.members,
         _.findWhere(this.members, {id: Meteor.userId()})
 

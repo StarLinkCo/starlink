@@ -4,7 +4,6 @@ selectizeOptions = (group="areas") ->
   dropdownParent: 'body'
   searchField: ['name']
   create: (input, cb) =>
-    console.log('create tag: ', input)
     Meteor.users.addTag(input, group, {_id: Meteor.user()._id})
     tag = Meteor.tags.findOne({collection: "users", name: input, group: group})
     cb(tag) if cb?
@@ -19,10 +18,8 @@ selectizeOptions = (group="areas") ->
       caption = item.nRefs
       '<div>' + '<span class="name">' + escape(name) + '</span>&nbsp;' + (if caption? then '<span class="badge">' + escape(caption) + '</span>' else '') + '</div>'
   onItemAdd: (value, $item) =>
-    console.log('add tag: ', value)
     Meteor.users.addTag(value, group, {_id: Meteor.user()._id})
   onItemRemove: (value) =>
-    console.log('remove tag: ', value)
     Meteor.users.removeTag(value, group, {_id: Meteor.user()._id})
 
 Template.profileEdit.helpers
