@@ -121,7 +121,7 @@ Meteor.publish("meetships", function(userId) {
 
 Meteor.publish('notifications', function(){
   if (this.userId) {
-    return Notifications.find({userId: this.userId});
+    return Notifications.find({userId: this.userId}, { sort: { created: -1 }});
   } else {
     return [];
   }

@@ -18,23 +18,19 @@
       {{#ionList}}
 
         {{#each notifications}}
-          <div class="item item-button-right">
-            {{#if isPrivateGroupNotification}}
-              You can talk to <a href="/private_groups/{{privateGroupId}}">{{meetUserName}} </a> in private group now.
+          {{#if isPrivateGroupNotification}}
+            <div class="item item-avatar item-button-right notification-item">
+              <img src="{{meetUserPicture}}" alt="" />
+              <h2>
+                You can talk to {{meetUserName}} in private group now.
+              </h2>
               {{#unless read }}
                 <button class="button button-positive read-button">
                   <i class="icon ion-email-unread"></i>
                 </button>
               {{/unless}}
-            {{else}}
-              <a href="/public_profile/{{meetUserId}}">User: {{meetUserName}} </a> want to meet you.
-              {{#unless read }}
-                <button class="button button-positive read-button">
-                  <i class="icon ion-email-unread"></i>
-                </button>
-              {{/unless}}
-            {{/if}}
             </div>
+          {{/if}}
         {{/each}}
 
       {{/ionList}}
