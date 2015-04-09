@@ -52,11 +52,7 @@ Template.groupChat.events
       $(".content").scrollTop 9999999
   'click .member-link': (event)->
     group = Router.current().data()
-    users = Meteor.users.find({_id: { $in: _.map(group.members, (m)-> m.id)}}).fetch()
-    userIds = _.map(users, (u)->u._id)
-    initialIndex = _.indexOf(userIds, this.userId)
-    Session.set('ion-slide-initial-slide', initialIndex)
-    IonModal.open('_groupMembers', { users: users, group: Router.current().data() })
+    Router.go('group.members', { _id: group._id, _userId: this.userId})
 
 Template.groupChat.created = ->
   handle.instance = Meteor.subscribeWithPagination('groupMessages', Router.current().data()._id, 20)
