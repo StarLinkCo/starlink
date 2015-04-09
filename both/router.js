@@ -56,7 +56,8 @@ Router.route('/groups/:_id/members/:_userId', {
   },
   data: function() {
     return Groups.findOne({_id: this.params._id});
-  }
+  },
+  layoutTemplate: 'plainLayout'
 });
 
 Router.route('/events/:_id', {
