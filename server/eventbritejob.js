@@ -54,7 +54,7 @@ fetchEventsFromEventbrite = function () {
                     console.log("Zip: " + zip);
                 }
                 // SF Bay Area events only for now
-                if (isEmpty(zip) || 5 != zip.length || zip.indexOf('94') != 0) {
+                if (isEmpty(zip) || 5 != zip.length || (zip.indexOf('94') != 0 && zip.indexOf('95') != 0)) {
                     event.event.status = "Not_Bay_Area";
                     console.log("Zip is not in bay area: " + zip);
                 }
