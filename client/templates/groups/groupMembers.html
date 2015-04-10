@@ -28,6 +28,14 @@
                 <button class="button button-positive kick-user-button">Kick User Out</button>
               {{/if}}
             </div>
+            <div class="item item-divider">
+              Shared Connections
+            </div>
+            <div class="item">
+              {{#each sharedConnections}}
+                <a href="{{pathFor 'publicProfile' this.id}}" class="shared-connection-item"><img src="{{pictureUrl}}" /></a>
+              {{/each}}
+            </div>
           </div>
         {{/with}}
       </div>

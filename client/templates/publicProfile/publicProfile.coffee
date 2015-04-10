@@ -5,6 +5,7 @@ Template.publicProfile.events
 Template.publicProfile.helpers
   sharedConnections: ->
     Meteor.linkedinConnections.find(userLinkedInId: Meteor.user().profile.id)
+
   isNotCurrentUser: (user)->
     Meteor.userId() != user._id
 

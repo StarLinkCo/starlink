@@ -15,6 +15,9 @@ Template.groupMembers.helpers
   notCurrentUser: (user)->
     Meteor.userId() != user._id
 
+  sharedConnections: ->
+    Meteor.linkedinConnections.find(userLinkedInId: Meteor.user().profile.id)
+
 Template.groupMembers.events
   'click .profile-button': (e)->
     Router.go("publicProfile", { _id: this._id })
