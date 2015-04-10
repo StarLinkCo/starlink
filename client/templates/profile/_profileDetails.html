@@ -11,16 +11,22 @@
       <h5> {{location.name }} | Connections: {{numConnections}} </h5>
       <div class="item item-divider">
         <h3>Roles</h3>
-        {{> tagInput tags=roles}}
+        {{#each roles}}
+          <span class="role-name">{{this}}</span>
+        {{/each}}
       </div>
       {{/with}}
       <div class="item item-divider">
         <h3>Areas</h3>
-        {{> tagInput tags=areas}}
+        {{#each areas}}
+          <span class="area-name">{{this}}</span>
+        {{/each}}
       </div>
       <div class="item item-divider">
         <h3>Interests</h3>
-        {{> tagInput tags=interests}}
+        {{#each interests}}
+          <span class="interest-name">{{this}}</span>
+        {{/each}}
       </div>
       <div class="item item-divider">
         <h3>Skills</h3>
