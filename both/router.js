@@ -47,6 +47,7 @@ Router.route('/groups/:_id/chat', {
 });
 Router.route('/groups/:_id/members/:_userId', {
   name: 'group.members',
+  layoutTemplate: 'plainLayout',
   waitOn: function() {
     return [
       Meteor.subscribe('groups', this.params._id),
