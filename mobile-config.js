@@ -3,15 +3,15 @@
  */
 App.info({
     name: 'StarLink',
-    description: 'Online Startups Community',
+    description: 'An Online Startups Community',
     version: '0.1.2'
 });
 
 App.icons({
-    'android_ldpi': 'public/logo-ldpi.png',
-    'android_mdpi': 'public/logo-mdpi.png',
-    'android_hdpi': 'public/logo-hdpi.png',
-    'android_xhdpi': 'public/logo-xhdpi.png'
+    'android_ldpi': 'public/favicon-16x16.png',
+    'android_mdpi': 'public/favicon-32x32.png',
+    'android_hdpi': 'public/favicon-96x96.png',
+    'android_xhdpi': 'public/android-chrome-192x192.png'
 
     //'iphone': 'public/logo-60.png',
     //'iphone_2x': 'public/logo-60@2x.png'
