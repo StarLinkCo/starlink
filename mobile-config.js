@@ -3,8 +3,10 @@
  */
 App.info({
     name: 'StarLink',
-    description: 'An Online Startups Community',
-    version: '0.1.2'
+    description: 'Meet the right people at right events',
+    version: '0.8.1',
+    website: 'http://starlink.io',
+    author: 'StarLink Co.'
 });
 
 App.icons({
@@ -12,14 +14,7 @@ App.icons({
     'android_mdpi': 'public/favicon-32x32.png',
     'android_hdpi': 'public/favicon-96x96.png',
     'android_xhdpi': 'public/android-chrome-192x192.png'
+});
 
-    //'iphone': 'public/logo-60.png',
-    //'iphone_2x': 'public/logo-60@2x.png'
-});
-/*
-App.launchScreens({
-    'iphone': 'public/logo~iphone.png',
-    'iphone_2x': 'public/logo@2x~iphone.png',
-    'iphone5': 'public/logo-568h@2x~iphone.png'
-});
-*/
+
+
