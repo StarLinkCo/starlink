@@ -9,12 +9,12 @@ Template._profileDetails.helpers
 
   skillsToDisplay: ->
     skillsName = getSkillsFromProfile(@profile)
-    skillsName[0..10]
+    skillsName[0..6]
 
   skillsToToggle: (skills)->
     skillsName = getSkillsFromProfile(@profile)
-    if skillsName.length > 10
-      skillsName[11..-1]
+    if skillsName.length > 6
+      skillsName[7..-1]
     else
       []
 

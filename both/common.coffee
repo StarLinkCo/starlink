@@ -19,21 +19,21 @@
           label: "Others"
           value: "Others"
         ]
-  areas:
-    type: [String]
-    label: "Areas"
-    autoform:
-      type: "selectize"
-      afFieldInput:
-        multiple: true
-
-  interests:
-    type: [String]
-    label: "Interests"
-    autoform:
-      type: "selectize"
-      afFieldInput:
-        multiple: true
+  # areas:
+  #   type: [String]
+  #   label: "Areas"
+  #   autoform:
+  #     type: "selectize"
+  #     afFieldInput:
+  #       multiple: true
+  #
+  # interests:
+  #   type: [String]
+  #   label: "Interests"
+  #   autoform:
+  #     type: "selectize"
+  #     afFieldInput:
+  #       multiple: true
 
   summary:
     type: String

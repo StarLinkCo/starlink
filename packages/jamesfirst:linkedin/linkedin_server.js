@@ -14,7 +14,7 @@ OAuth.registerService('linkedin', 2, null, function (query) {
 
     // list of extra fields
     // http://developer.linkedin.com/documents/profile-fields
-    var extraFields = 'first-name,headline,id,last-name,site-standard-profile-request,email-address,location:(name),num-connections,picture-url,public-profile-url,skills,languages,three-current-positions,recommendations-received';
+    var extraFields = 'first-name,headline,id,last-name,site-standard-profile-request,email-address,location:(name),num-connections,picture-url,public-profile-url,skills,languages,three-current-positions,three-past-positions,educations,recommendations-received,summary';
     // remove the whitespaces which could break the request
     extraFields = extraFields.replace(/\s+/g, '');
 
