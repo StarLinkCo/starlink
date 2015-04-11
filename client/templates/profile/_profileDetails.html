@@ -16,7 +16,7 @@
         {{/each}}
       </div>
       {{/with}}
-      <div class="item item-divider">
+      <!-- <div class="item item-divider">
         <h3>Areas</h3>
         {{#each areas}}
           <span class="area-name">{{this}}</span>
@@ -27,6 +27,54 @@
         {{#each interests}}
           <span class="interest-name">{{this}}</span>
         {{/each}}
+      </div> -->
+      {{#if sharedConnections}}
+      <div class="item item-divider">
+        Common Connections:
+        {{#each sharedConnections}}
+          {{> _connection}}
+        {{/each}}
+      </div>
+      {{/if}}
+      <div class="item item-divider">
+        <h3>Summary</h3>
+        <p class="profile_summary">{{{user.summary}}}</p>
+      </div>
+      <div class="item item-divider">
+        <h3>Work Experiences</h3>
+        <div class="skills-wrapper">
+          {{#each user.profile.threeCurrentPositions.values }}
+          <p class="profile_summary">
+            <span class="title">{{ title }}</span>,
+            <span class="company">{{ company.name }}</span><br>
+            <span class="start-date"> {{startDate.month}}/{{startDate.year}}</span><br>
+            <span class="summary">{{summary}}</span>
+          </p>
+          {{/each}}
+          {{#each user.profile.threePastPositions.values }}
+          <p class="profile_summary">
+            <span class="title">{{ title }}</span>,
+            <span class="company">{{ company.name }}</span><br>
+            <span class="start-date"> {{startDate.month}}/{{startDate.year}} -  {{endDate.month}}/{{endDate.year}}</span><br>
+            <span class="summary">{{summary}}</span>
+          </p>
+          {{/each}}
+        </div>
+      </div>
+      <div class="item item-divider">
+        <h3>Educations</h3>
+        <div class="skills-wrapper">
+          {{#each user.profile.educations.values }}
+          <p class="profile_summary">
+            <span class="school">{{ schoolName }}</span>,
+            <span class="degree">{{ degree }}</span>,
+            <span class="field">{{ fieldOfStudy }}</span><br>
+            <span class="start-date"> {{startDate.month}}/{{startDate.year}} -  {{endDate.month}}/{{endDate.year}}</span><br>
+            <span class="note">{{note}}</span><br>
+            <span class="activities">{{activities}}</span><br>
+          </p>
+          {{/each}}
+        </div>
       </div>
       <div class="item item-divider">
         <h3>Skills</h3>
@@ -42,10 +90,6 @@
           {{/if}}
         </div>
       </div>
-      <div class="item item-divider">
-        <h3>Summary</h3>
-        <p>{{user.summary}}</p>
-      </div>
       {{#if isCurrentUserProfile }}
         <div class="item">
           <button class="button button-positive refresh-profile-button">Refresh Profile</button>
@@ -57,14 +101,6 @@
       Shared Groups:
       {{#each sharedGroups}}
         {{> _joinedGroup group=this shared=true}}
-      {{/each}}
-    </div>
-    {{/if}}
-    {{#if sharedConnections}}
-    <div class="item item-divider">
-      Shared Connections:
-      {{#each sharedConnections}}
-        {{> _connection}}
       {{/each}}
     </div>
     {{/if}}
