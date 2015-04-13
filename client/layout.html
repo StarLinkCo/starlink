@@ -7,7 +7,7 @@
 
         {{#ionSideMenu}}
           <div class="bar bar-header bar-dark">
-            <h1 class="title">Main Menu <a data-menu-notifications><i class="ion-android-notifications"></i> ({{notificationsCount}})</a></h1>
+            <h1 class="title">Main Menu</h1>
           </div>
           <div class="content has-header">
             <div class="list">
@@ -40,6 +40,11 @@
             {{#if currentUser}}
               <div class="item item-icon-right" data-ion-menu-private-groups>
                 Linked {{> ionIcon icon="ios-arrow-right"}}
+                {{#if hasNewMessage}}
+                  <span class="new-message">
+                    <i class="ion-android-notifications"></i> ({{notificationsCount}})
+                  </span>
+                {{/if}}
               </div>
               <div class="item item-icon-right" data-ion-menu-logout>
                 Logout {{> ionIcon icon="ios-arrow-right"}}

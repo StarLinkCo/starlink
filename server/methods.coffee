@@ -197,3 +197,6 @@ Meteor.methods
       message: content
       created: new Date()
       avatar: avatar
+
+  maskNotificationsAsRead: ()->
+    Notifications.update({userId: Meteor.userId(), read: false }, { $set: { read: true }}, { multi: true })

@@ -63,5 +63,8 @@ Template.ionBody.events({
 Template.layout.helpers({
   notificationsCount: function() {
     return Notifications.find({read: false}).count();
+  },
+  hasNewMessage: function() {
+    return Notifications.find({read: false}).count() > 0;
   }
 });

@@ -13,3 +13,6 @@ Template.PrivateGroups.helpers
       members[1].picture
     else
       members[0].picture
+
+Template.PrivateGroups.rendered = ->
+  Meteor.call('maskNotificationsAsRead')
