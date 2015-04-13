@@ -4,7 +4,7 @@
 App.info({
     name: 'StarLink',
     description: 'Meet the right people at right events',
-    version: '0.8.1',
+    version: '0.8.2',
     website: 'http://starlink.io',
     author: 'StarLink Co.'
 });
@@ -16,5 +16,7 @@ App.icons({
     'android_xhdpi': 'public/android-chrome-192x192.png'
 });
 
+App.accessRule("https://media.licdn.com", "true");
+App.accessRule("http://schd.ws", "true");
 
 
