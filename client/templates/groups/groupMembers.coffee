@@ -47,7 +47,7 @@ Template.groupMembers.rendered = ->
   hammertime = new Hammer($('.profile-wrapper').get(0))
   hammertime.on('swipeleft swiperight', (event)->
     if event.type == 'swipeleft'
-      Router.go('group.members', { _id: group._id, _userId: members[prevIndex].id})
-    else
       Router.go('group.members', { _id: group._id, _userId: members[nextIndex].id})
+    else
+      Router.go('group.members', { _id: group._id, _userId: members[prevIndex].id})
   )
