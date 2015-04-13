@@ -47,5 +47,13 @@ Groups.attachSchema(new SimpleSchema({
   hidden: {
     type: Boolean,
     optional: true
+  },
+  createdAt: {
+    type: Date,
+    optional: true
+  },
+  updatedAt: {
+    type: Date,
+    optional: true
   }
 }));

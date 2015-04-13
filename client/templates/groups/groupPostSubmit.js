@@ -7,6 +7,7 @@ AutoForm.addHooks(
         doc.count = 0;
         doc.createdById = Meteor.userId();
         doc.memebers = [];
+        doc.updatedAt = Date.now();
         var picture;
         if(Meteor.user().profile) {
           picture = Meteor.user().profile.pictureUrl;

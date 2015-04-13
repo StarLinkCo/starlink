@@ -33,23 +33,15 @@ Template.groupChat.events
     if (event.type == "keyup" && event.which == 13)
       newMessage = Template.instance().$("#messageBox")
 
-      if newMessage
-        userName = Meteor.user().profile.firstName
-        avatar = Meteor.user().profile.pictureUrl
+      if newMessage && !_.isEmpty(newMessage.val())
+        Meteor.call('sendGroupMessage', {groupId: @_id, content: newMessage.val()}, (err, result)->
+          newMessage.val("")
+          newMessage.focus()
 
-      Messages.insert
-        groupId: @_id
-        name: userName
-        userId: Meteor.userId()
-        message: newMessage.val()
-        created: new Date()
-        avatar: avatar
+          # Make sure new chat messages are visible
+          $(".content").scrollTop 9999999
+        )
 
-      newMessage.val("")
-      newMessage.focus()
-
-      # Make sure new chat messages are visible
-      $(".content").scrollTop 9999999
   'click .member-link': (event)->
     group = Router.current().data()
     Router.go('group.members', { _id: group._id, _userId: this.userId})

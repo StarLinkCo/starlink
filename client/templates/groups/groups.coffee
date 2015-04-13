@@ -6,7 +6,7 @@ Template.groups.helpers
   tmplName: ->
     return Session.get('tmplName')
   groups: ->
-    return Groups.find({}, { marked: -1, name: 1 })
+    return Groups.find({}, { sort: { marked: -1, updatedAt: -1, name: 1 } })
   times: ->
     [0..9]
   path: (group) ->
@@ -35,6 +35,7 @@ Template.groups.events
     modifies =
       count: @members.length
       members: @members
+      updatedAt: (new Date())
 
 
     Groups.update @_id, {$set: modifies}, (error) ->
@@ -59,7 +60,7 @@ Template.groups.events
       modifies =
         count: @members.length
         members: @members
-
+        updatedAt: (new Date())
 
       Groups.update @_id, {$set: modifies}, (error) ->
         if (error)
