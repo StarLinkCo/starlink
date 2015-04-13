@@ -69,7 +69,8 @@ Meteor.methods
             userName: getUserName(meetUser)
             picture: getUserPicture(meetUser)
           }
-        ]
+        ],
+        updatedAt: Date.now()
       })
       createPrivateGroupNotification(groupId, user._id, meetUser._id)
       createPrivateGroupNotification(groupId, meetUser._id, user._id)
@@ -165,3 +166,19 @@ Meteor.methods
     user = Meteor.users.findOne(Meteor.userId())
     Meteor.users.update(user._id, { $inc: { loginCount: 1} })
     (user.loginCount || 1)
+
+  sendPrivateMessage: (opts={})->
+    groupId = opts.groupId
+    content = opts.content
+    userName = Meteor.user().profile.firstName
+    avatar = Meteor.user().profile.pictureUrl
+
+    group = PrivateGroups.findOne(groupId)
+    now = new Date()
+    PrivateGroups.update(group._id, { $set: { updatedAt: now } })
+    PrivateMessages.insert
+      privateGroupId: groupId
+      name: userName
+      message: content
+      created: now
+      avatar: avatar

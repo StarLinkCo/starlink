@@ -104,7 +104,7 @@ Router.route('/private_groups', {
     return [Meteor.subscribe('private_groups')];
   },
   data: function() {
-    return PrivateGroups.find();
+    return PrivateGroups.find({}, { sort: { updatedAt: -1 }});
   }
 });
 

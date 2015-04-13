@@ -34,19 +34,11 @@ Template.PrivateGroupShow.events
     if (event.type == "keyup" && event.which == 13)
       newMessage = Template.instance().$("#messageBox")
 
-      if newMessage
-        userName = Meteor.user().profile.firstName
-        avatar = Meteor.user().profile.pictureUrl
+      if newMessage && !_.isEmpty(newMessage.val())
+        Meteor.call('sendPrivateMessage', { groupId: @_id, content: newMessage.val() }, (err, result)->
+          newMessage.val("")
+          newMessage.focus()
 
-      PrivateMessages.insert
-        privateGroupId: @_id
-        name: userName
-        message: newMessage.val()
-        created: new Date()
-        avatar: avatar
-
-      newMessage.val("")
-      newMessage.focus()
-
-      # Make sure new chat messages are visible
-      $(".content").scrollTop 9999999
+          # Make sure new chat messages are visible
+          $(".content").scrollTop 9999999
+        )
