@@ -34,7 +34,7 @@ Meteor.publish("events", function(limit) {
   if (this.userId && !Roles.userIsInRole(this.userId, 'admin')) {
     hash = _.extend({hidden: {$ne: true}}, hash)
   }
-  return Events.find(hash, {limit: limit, sort: { highlighted: -1, startDate: 1 }});
+  return Events.find(hash, {limit: limit, sort: { marked: -1, startDate: 1 }});
 });
 
 Meteor.publish("singleEvent", function(eventId) {

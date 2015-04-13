@@ -4,7 +4,7 @@ Template.calendar.helpers
   user: ->
     Meteor.user()
   events: ->
-    Events.find({}, {sort: { highlighted: -1, startDate: 1 }})
+    Events.find({}, {sort: { marked: -1, startDate: 1 }})
 
   background: ->
     if @highlighted then '#eeeeee' else 'white'
@@ -27,6 +27,12 @@ Template.calendar.helpers
   highlightClass: ->
     if this.highlighted
       'highlighted-event'
+    else
+      ''
+
+  markedEventClass: ->
+    if this.marked
+      'marked-event'
     else
       ''
 
