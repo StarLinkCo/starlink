@@ -13,7 +13,7 @@ Meteor.publish("tags", function() {
 });
 
 Meteor.publish("groups", function() {
-  var sort = {marked: -1, name: 1};
+  var sort = {marked: -1, updatedAt: -1, name: 1};
   if (!this.userId) {
     return Groups.find({marked: true, hidden: {$ne: true}}, {sort: sort})
   }
