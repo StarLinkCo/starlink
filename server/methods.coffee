@@ -182,3 +182,18 @@ Meteor.methods
       message: content
       created: now
       avatar: avatar
+
+  sendGroupMessage: (opts={})->
+    groupId = opts.groupId
+    content = opts.content
+    userName = Meteor.user().profile.firstName
+    avatar = Meteor.user().profile.pictureUrl
+
+    Groups.update(groupId, { $set: { updatedAt: Date.now() } })
+    Messages.insert
+      groupId: groupId
+      name: userName
+      userId: Meteor.userId()
+      message: content
+      created: new Date()
+      avatar: avatar

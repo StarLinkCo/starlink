@@ -35,6 +35,7 @@ Template.groups.events
     modifies =
       count: @members.length
       members: @members
+      updatedAt: (new Date())
 
 
     Groups.update @_id, {$set: modifies}, (error) ->
@@ -59,7 +60,7 @@ Template.groups.events
       modifies =
         count: @members.length
         members: @members
-
+        updatedAt: (new Date())
 
       Groups.update @_id, {$set: modifies}, (error) ->
         if (error)
