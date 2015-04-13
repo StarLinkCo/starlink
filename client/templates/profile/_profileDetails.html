@@ -7,15 +7,17 @@
       {{#with profile}}
       <img src="{{pictureUrl}}"/>
       <h2>{{firstName}} {{lastName}}</h2>
-      <h5>{{headline}}</h5>
-      <h5> {{location.name }} | Connections: {{numConnections}} </h5>
-      <div class="item item-divider">
+      <h3>{{headline}}</h3>
+      <h3> {{location.name }} | Connections: {{numConnections}} </h3>
+      <div>
         <h3>Roles</h3>
         {{#each roles}}
           <span class="role-name">{{this}}</span>
         {{/each}}
       </div>
       {{/with}}
+  {{/ionItem}}
+  {{#ionItem}}
       <!-- <div class="item item-divider">
         <h3>Areas</h3>
         {{#each areas}}
@@ -29,19 +31,19 @@
         {{/each}}
       </div> -->
       {{#if sharedConnections}}
-      <div class="item item-divider">
-        Common Connections:
+      <div>
+        <h3>Common Connections:</h3>
         {{#each sharedConnections}}
           {{> _connection}}
         {{/each}}
       </div>
       {{/if}}
-      <div class="item item-divider">
-        <h3>Summary</h3>
+      <div>
+        <h3 class="item-divider">Summary</h3>
         <p class="profile_summary">{{{user.summary}}}</p>
       </div>
-      <div class="item item-divider">
-        <h3>Work Experiences</h3>
+      <div>
+        <h3 class="item-divider">Work Experiences</h3>
         <div class="skills-wrapper">
           {{#each user.profile.threeCurrentPositions.values }}
           <p class="profile_summary">
@@ -56,28 +58,34 @@
             <span class="title">{{ title }}</span>,
             <span class="company">{{ company.name }}</span><br>
             <span class="start-date"> {{startDate.month}}/{{startDate.year}} -  {{endDate.month}}/{{endDate.year}}</span><br>
+            {{#if summary}}
             <span class="summary">{{summary}}</span>
+            {{/if}}
           </p>
           {{/each}}
         </div>
       </div>
-      <div class="item item-divider">
-        <h3>Educations</h3>
-        <div class="skills-wrapper">
+      <div>
+        <h3 class="item-divider">Educations</h3>
+        <div>
           {{#each user.profile.educations.values }}
           <p class="profile_summary">
             <span class="school">{{ schoolName }}</span>,
             <span class="degree">{{ degree }}</span>,
             <span class="field">{{ fieldOfStudy }}</span><br>
             <span class="start-date"> {{startDate.month}}/{{startDate.year}} -  {{endDate.month}}/{{endDate.year}}</span><br>
+            {{#if note}}
             <span class="note">{{note}}</span><br>
+            {{/if}}
+            {{#if activities}}
             <span class="activities">{{activities}}</span><br>
+            {{/if}}
           </p>
           {{/each}}
         </div>
       </div>
-      <div class="item item-divider">
-        <h3>Skills</h3>
+      <div>
+        <h3 class="item-divider">Skills</h3>
         <div class="skills-wrapper">
           {{#each skillsToDisplay }}
             <span class="skill-name">{{ this }}</span>
@@ -90,11 +98,6 @@
           {{/if}}
         </div>
       </div>
-      {{#if isCurrentUserProfile }}
-        <div class="item">
-          <button class="button button-positive refresh-profile-button">Refresh Profile</button>
-        </div>
-      {{/if}}
     {{/ionItem}}
     {{#if sharedGroups}}
     <div class="item item-divider">

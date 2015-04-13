@@ -148,7 +148,7 @@ Meteor.methods
       accessToken = linkedin.accessToken
       expiredDate = new Date(linkedin.expiresAt)
       if Date.now() < expiredDate
-        extraFields = 'first-name,headline,id,last-name,site-standard-profile-request,email-address,location:(name),num-connections,picture-url,public-profile-url,skills,languages,three-current-positions,recommendations-received'
+        extraFields = 'first-name,headline,id,last-name,site-standard-profile-request,email-address,location:(name),num-connections,picture-url,public-profile-url,skills,languages,three-current-positions,three-past-positions,educations,recommendations-received,summary';
         url = 'https://api.linkedin.com/v1/people/~:(' + extraFields + ')'
         response = Meteor.http.get(url, {
             params: {
@@ -156,7 +156,10 @@ Meteor.methods
                 format: 'json'
             }
         }).data
-        Meteor.users.update(Meteor.userId(), { $set: { profile: response }})
+        
+        delete response['summary']
+        newProfile = _.extend(user.profile, response)
+        Meteor.users.update(Meteor.userId(), { $set: { profile: newProfile }})
 
   increaseLogin: ()->
     user = Meteor.users.findOne(Meteor.userId())
