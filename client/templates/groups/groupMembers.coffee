@@ -18,6 +18,9 @@ Template.groupMembers.helpers
   sharedConnections: ->
     Meteor.linkedinConnections.find(userLinkedInId: Meteor.user().profile.id)
 
+  backUrl: ->
+    "/groups/#{this._id}"
+
 Template.groupMembers.events
   'click .profile-button': (e)->
     Router.go("publicProfile", { _id: this._id })
