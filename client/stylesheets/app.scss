@@ -205,4 +205,12 @@ $color6: black;
 }
 .item p.profile_summary {
   white-space: normal;
+  margin-bottom: 5px;
+}
+.item p.profile_summary .title,
+.item p.profile_summary .company,
+.item p.profile_summary .school,
+.item p.profile_summary .degree
+{
+  font-weight: bold;
 }
