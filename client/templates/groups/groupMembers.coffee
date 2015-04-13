@@ -45,8 +45,8 @@ Template.groupMembers.rendered = ->
     nextIndex = currentIndex + 1
 
   hammertime = new Hammer($('.profile-wrapper').get(0))
-  hammertime.on('swipeleft swiperight', (event)->
-    if event.type == 'swipeleft'
+  hammertime.on('panleft panright', (event)->
+    if event.type == 'panleft'
       Router.go('group.members', { _id: group._id, _userId: members[nextIndex].id})
     else
       Router.go('group.members', { _id: group._id, _userId: members[prevIndex].id})
