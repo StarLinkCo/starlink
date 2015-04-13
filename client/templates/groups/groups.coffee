@@ -6,7 +6,7 @@ Template.groups.helpers
   tmplName: ->
     return Session.get('tmplName')
   groups: ->
-    return Groups.find()
+    return Groups.find({}, { marked: -1, name: 1 })
   times: ->
     [0..9]
   path: (group) ->
