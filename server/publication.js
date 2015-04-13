@@ -145,7 +145,7 @@ Meteor.publish("eventGroup", function(eventId) {
 });
 
 Meteor.publish("private_groups", function(){
-  return PrivateGroups.find({'members.id': this.userId});
+  return PrivateGroups.find({'members.id': this.userId}, {sort: { updatedAt: -1 }});
 });
 Meteor.publish("private_messages", function(groupId){
   return PrivateMessages.find({privateGroupId: groupId});
