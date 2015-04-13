@@ -1,4 +1,5 @@
-$positive: #DE4F4F;
+//$positive: #DE4F4F;
+$positive: #0E6DC8;
 
 @import '../../.meteor/local/build/programs/server/assets/packages/meteoric_ionic-sass/ionic';
 @import '../../.meteor/local/build/programs/server/assets/packages/meteoric_ionicons-sass/ionicons';
@@ -91,8 +92,10 @@ $positive: #DE4F4F;
 }
 
 $color2: white;
-$color4: #DE4F4E;
+//$color4: #DE4F4E;
+$color4: #0E6DC8;
 $color6: black;
+//$color6: #0E2FC8;
 
 .event-item {
   padding-left: 110px;
@@ -118,7 +121,8 @@ $color6: black;
   width: 80px;
   height: 80px;
   background-color: $color2;
-  box-shadow: 0px 0px 5px 2px rgba(224, 78, 75, 0.8);
+  //box-shadow: 0px 0px 5px 2px rgba(224, 78, 75, 0.8);
+  box-shadow: 0px 0px 5px 2px rgba(14, 109, 200, 0.8);
 
   p {
     margin:  0px 0px;
@@ -134,10 +138,12 @@ $color6: black;
     font-weight:bold;
     font-size:22px;
     color: $color4;
+    //color: #0E2FC8;
   }
 }
 .skill-name, .role-name, .area-name, .interest-name {
-  background: #1b9dec;
+  //background: #1b9dec;
+  background: #0E6DC8;
   display: inline-block;
   padding: 3px 5px;
   border-radius: 3px;
