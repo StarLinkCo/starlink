@@ -19,3 +19,11 @@ UI.registerHelper('getUserName', function(user) {
 UI.registerHelper('isMeetupEvent', function(e) {
   return e.event_source == 'meetup';
 })
+
+UI.registerHelper('getGroupClass', function(group) {
+  var _class = ['item-icon-left'];
+  if (group.marked) {
+    _class.push('marked-group');
+  }
+  return _class.join(' ');
+})
