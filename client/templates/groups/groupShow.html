@@ -19,11 +19,13 @@
       {{/if}}
       <div class="padding">
         <p>{{desc}} </p>
-        {{#each members}}
-          <a class="item-avatar member-link" style='position:relative'>
-            <img src="{{picture}}" height="40" width="40">
-          </a>
-        {{/each}}
+        <div class="group-members-wrapper">
+          {{#each members}}
+            <a class="item-avatar member-link" style='position:relative'>
+              <img src="{{picture}}" height="40" width="40">
+            </a>
+          {{/each}}
+        </div>
         <p>&nbsp;</p>
     </div>
 
