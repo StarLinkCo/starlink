@@ -22,6 +22,9 @@
           {{#ionItem path="private_group.show" data=this class="item-avatar"}}
             <img src="{{ privateGroupImage this }}" alt="" />
             <h2>{{ privateGroupName this }}</h2>
+            {{#if this.updatedAt }}
+              <p>{{ timeAgo this.updatedAt }}</p>
+            {{/if}}
           {{/ionItem}}
         {{/each}}
 
