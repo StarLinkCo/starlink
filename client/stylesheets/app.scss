@@ -180,7 +180,7 @@ $color6: black;
     display: block;
   }
   .message-content {
-    background: #eee;
+    background: #eeeeee;
     padding: 5px 10px;
     border-radius: 3px;
     position: relative;
@@ -191,7 +191,7 @@ $color6: black;
     height: 0px;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-right: 5px solid #eee;
+    border-right: 5px solid #eeeeee;
     position: absolute;
     left: -5px;
   }
@@ -202,7 +202,7 @@ $color6: black;
   font-size: 12px;
 }
 .highlighted-event, .marked-event {
-  background: #eee;
+  background: #eeeeee;
 }
 .shared-connetion-avatar {
   border-radius: 50%;
@@ -221,7 +221,7 @@ $color6: black;
   font-weight: bold;
 }
 .marked-group {
-  background: #eee;
+  background: #eeeeee;
 }
 .new-message {
   background: red;

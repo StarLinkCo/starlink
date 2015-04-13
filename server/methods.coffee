@@ -124,18 +124,18 @@ Meteor.methods
       console.log event
       unless event.groupId
         name = event.title
-        time = event.startDate
+        time = moment(event.startDate).format('MMM Do ddd') + " (" + moment(event.startDate).fromNow() + ")"
         if event.venue
-          address = "#{event.venue.address},#{event.venue.address_2},#{event.venue.city}, #{event.venue.region}, #{event.venue.postal_code}"
+          address = "#{event.venue.city}, #{event.venue.region}"
         if event.event_source == 'meetup'
           name = event.name
           if event.venue
-            address = "#{event.venue.address_1},#{event.venue.address_2},#{event.venue.city}, #{event.venue.state}, #{event.venue.zip}"
+            address = "#{event.venue.city}, #{event.venue.state}"
         console.log(name)
         console.log(address)
         groupId = Groups.insert({
           name: name
-          desc: "time: #{time}\naddress: #{address}"
+          desc: "#{time} at #{address}."
           count: 0
           members: []
           eventId: eventId
