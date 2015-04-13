@@ -5,9 +5,7 @@
         Time: {{ start_date }} ~ {{ end_date }}
       </div>
       <div class="item item-divider">
-        Address: {{ venue.address }},
-             {{ venue.address_2}},
-             {{ venue.city}} , {{venue.region}}, {{venue.postal_code}}
+        Address: {{ formatEventbriteAddress venue}}
       </div>
       <div class="item item-divider">
         Headcount: {{ num_attendee_rows }}
