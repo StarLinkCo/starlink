@@ -200,3 +200,26 @@ Meteor.methods
 
   maskNotificationsAsRead: ()->
     Notifications.update({userId: Meteor.userId(), read: false }, { $set: { read: true }}, { multi: true })
+
+  getSharedConnections: (userId)->
+    user = Meteor.users.findOne(userId)
+    currentUser = Meteor.users.findOne(this.userId)
+    if !user.profile || !currentUser.profile
+      return []
+    sharedConnections = Meteor.linkedinConnections.aggregate([
+       {
+        $match: { userLinkedInId: { $in: [user.profile.id, currentUser.profile.id] }, id: {$ne: 'private'} },
+       },
+       {
+         $group: {
+            _id: "$id",
+            count: { $sum: 1 }
+         }
+       },
+       { $match: { count: { $gt: 1 } } }
+    ])
+    commonIds = _.map(sharedConnections, (c)-> return c._id)
+    if commonIds.length > 0
+      return Meteor.linkedinConnections.find({'id': {$in: commonIds}, userLinkedInId: currentUser.profile.id})
+    else
+      return []

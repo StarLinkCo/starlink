@@ -1,9 +1,9 @@
+getDefaultSlideIndex = (group, userId)->
+  _.indexOf(_.map(group.members, (m)->m.id), userId)
+
 Template.groupMembers.helpers
   defaultSlideIndex: ->
-    users = Meteor.users.find(_id: { $in: _.map(this.members, (m)->m.id) }).fetch()
-    userIds = _.map(users, (u)->u._id)
-    userId = Router.current().params._userId
-    _.indexOf(userIds, userId)
+    getDefaultSlideIndex(this, Router.current().params._userId)
 
   users: ->
     group = this
@@ -16,8 +16,8 @@ Template.groupMembers.helpers
   notCurrentUser: (user)->
     Meteor.userId() != user._id
 
-  sharedConnections: ->
-    Meteor.linkedinConnections.find(userLinkedInId: Meteor.user().profile.id)
+  # sharedConnections: ->
+  #   Meteor.linkedinConnections.find(userLinkedInId: Meteor.user().profile.id)
 
   backUrl: ->
     "/groups/#{this._id}"
@@ -32,3 +32,19 @@ Template.groupMembers.events
 
   'click .profile-slide': (e)->
     Router.go("publicProfile", { _id: this._id })
+
+renderSharedConnections = (self, group, index)->
+  Meteor.call('getSharedConnections', group.members[index].id, (err, result)->
+    ele = self.$('.ion-slide-box').find('.slick-active .shared-connections-wrapper')
+    ele.html('')
+    Blaze.renderWithData(Template._groupSharedConnections, result, ele.get(0))
+  )
+
+Template.groupMembers.rendered = ->
+  group = this.data
+  self = this
+  index = getDefaultSlideIndex(group, Router.current().params._userId)
+  renderSharedConnections(self, group, index)
+  this.$('.ion-slide-box').on('onSlideChanged', (e)->
+    renderSharedConnections(self, group, e.index)
+  )
