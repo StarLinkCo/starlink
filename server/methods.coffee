@@ -204,7 +204,9 @@ Meteor.methods
   getSharedConnections: (userId)->
     user = Meteor.users.findOne(userId)
     currentUser = Meteor.users.findOne(this.userId)
-    if !user.profile || !currentUser.profile
+    if !user? || !currentUser?
+      return []
+    if !user.profile? || !currentUser.profile?
       return []
     sharedConnections = Meteor.linkedinConnections.aggregate([
        {
