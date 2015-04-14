@@ -202,28 +202,23 @@ Meteor.methods
     Notifications.update({userId: Meteor.userId(), read: false }, { $set: { read: true }}, { multi: true })
 
   getSharedConnections: (userId)->
-    console.log userId
-    []
-    # user = Meteor.users.findOne(userId)
-    # currentUser = Meteor.users.findOne(this.userId)
-    # if !user? || !currentUser?
-    #   return []
-    # if !user.profile? || !currentUser.profile?
-    #   return []
-    # sharedConnections = Meteor.linkedinConnections.aggregate([
-    #    {
-    #     $match: { userLinkedInId: { $in: [user.profile.id, currentUser.profile.id] }, id: {$ne: 'private'} },
-    #    },
-    #    {
-    #      $group: {
-    #         _id: "$id",
-    #         count: { $sum: 1 }
-    #      }
-    #    },
-    #    { $match: { count: { $gt: 1 } } }
-    # ])
-    # commonIds = _.map(sharedConnections, (c)->c._id)
-    # if commonIds.length > 0
-    #   return Meteor.linkedinConnections.find({'id': {$in: commonIds}, userLinkedInId: currentUser.profile.id})
-    # else
-    #   return []
+    user = Meteor.users.findOne(userId)
+    currentUser = Meteor.users.findOne(this.userId)
+    sharedConnections = Meteor.linkedinConnections.aggregate([
+       {
+        $match: { userLinkedInId: { $in: [user.profile.id, currentUser.profile.id] }, id: {$ne: 'private'} },
+       },
+       {
+         $group: {
+            _id: "$id",
+            count: { $sum: 1 }
+         }
+       },
+       { $match: { count: { $gt: 1 } } }
+    ])
+    commonIds = _.map(sharedConnections, (c)->c._id)
+
+    if commonIds.length > 0 && currentUser.profile.id?
+      return Meteor.linkedinConnections.find({'id': {$in: commonIds}, userLinkedInId: currentUser.profile.id}).fetch()
+
+    return []
