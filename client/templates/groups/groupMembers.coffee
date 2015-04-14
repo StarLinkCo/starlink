@@ -8,7 +8,7 @@ Template.groupMembers.helpers
   users: ->
     group = this
     userIds = _.map(group.members, (m)->m.id)
-    Meteor.users.find(_id: { $in: userIds})
+    _.sortBy(Meteor.users.find(_id: { $in: userIds}).fetch(), (u)->_.indexOf(userIds, u._id))
 
   isGroupCreator: ()->
     this.createdById == Meteor.userId()

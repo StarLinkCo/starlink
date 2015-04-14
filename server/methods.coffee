@@ -219,6 +219,6 @@ Meteor.methods
     commonIds = _.map(sharedConnections, (c)->c._id)
 
     if commonIds.length > 0 && currentUser.profile.id?
-      return Meteor.linkedinConnections.find({'id': {$in: commonIds}, userLinkedInId: currentUser.profile.id}).fetch()
+      return Meteor.linkedinConnections.find({'id': {$in: commonIds}, userLinkedInId: currentUser.profile.id}, {limit: 5}).fetch()
 
     return []
