@@ -13,14 +13,15 @@ Meteor.publish("tags", function() {
 });
 
 Meteor.publish("groups", function() {
+  // groups without event id(create by admin) always show, hidden always hide
   var sort = {marked: -1, updatedAt: -1, name: 1};
   if (!this.userId) {
-    return Groups.find({marked: true, hidden: {$ne: true}}, {sort: sort})
+    return Groups.find({eventId: null, hidden: {$ne: true}}, {sort: sort})
   }
   if (Roles.userIsInRole(this.userId, ['admin'])) {
     return Groups.find({}, { sort: sort });
   } else {
-    return Groups.find({ $or: [{'members.id': this.userId}, { marked: true }], hidden: { $ne: true }}, { sort: sort});
+    return Groups.find({ $or: [{'members.id': this.userId}, { eventId: null }], hidden: { $ne: true }}, { sort: sort});
   }
 });
 
