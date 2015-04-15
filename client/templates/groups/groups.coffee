@@ -20,7 +20,7 @@ Template.groups.events
     event.preventDefault()
 
     if (Meteor.user() == null)
-      alert('Login first')
+      alert('Please login first.')
       return
 
     if UI._globalHelpers.memberOf(this)
@@ -46,7 +46,7 @@ Template.groups.events
     event.preventDefault()
 
     if (Meteor.user() == null)
-      alert('Login first')
+      alert('Please login first.')
       return
 
     if !UI._globalHelpers.memberOf(this)

@@ -7,7 +7,7 @@
 SyncedCron.add({
     name: 'Pull Eventbrite/Meetup events to Event collection',
     schedule: function(parser) {
-        //return parser.text('every 30 seconds');
+        //return parser.text('every 59 seconds');
         //return parser.text('every 30 minutes');
         return parser.text('every 2 hours');
         //return parser.text('at 5:00 am every 1 day');
@@ -40,6 +40,9 @@ fetchEventsFromEventbrite = function () {
                 // event exists already
                 // Status: Completed, Draft, Live, Canceled
                 event.event.status != "Live") {
+                console.log("Skip event:" + event.event.id + ", status: " + event.event.status);
+                console.log(Events.find({id: event.event.id}).count() > 0);
+                console.log(event.event.status != "Live");
                 return;
             }
 
@@ -60,6 +63,7 @@ fetchEventsFromEventbrite = function () {
                 }
             }
 
+            console.log("Insert event:" + event.event.id);
             Events.insert(_.extend(event.event, { event_source: 'eventbrite'}));
         });
     });

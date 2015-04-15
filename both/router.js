@@ -120,7 +120,7 @@ Router.route('/private_groups/:_id', {
 });
 
 Router.route('/', function () {
-  this.render('profile');
+  this.render('calendar');
 });
 
 Router.map(function() {

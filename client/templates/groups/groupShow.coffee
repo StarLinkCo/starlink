@@ -14,11 +14,11 @@ Template.groupShow.events
 
     if confirm("Are you sure?")
       if (Meteor.user() == null)
-        alert('Login first')
+        alert('Please login first.')
         return
 
       if !UI._globalHelpers.memberOf(@)
-        alert('you are not in this group')
+        alert('You are not in this group.')
         return
       this.members = _.without this.members,
         _.findWhere(this.members, {id: Meteor.userId()})
