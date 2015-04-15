@@ -13,6 +13,8 @@ Template.ionBody.events
     e.preventDefault()
     IonLoading.show({
       delay: 100
+      customTemplate: '<span class="refresh-profile-notice">Refreshing your profile</span> <i class="icon ion-loading-d"></i>'
+      backdrop: true
     })
     Meteor.call('refreshProfile', (err, result)->
       IonLoading.hide()
