@@ -31,6 +31,12 @@
       "siteKey": "6LfM1gQTAAAAAOLpAJomuhhMWk3Sh4T-AuWiGDDk",
       "secret": "6LfM1gQTAAAAAGnW-QN9nW59HJllMjyhdUXtAvIi"
     }
+  },
+  "public": {
+    "ga": {
+      "account": "UA-61915358-1",
+      "id": "UA-61915358-1"
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 Router.configure({
-  layoutTemplate: 'layout'
+  layoutTemplate: 'layout',
+  trackPageView: true
 });
 
 Meteor.startup(function () {
@@ -116,10 +117,11 @@ Router.route('/private_groups/:_id', {
   },
   data: function() {
     return PrivateGroups.findOne({_id: this.params._id});
-  },
+  }
 });
 
 Router.route('/', function () {
+  GAnalytics.pageview();
   this.render('calendar');
 });
 
