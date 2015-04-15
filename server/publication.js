@@ -32,7 +32,7 @@ Meteor.publish("organizers", function() {
 Meteor.publish("events", function(limit) {
   var now = new Date();
   var hash = {startDate: {$gte: now}, status: { $in: ['Live', 'upcoming']}};
-  if (this.userId && !Roles.userIsInRole(this.userId, 'admin')) {
+  if (!this.userId || (this.userId && !Roles.userIsInRole(this.userId, 'admin'))) {
     hash = _.extend({hidden: {$ne: true}}, hash)
   }
   return Events.find(hash, {limit: limit, sort: { marked: -1, startDate: 1 }});
