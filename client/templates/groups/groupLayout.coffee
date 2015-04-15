@@ -4,7 +4,7 @@ Template.groupLayout.events
 
     if confirm("Are you sure?")
       if (Meteor.user() == null)
-        alert('Please login.')
+        Router.go('/profile')
         return
 
       if !UI._globalHelpers.memberOf(@)
