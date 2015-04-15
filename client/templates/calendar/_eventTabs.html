@@ -2,12 +2,16 @@
   {{#if isAndroid}}
     {{#ionTabs style="android" class="tabs-background-positive tabs-color-light"}}
       {{> ionTab title="Event Details" path="events.show" icon="android-home"}}
-      {{> ionTab title="Join Group" class="join-group" icon="person-stalker"}}
+      {{#if group}}
+        {{> ionTab title="Join Group" class="join-group" icon="person-stalker"}}
+      {{/if}}
     {{/ionTabs}}
   {{else}}
     {{#ionTabs style="ios"}}
       {{> ionTab title="Event Details" path="events.show" icon="ios-home"}}
-      {{> ionTab title="Join Group" class="join-group" icon="person-stalker"}}
+      {{#if group}}
+        {{> ionTab title="Join Group" class="join-group" icon="person-stalker"}}
+      {{/if}}
     {{/ionTabs}}
   {{/if}}
 </template>
