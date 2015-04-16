@@ -30,10 +30,15 @@ EventsShowController = AppController.extend({
     return subs;
   },
   data: function () {
-    var event = Events.findOne(this.params._id);
+    var event = Events.findOne(this.params._id), group;
+    if(event && event.groupId) {
+      group = Groups.findOne(event.groupId)
+    } else {
+      group = null;
+    }
     return {
       event: event,
-      group: Groups.findOne(event.groupId)
+      group: group
     }
   }
 });
