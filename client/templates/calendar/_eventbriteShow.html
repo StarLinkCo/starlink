@@ -2,16 +2,10 @@
   {{#with event}}
     <div class="card">
       <div class="item item-divider">
-        Time: {{ start_date }} ~ {{ end_date }}
+        Time: {{ start_date }}
       </div>
       <div class="item item-divider">
         Address: {{ formatEventbriteAddress venue}}
-      </div>
-      <div class="item item-divider">
-        Headcount: {{ num_attendee_rows }}
-      </div>
-      <div class="item item-divider">
-        Status: {{ status }}
       </div>
       <div class="item item-divider">
         Link: <a href="{{url}}" class="external-link">{{ url }}</a>
