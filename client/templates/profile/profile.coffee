@@ -17,5 +17,7 @@ Template.ionBody.events
       backdrop: true
     })
     Meteor.call('refreshProfile', (err, result)->
+      if err?
+        alert("Failed to refresh your profile from linkedin, you could relogin to update profile instead.")
       IonLoading.hide()
     )
