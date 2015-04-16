@@ -43,6 +43,7 @@ renderSharedConnections = (self, group, index)->
 Template.groupMembers.rendered = ->
   group = this.data
   self = this
+  $('.user-summary').height($(window).height() - 540)
   index = getDefaultSlideIndex(group, Router.current().params._userId)
   renderSharedConnections(self, group, index)
   this.$('.ion-slide-box').on('onSlideChanged', (e)->

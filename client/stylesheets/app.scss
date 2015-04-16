@@ -250,7 +250,11 @@ $color6: black;
   margin-right: 10px;
 }
 .user-summary {
-  padding: 30px 20px;
+  margin: 30px 20px;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  vertical-align: center;
 }
 .slick-active {
   overflow-y: scroll;
