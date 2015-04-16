@@ -14,12 +14,6 @@
   "intercom": {
       "secret":        "4e67cddcb6de928d9b9a6c855ddd51359a8a3792"
   },
-  "public": {
-    "intercom": {
-      "id":           "nntrjk3y"
-    }
-  },
-
   "sikka": {
     "rateLimits": {
       "perIp":        "20"
@@ -36,6 +30,9 @@
     "ga": {
       "account": "UA-61915358-1",
       "id": "UA-61915358-1"
+    },
+    "intercom": {
+      "id":           "nntrjk3y"
     }
   }
 }
