@@ -31,6 +31,13 @@
           {{/with}}
         {{else}}
           {{> atForm}}
+          <div class="welome-group-avatars">
+            {{#each welcomeGroupMembers}}
+              <a href="{{ pathFor 'publicProfile' id }}">
+                <img src="{{picture}}" alt="" />
+              </a>
+            {{/each}}
+          </div>
         {{/if}}
       </div>
     {{/ionContent}}

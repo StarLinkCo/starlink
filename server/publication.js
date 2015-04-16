@@ -12,6 +12,10 @@ Meteor.publish("tags", function() {
   return Meteor.tags.find();
 });
 
+Meteor.publish("welcomeGroup", function() {
+  return Groups.find({name: 'Welcome to StarLink'});
+});
+
 Meteor.publish("groups", function() {
   // groups without event id(create by admin) always show, hidden always hide
   var sort = {marked: -1, updatedAt: -1, name: 1};

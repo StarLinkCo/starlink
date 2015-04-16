@@ -130,7 +130,15 @@ Router.map(function() {
 //  this.route('homepage', {path: '/'});
   this.route('homepage');
   this.route('calendar');
-  this.route('profile');
+  this.route('profile', {
+    waitOn: function() {
+      var subscriptions = [];
+      if (Meteor.userId() == null) {
+        subscriptions.push(Meteor.subscribe('welcomeGroup'))
+      }
+      return subscriptions;
+    }
+  });
   this.route('public_profile/:_id', {
     name: 'publicProfile',
     waitOn: function() {
