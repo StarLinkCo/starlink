@@ -3,7 +3,7 @@ Template._eventTabs.events
     event.preventDefault()
 
     if (Meteor.user() == null)
-      alert('Please login')
+      Router.go('/profile')
       return
 
     if UI._globalHelpers.memberOf(template.data.group)

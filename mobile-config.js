@@ -23,4 +23,5 @@ App.icons({
 
 App.accessRule("https://media.licdn.com", "true");
 App.accessRule("http://schd.ws", "true");
+App.accessRule("https://cdn.evbuc.com", "true");
 

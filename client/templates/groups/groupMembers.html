@@ -12,7 +12,7 @@
       {{#ionSlideBox class="group-member" initialSlide=defaultSlideIndex}}
         {{#each users}}
           {{#ionSlide class="dark-bg"}}
-            <div class="card profile-wrapper">
+            <div class="list card profile-wrapper">
               <div class="padding profile-slide">
                 <div class="item item-avatar">
                   <img src="{{getUserPicture this}}" alt="" />
@@ -22,18 +22,18 @@
                 <div class="user-summary">
                   {{ this.summary }}
                 </div>
-                <div class="item">
+                <div class="item item-divider">
+                  Shared Connections
+                  <div class="item shared-connections-wrapper">
+                  </div>
+                </div>
+                <div class="item item-divider">
                   {{#if notCurrentUser this }}
                     {{>_meetButton user=this}}
                   {{/if}}
-                  {{#if isGroupCreator}}
-                    <button class="button button-positive kick-user-button">Kick User Out</button>
-                  {{/if}}
                 </div>
-                <div class="item item-divider">
-                  Shared Connections
-                </div>
-                <div class="item shared-connections-wrapper">
+                <div class="padding" style="color: #0e6dc8" align="right">
+                  <p>Click anywhere for more details.</p>
                 </div>
               </div>
             </div>

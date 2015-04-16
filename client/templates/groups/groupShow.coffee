@@ -14,7 +14,7 @@ Template.groupShow.events
 
     if confirm("Are you sure?")
       if (Meteor.user() == null)
-        alert('Please login first.')
+        Router.go('/profile')
         return
 
       if !UI._globalHelpers.memberOf(@)

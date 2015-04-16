@@ -2,7 +2,7 @@
     <a class="item item-icon-left item-button-right {{getGroupClass group}}" href="{{pathFor route='group.show' data=group}}">
       {{#with group}}
         {{> ionIcon icon='person-stalker'}}
-        <h2>{{name}} ({{count}})</h2>
+        <h2>({{count}}) {{name}}</h2>
         <p>{{desc}} </p>
       {{/with}}
       {{#unless shared}}

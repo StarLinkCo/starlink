@@ -20,11 +20,11 @@ Template.groups.events
     event.preventDefault()
 
     if (Meteor.user() == null)
-      alert('Please login first.')
+      Router.go('/profile')
       return
 
     if UI._globalHelpers.memberOf(this)
-      alert('you are in this group already')
+      alert('You are in this group already.')
       return
     if !this.members?
       this.members = []
@@ -46,7 +46,7 @@ Template.groups.events
     event.preventDefault()
 
     if (Meteor.user() == null)
-      alert('Please login first.')
+      Router.go('/profile')
       return
 
     if !UI._globalHelpers.memberOf(this)

@@ -2,14 +2,9 @@
   {{#contentFor "headerButtonLeft"}}
     {{>ionNavBackButton path="groups"}}
   {{/contentFor}}
-  {{#if currentUser}}
-    {{#contentFor "headerButtonRight"}}
-      <button class="button leave-group button-positive pull-right" >Leave</button>
-    {{/contentFor}}
-  {{/if}}
 
   {{#contentFor "headerTitle"}}
-    <h1 class="title">{{name}} ({{members.length}})</h1>
+    <h1 class="title">({{members.length}}) {{name}}</h1>
   {{/contentFor}}
 
   {{#ionView}}
@@ -27,8 +22,10 @@
           {{/each}}
         </div>
         <p>&nbsp;</p>
-    </div>
-
+      </div>
+      <div class="padding" style="color: #0e6dc8" align="right">
+        <p>Click an avatar for summary information.</p>
+      </div>
     {{/ionContent}}
   {{/ionView}}
 </template>
