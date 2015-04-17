@@ -38,3 +38,4 @@
   summary:
     type: String
     label: "Summary"
+    optional: true
