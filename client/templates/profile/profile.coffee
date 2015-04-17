@@ -8,7 +8,8 @@ Template.profile.helpers
   welcomeGroupMembers: ->
     group = Groups.findOne({name: 'Welcome to StarLink'})
     if group
-      return _.sample(group.members, 16)
+      membersWithPicture = _.filter(group.members, (m)->m.picture?)
+      return _.sample(membersWithPicture, 16)
     else
       return []
 
