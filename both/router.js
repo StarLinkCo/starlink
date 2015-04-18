@@ -133,9 +133,7 @@ Router.map(function() {
   this.route('profile', {
     waitOn: function() {
       var subscriptions = [];
-      if (Meteor.userId() == null) {
-        subscriptions.push(Meteor.subscribe('welcomeGroup'))
-      }
+      subscriptions.push(Meteor.subscribe('welcomeGroup'));
       return subscriptions;
     }
   });
