@@ -33,9 +33,7 @@
             <p>Organizer: <b>{{ organizer.name }}</b></p>
             {{/if}}
             <p>Time: <b>{{ getTime startDate }}</b></p>
-            {{#if venue}}
-            <p>City: <b>{{ venue.city }}</b></p>
-            {{/if}}
+            <p>City: <b>{{#if venue}}{{ venue.city }}{{/if}}</b></p>
           </a>
         {{/each}}
 
