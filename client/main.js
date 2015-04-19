@@ -6,9 +6,10 @@ Meteor.subscribe("notifications");
 
 Accounts.onLogin(function(data) {
   Meteor.call('increaseLogin', function(err, result) {
+    Session.set('firstTimeSignup', false);
     if (result == 1) {
       joinStarLinkGroup();
-      Router.go('/profile?edit=1');
+      Session.set('firstTimeSignup', true);
     }
   });
 });

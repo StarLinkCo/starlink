@@ -14,8 +14,9 @@ Template.profile.helpers
       return []
 
 Template.profile.rendered = ->
-  if Router.current().params.query.edit?
+  if Meteor.userId() && Session.get('firstTimeSignup')
     IonModal.open('profileEdit')
+    Session.get('firstTimeSignup', false)
 
 Template.ionBody.events
   'click .refresh-profile-button': (e)->
