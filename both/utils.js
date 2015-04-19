@@ -26,7 +26,7 @@ joinStarLinkGroup = function() {
   var pic = Meteor.user().profile && Meteor.user().profile.pictureUrl
   var group = Groups.findOne({name: 'Welcome to StarLink'});
   var member =  _.find(group.members,
-    function(member) {member.id == Meteor.userId()});
+    function(member) {return member.id == Meteor.userId()});
   if (!member) {
     Groups.update( {"_id": group._id }, {
       "$push": { "members" : {
