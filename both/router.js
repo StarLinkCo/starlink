@@ -1,5 +1,6 @@
 Router.configure({
   layoutTemplate: 'layout',
+  //https://github.com/reywood/meteor-iron-router-ga
   trackPageView: true
 });
 
@@ -121,7 +122,8 @@ Router.route('/private_groups/:_id', {
 });
 
 Router.route('/', function () {
-  GAnalytics.pageview();
+  //https://github.com/datariot/meteor-ganalytics
+  //GAnalytics.pageview();
   this.render('calendar');
 });
 
