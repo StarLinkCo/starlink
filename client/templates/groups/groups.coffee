@@ -53,7 +53,7 @@ Template.groups.events
       alert('you are not in this group')
       return
 
-    if confirm("Are you sure?")
+    if confirm("Do you want to leave this group?")
       this.members = _.without this.members,
         _.findWhere(this.members, {id: Meteor.userId()})
 

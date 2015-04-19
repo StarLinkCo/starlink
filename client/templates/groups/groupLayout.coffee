@@ -2,7 +2,7 @@ Template.groupLayout.events
   'click button.leave-group': (event, template) ->
     event.preventDefault()
 
-    if confirm("Are you sure?")
+    if confirm("Do you want to leave this group?")
       if (Meteor.user() == null)
         Router.go('/profile')
         return
