@@ -121,10 +121,11 @@ Meteor.methods
   createEventGroup: (eventId)->
     if Roles.userIsInRole(Meteor.userId(), 'admin')
       event = Events.findOne(eventId)
-      console.log event
+#      console.log event
       unless event.groupId
         name = event.title
-        time = moment(event.startDate).format('MMM Do ddd') + " (" + moment(event.startDate).fromNow() + ")"
+        time = moment(event.startDate).format('MMM Do ddd')
+        address = ""
         if event.venue
           address = "#{event.venue.city}, #{event.venue.region}"
         if event.event_source == 'meetup'
