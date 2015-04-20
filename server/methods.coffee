@@ -57,6 +57,7 @@ Meteor.methods
       Meetships.update(existMeetship._id, { $set: {connected: true}})
       user = Meteor.users.findOne(Meteor.userId())
       meetUser = Meteor.users.findOne(meetUserId)
+      now = new Date()
       groupId = PrivateGroups.insert({
         members: [
           {
@@ -70,7 +71,7 @@ Meteor.methods
             picture: getUserPicture(meetUser)
           }
         ],
-        updatedAt: Date.now()
+        updatedAt: now
       })
       createPrivateGroupNotification(groupId, user._id, meetUser._id)
       createPrivateGroupNotification(groupId, meetUser._id, user._id)
@@ -92,7 +93,7 @@ Meteor.methods
       content: opts.content,
       authorId: Meteor.userId(),
       authorName: getUserName(Meteor.user()),
-      createdAt: Date.now(),
+      createdAt: (new Date()),
       commentsCount: 0,
       answersCount: 0
     })
@@ -114,7 +115,7 @@ Meteor.methods
       answerId: opts.answer._id
       authorId: Meteor.userId()
       authorName: getUserName(Meteor.user()),
-      createdAt: Date.now()
+      createdAt: (new Date())
     })
     Answers.update(opts.answer._id, { $inc: { commentsCount: 1 } })
 
@@ -149,7 +150,7 @@ Meteor.methods
     if user && linkedin
       accessToken = linkedin.accessToken
       expiredDate = new Date(linkedin.expiresAt)
-      if Date.now() < expiredDate
+      if (new Date()) < expiredDate
         extraFields = 'first-name,headline,id,last-name,site-standard-profile-request,email-address,location:(name),num-connections,picture-url,public-profile-url,skills,languages,three-current-positions,three-past-positions,educations,recommendations-received,summary';
         url = 'https://api.linkedin.com/v1/people/~:(' + extraFields + ')'
         response = Meteor.http.get(url, {
@@ -190,7 +191,7 @@ Meteor.methods
     userName = Meteor.user().profile.firstName
     avatar = Meteor.user().profile.pictureUrl
 
-    Groups.update(groupId, { $set: { updatedAt: Date.now() } })
+    Groups.update(groupId, { $set: { updatedAt: (new Date()) } })
     Messages.insert
       groupId: groupId
       name: userName

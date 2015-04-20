@@ -6,7 +6,7 @@ Template.linksShow.events
     Comments.insert({
       linkId: this.link._id
       content: content
-      createdAt: Date.now()
+      createdAt: (new Date())
       userId: Meteor.userId()
       userName: getUserName(Meteor.user())
       userEmail: getUserEmail(Meteor.user())

@@ -29,7 +29,7 @@ createPrivateGroupNotification = function(groupId, currentUserId, meetUserId) {
     meetUserPicture: getUserPicture(currentUser),
     read: false,
     privateGroupId: groupId,
-    created: Date.now(),
+    created: (new Date()),
     type: 'private_group'
   })
 }

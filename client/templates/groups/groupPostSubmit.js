@@ -3,11 +3,11 @@ AutoForm.addHooks(
   {
     before: {
       insert: function (doc) {
-        doc.createdAt = Date.now();
+        doc.createdAt = (new Date());
         doc.count = 0;
         doc.createdById = Meteor.userId();
         doc.memebers = [];
-        doc.updatedAt = Date.now();
+        doc.updatedAt = (new Date());
         var picture;
         if(Meteor.user().profile) {
           picture = Meteor.user().profile.pictureUrl;
