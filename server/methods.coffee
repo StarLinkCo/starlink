@@ -224,3 +224,15 @@ Meteor.methods
       return Meteor.linkedinConnections.find({'id': {$in: commonIds}, userLinkedInId: currentUser.profile.id}, {limit: 5}).fetch()
 
     return []
+
+  updateEvent: (opts={})->
+    eventId = opts.eventId
+    event = Events.findOne(eventId)
+    imageUrl = opts.imageUrl
+    name = opts.name
+    modifier = { imageUrl: imageUrl }
+    if event.event_source == 'meetup'
+      modifier.name = name
+    else
+      modifier.title = name
+    Events.update(eventId, { $set: modifier })

@@ -31,6 +31,7 @@
        </div>
      </label>
     {{/ionItem}}
+
     {{#unless event.groupId}}
       {{#ionItem class="item-button-right"}}
         Create Event Group
@@ -39,6 +40,18 @@
         </button>
       {{/ionItem}}
     {{/unless}}
+
+    <label class="item item-input">
+      <input type="text" placeholder="Event Image Url" value="{{event.imageUrl}}" id="event-image-input">
+    </label>
+    <label class="item item-input">
+      <input type="text" value="{{event.title}}{{event.name}}" id="event-name-input">
+    </label>
+    <div class="padding">
+      <button class="button button-positive button-block" id="save-event-button">
+        Save Image and Title
+      </button>
+    </div>
   {{/ionList}}
 </div>
 </template>
