@@ -1,4 +1,10 @@
 <template name="eventsShow">
+
+  {{#if event.imageUrl }}
+    <div id="wx_pic" style="display:none;">
+      <img src="{{event.imageUrl}}">
+    </div>
+  {{/if}}
   {{#contentFor "headerButtonLeft"}}
     {{>ionNavBackButton }}
   {{/contentFor}}
