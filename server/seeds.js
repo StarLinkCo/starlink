@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-
+/*
   if (Posts.find({}).count() === 0) {
     Posts.insert({
       title: Fake.sentence(),
@@ -18,5 +18,5 @@ Meteor.startup(function () {
       });
     });
   }
-
+*/
 });
