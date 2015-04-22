@@ -1,5 +1,5 @@
 Template._eventTabs.events
-  'click a.join-group': (event, template) ->
+  'click .join-group': (event, template) ->
     event.preventDefault()
 
     if (Meteor.user() == null)
