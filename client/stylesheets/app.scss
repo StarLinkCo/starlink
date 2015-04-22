@@ -278,3 +278,17 @@ $color6: black;
     }
   }
 }
+.bottom-button-wrapper {
+  .bottom-button-wrapper-inner {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background: #f8f8f8;
+    border-top: 1px solid #b2b2b2;
+    padding: 5px;
+    .button.button-full {
+      margin: 0;
+    }
+  }
+}
