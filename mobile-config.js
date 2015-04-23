@@ -4,7 +4,7 @@
 App.info({
     name: 'StarLink',
     description: 'Meet the right people at right events',
-    version: '0.8.2',
+    version: '0.8.3',
     website: 'http://starlink.io',
     author: 'StarLink Co.'
 });
@@ -21,7 +21,8 @@ App.icons({
     'ipad_2x': 'public/apple-touch-icon-144x144.png'
 });
 
-App.accessRule("https://media.licdn.com", "true");
-App.accessRule("http://schd.ws", "true");
-App.accessRule("https://cdn.evbuc.com", "true");
+//App.accessRule("https://media.licdn.com", "true");
+//App.accessRule("http://schd.ws", "true");
+//App.accessRule("https://cdn.evbuc.com", "true");
+App.accessRule("*");
 
