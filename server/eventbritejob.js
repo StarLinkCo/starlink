@@ -77,7 +77,7 @@ fetchEventsFromMeetup = function() {
             Meteor.settings.meetup +
             "&group_urlname="+
             organizer.groupurlname +
-            "&sign=true&format=json&page=5&order=time&status=upcoming").content);
+            "&sign=true&format=json&page=20&order=time&status=upcoming").content);
         for(var i = 0; i < events.results.length; i ++) {
           Events.update({ id: events.results[i].id }, _.extend(events.results[i], { startDate: new Date(events.results[i].time), event_source: 'meetup'}), {upsert: true})
         }
