@@ -79,6 +79,14 @@ Router.route('/links/:_id', {
     return Meteor.subscribe('comments', this.params._id);
   }
 });
+
+Router.route('profile/metrics', {
+  name: 'profileMetrics',
+  waitOn: function() {
+    return Meteor.subscribe('linkedin_metrics');
+  }
+});
+
 Router.route('/profile/:_id', {
   name: 'user.profile'
 });

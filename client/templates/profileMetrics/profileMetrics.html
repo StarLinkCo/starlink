@@ -1,0 +1,74 @@
+<template name="profileMetrics">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='navicon'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Profile Metrics</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent class="profile-metrics-wrapper"}}
+      {{#if userMetric}}
+        {{#if processingMetric userMetric }}
+          Processing your metrics
+        {{else}}
+          {{#if failedMetric userMetric}}
+            Failed to process your metrics, you can relogin from linkedin and start again.
+            <a id="process-metrics-button" class="button">Re-process My Metrics</a>
+          {{else}}
+            <div class="list">
+              <div class="item">
+                <h2>{{ userMetric.matrix.asize }}</h2>
+                <p>
+                  This is the total number of contacts you have. It is not as informative as your unique (or 'effective') ties. The quality of your network isn't just about the total number of people you know, but the information, opportunities, and social support they provide. These factors are correlated with the structure of the ties between your contacts, not just their raw number.
+                </p>
+              </div>
+              <div class="item">
+                <h2>{{ formatNumber userMetric.matrix.esize 1 }}</h2>
+                <p>This is the 'effective size' of your network. Not every contact counts the same or adds the same value to your network. Some ties are 'redundant' because you both know all of the same people. They are not necessarily giving you unique information. This measure controls for that fact and gives an estimate of the unique number of clusters you are connected to.</p>
+              </div>
+              <div class="item">
+                <h2>{{ formatNumber userMetric.matrix.constraint 2 }}</h2>
+                <p>This is an index measure that describes the extent to which your network spans different groups (i.e. bridging structural holes) or is concentrated in one or two areas. As the number approaches 100, you are in a closed, or focused network. As it approaches 0, your network is more open/dispersed, indicating that you have more vision across social groups.  Disconnected contacts may expose you to new information, but closure is required to develop a reputation or generate trust, among other things.</p>
+              </div>
+              <div class="item">
+                <h2>{{ formatNumber userMetric.matrix.pubdensity 2 }}</h2>
+                <p>This is a percentage that represents the number of ties between your contacts divided by the total number of possible ties (i.e. how 'dense' or closed your network is). As the number approaches 100, it means that all of your contacts know each other. As it approaches 0, it means all of your contacts are disconnected from each other. Having a closed network can be good or bad depending on the task and social environment.</p>
+              </div>
+              <div class="item">
+                <h2>{{ formatNumber userMetric.matrix.hierarchy 2}}</h2>
+                <p>This number is a concentration index that represents how dependent you are on a few focal contacts. If all of your contacts know you through your boss or parent, then you have a 'hierarchical' network, and are dependent on them. This can work well in situations where you are considered an 'outsider' and need a strategic partner to get in the door, but is generally considered a handicap.</p>
+              </div>
+              <div class="item">
+                <h2>{{ formatNumber userMetric.matrix.betweenness 1}}</h2>
+                <p>This number represents the number of structural holes, or bridging opportunities, to which you have exclusive access. You have exclusive access to a structural hole if you lie on the shortest path between two contacts in your network. If others in your network lie on an equidistant path between the two contacts, then you each own a proportional amount. This number is typically quite large, and is presented in raw form in order to emphasize the opportunities you have to move information between people in your network who don't know each other.</p>
+              </div>
+            </div>
+          {{/if}}
+        {{/if}}
+      {{else}}
+        <div class="card">
+          <div class="item">
+            You don't have linkedin metrics yet.
+            <a id="process-metrics-button" class="button">Process My Metrics</a>
+          </div>
+        </div>
+      {{/if}}
+    {{/ionContent}}
+    <div class="tabs">
+      <a class="tab-item" href='/profile'>
+        Profile
+      </a>
+      <a class="tab-item" href='/profile/metrics'>
+        Metrics
+      </a>
+    </div>
+  {{/ionView}}
+</template>

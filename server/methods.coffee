@@ -236,3 +236,26 @@ Meteor.methods
     else
       modifier.title = name
     Events.update(eventId, { $set: modifier })
+
+  startProcessMetrics: ()->
+    userLinkedinId = Meteor.user().profile.id
+    metric = LinkedinMetrics.findOne({userLinkedinId: userLinkedinId})
+    if !metric?
+      metricId = LinkedinMetrics.insert({state: 'processing', userLinkedinId: userLinkedinId})
+      metric = LinkedinMetrics.findOne(metricId)
+    else
+      LinkedinMetrics.update(metric._id, { $set: { state: 'processing' }})
+
+    queue = new PowerQueue({ isPaused: true })
+
+    queue.taskHandler = (data, next)->
+      Meteor.setTimeout(->
+        try
+          matrix = Meteor.loadConnectionsMatrix(data.user)
+          LinkedinMetrics.update(metric._id, { $set: { matrix: matrix, state: 'processed' }})
+        catch
+          LinkedinMetrics.update(metric._id, { $set: { state: 'failed' }})
+      , 5000)
+    queue.add({user: Meteor.user()})
+    queue.run()
+    metric

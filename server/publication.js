@@ -157,3 +157,12 @@ Meteor.publish("private_groups", function(){
 Meteor.publish("private_messages", function(groupId){
   return PrivateMessages.find({privateGroupId: groupId});
 });
+Meteor.publish("linkedin_metrics", function(){
+  if(this.userId) {
+    var user = Meteor.users.findOne(this.userId);
+    var userLinkedinId = user.profile.id;
+    return LinkedinMetrics.find({userLinkedinId: userLinkedinId});
+  } else {
+    return [];
+  }
+});
