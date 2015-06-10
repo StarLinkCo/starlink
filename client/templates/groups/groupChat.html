@@ -22,9 +22,8 @@
         </div>
       {{/each}}
     {{/ionContent}}
-
-    <div class="bar bar-footer bar-dark" data-keyboard-attach>
-	    <input type="text" id="messageBox" placeholder="What do you want to say?">
-    </div>
+    {{#ionFooterBar class="bar-dark"}}
+      <input type="text" id="messageBox" placeholder="What do you want to say?">
+    {{/ionFooterBar}}
   {{/ionView}}
 </template>
