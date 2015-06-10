@@ -24,14 +24,14 @@ Template.groupMembers.helpers
 
 Template.groupMembers.events
   'click .profile-button': (e)->
-    Router.go("publicProfile", { _id: this._id })
+    window.open(this.profile?.publicProfileUrl, "profile")
 
   'click .kick-user-button': (e)->
     e.stopPropagation()
     Meteor.call('kickUserFromGroup', { group: this.group, user: this.user})
 
   'click .profile-slide': (e)->
-    Router.go("publicProfile", { _id: this._id })
+    window.open(this.profile?.publicProfileUrl, "profile")
 
 renderSharedConnections = (self, group, index)->
   Meteor.call('getSharedConnections', group.members[index].id, (err, result)->
