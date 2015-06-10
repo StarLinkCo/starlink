@@ -39,4 +39,4 @@ Template.groupShow.events
 
   'click .member-link': (e)->
     group = Router.current().data()
-    Router.go('group.members', { _id: group._id, _userId: this.id})
+    Router.go('group.members', {_id: group._id, _userId: this.id})
