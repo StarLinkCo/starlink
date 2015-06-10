@@ -256,11 +256,12 @@ $color6: black;
   margin-right: 10px;
 }
 .user-summary {
-  margin: 30px 20px;
+  margin: 20px 10px;
   display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;
-  vertical-align: center;
+  vertical-align: auto;
+  align-content: stretch;
 }
 .slick-active {
   overflow-y: scroll;

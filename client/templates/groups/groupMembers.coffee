@@ -24,28 +24,19 @@ Template.groupMembers.helpers
 
 Template.groupMembers.events
   'click .profile-button': (e)->
-    window.open(this.profile?.publicProfileUrl, "profile")
+    e.preventDefault()
+    window.open(this.profile?.publicProfileUrl, '_blank', 'location=no')
 
   'click .kick-user-button': (e)->
     e.stopPropagation()
     Meteor.call('kickUserFromGroup', { group: this.group, user: this.user})
 
   'click .profile-slide': (e)->
-    window.open(this.profile?.publicProfileUrl, "profile")
-
-renderSharedConnections = (self, group, index)->
-  Meteor.call('getSharedConnections', group.members[index].id, (err, result)->
-    ele = self.$('.ion-slide-box').find('.slick-active .shared-connections-wrapper')
-    ele.html('')
-    Blaze.renderWithData(Template._groupSharedConnections, result, ele.get(0))
-  )
+    e.preventDefault()
+    window.open(this.profile?.publicProfileUrl, '_blank', 'location=no')
 
 Template.groupMembers.rendered = ->
   group = this.data
   self = this
-  $('.user-summary').height($(window).height() - 540)
+  $('.user-summary').height($(window).height() - 420)
   index = getDefaultSlideIndex(group, Router.current().params._userId)
-  renderSharedConnections(self, group, index)
-  this.$('.ion-slide-box').on('onSlideChanged', (e)->
-    renderSharedConnections(self, group, e.index)
-  )
