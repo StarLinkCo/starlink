@@ -74,7 +74,7 @@ meteoric:ionicons-sass@0.1.6
 minifiers@1.1.5
 minimongo@1.0.8
 mobile-status-bar@1.0.3
-momentjs:moment@2.10.3
+momentjs:moment@2.10.2
 mongo@1.1.0
 mongo-livedata@1.0.8
 oauth@1.1.4
@@ -107,7 +107,9 @@ underscorestring:underscore.string@3.0.3_1
 url@1.0.4
 useraccounts:core@1.11.1
 useraccounts:ionic@1.11.1
+url@1.0.4
 vsivsi:queue-async@1.0.7
 webapp@1.2.0
 webapp-hashing@1.0.3
-zimme:iron-router-active@1.0.4
+wizonesolutions:underscore-string@1.0.0
+zimme:iron-router-active@1.0.1
