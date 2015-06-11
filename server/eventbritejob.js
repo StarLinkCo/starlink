@@ -8,8 +8,8 @@ SyncedCron.add({
     name: 'Pull Eventbrite/Meetup events to Event collection',
     schedule: function(parser) {
         //return parser.text('every 59 seconds');
-        //return parser.text('every 30 minutes');
-        return parser.text('every 2 hours');
+        return parser.text('every 5 minutes');
+        //return parser.text('every 2 hours');
         //return parser.text('at 5:00 am every 1 day');
     },
 
@@ -79,7 +79,7 @@ fetchEventsFromMeetup = function() {
             organizer.groupurlname +
             "&sign=true&format=json&page=20&order=time&status=upcoming").content);
         for(var i = 0; i < events.results.length; i ++) {
-          Events.update({ id: events.results[i].id }, _.extend(events.results[i], { startDate: new Date(events.results[i].time), event_source: 'meetup'}), {upsert: true})
+          Events.update({ id: events.results[i].id }, {$set: _.extend(events.results[i], { startDate: new Date(events.results[i].time), event_source: 'meetup'})}, {upsert: true})
         }
     });
 };
