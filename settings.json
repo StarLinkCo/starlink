@@ -16,10 +16,10 @@
   },
   "sikka": {
     "rateLimits": {
-      "perIp":        "20"
+      "perIp":        "40"
     },
     "times": {
-      "blockIpFor":   "120000"
+      "blockIpFor":   "60000"
     },
     "captcha": {
       "siteKey": "6LfM1gQTAAAAAOLpAJomuhhMWk3Sh4T-AuWiGDDk",
