@@ -1,7 +1,9 @@
 <template name="_groupTabs">
-  <div class="bottom-button-wrapper">
-    <div class="bottom-button-wrapper-inner">
-      <a href="{{pathFor 'group.chat'}}" class="button button-positive button-full">Group Chat</a>
+  {{#if group}}
+    <div class="bottom-button-wrapper">
+      <div class="bottom-button-wrapper-inner">
+        <button class="button button-positive button-full group-chat">Group Chat</button>
+      </div>
     </div>
-  </div>
+  {{/if}}
 </template>
