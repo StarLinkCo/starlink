@@ -43,9 +43,10 @@ Template.groupShow.events
       return
 
     group = Router.current().data()
+    mem_id = this.id
 
     if UI._globalHelpers.memberOf(group)
-      Router.go('group.members', {_id: group._id, _userId: this.id})
+      Router.go('group.members', {_id: group._id, _userId: mem_id})
       return
 
     group.members.push
@@ -60,4 +61,4 @@ Template.groupShow.events
       if (error)
         alert(error.reason)
       else
-        Router.go('group.members', {_id: group._id, _userId: this.id})
+        Router.go('group.members', {_id: group._id, _userId: mem_id})

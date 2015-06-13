@@ -6,8 +6,9 @@ Template._groupTabs.events
       Router.go('/profile')
       return
 
+    mem_id = @_id
     if UI._globalHelpers.memberOf(this)
-      Router.go('group.chat', {_id: @_id})
+      Router.go('group.chat', {_id: mem_id})
       return
 
     this.members.push
@@ -22,5 +23,5 @@ Template._groupTabs.events
       if (error)
         alert(error.reason)
       else
-        Router.go('group.chat', {_id: @_id})
+        Router.go('group.chat', {_id: mem_id})
 
