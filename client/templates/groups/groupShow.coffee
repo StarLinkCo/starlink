@@ -38,5 +38,26 @@ Template.groupShow.events
     Router.go('group.edit', {_id: @_id})
 
   'click .member-link': (e)->
+    if (Meteor.user() == null)
+      Router.go('/profile')
+      return
+
     group = Router.current().data()
-    Router.go('group.members', {_id: group._id, _userId: this.id})
+
+    if UI._globalHelpers.memberOf(group)
+      Router.go('group.members', {_id: group._id, _userId: this.id})
+      return
+
+    group.members.push
+      id: Meteor.userId()
+      picture: (if Meteor.user().profile then Meteor.user().profile.pictureUrl)
+
+    modifies =
+      count: group.members.length
+      members: group.members
+
+    Groups.update group._id, {$set: modifies}, (error) ->
+      if (error)
+        alert(error.reason)
+      else
+        Router.go('group.members', {_id: group._id, _userId: this.id})
