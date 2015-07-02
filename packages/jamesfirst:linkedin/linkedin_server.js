@@ -24,7 +24,7 @@ OAuth.registerService('linkedin', 2, null, function (query) {
     var urlParts = urlUtil.parse(profileUrl, true);
     serviceData.id = urlParts.query.id;
     fields.publicId = urlParts.query.id;
-
+/*
     var queue = new PowerQueue({
       isPaused: true
     })
@@ -36,7 +36,7 @@ OAuth.registerService('linkedin', 2, null, function (query) {
     };
     queue.add({accessToken: accessToken, fields: fields});
     queue.run();
-
+*/
     return {
         serviceData: serviceData,
         options: {

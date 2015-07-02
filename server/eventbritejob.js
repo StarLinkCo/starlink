@@ -8,8 +8,8 @@ SyncedCron.add({
     name: 'Pull Eventbrite/Meetup events to Event collection',
     schedule: function(parser) {
         //return parser.text('every 59 seconds');
-        return parser.text('every 5 minutes');
-        //return parser.text('every 2 hours');
+        //return parser.text('every 30 minutes');
+        return parser.text('every 4 hours');
         //return parser.text('at 5:00 am every 1 day');
     },
 
