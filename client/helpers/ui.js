@@ -4,21 +4,24 @@ UI.registerHelper('timeAgo', function(datetime) {
 });
 UI.registerHelper('getUserEmail', function(user) {
   return getUserEmail(user);
-})
+});
 UI.registerHelper('getUserHeadline', function(user) {
   return getUserHeadline(user);
-})
+});
+UI.registerHelper('getUserRoles', function(user) {
+  return getUserRoles(user);
+});
 UI.registerHelper('getUserPicture', function(user) {
   return getUserPicture(user);
-})
+});
 
 UI.registerHelper('getUserName', function(user) {
   return getUserName(user);
-})
+});
 
 UI.registerHelper('isMeetupEvent', function(e) {
   return e.event_source == 'meetup';
-})
+});
 
 UI.registerHelper('getGroupClass', function(group) {
   var _class = ['item-icon-left'];
@@ -26,4 +29,4 @@ UI.registerHelper('getGroupClass', function(group) {
     _class.push('marked-group');
   }
   return _class.join(' ');
-})
+});

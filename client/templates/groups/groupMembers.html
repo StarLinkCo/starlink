@@ -18,15 +18,24 @@
                   <img src="{{getUserPicture this}}" alt="" />
                   <h2>{{getUserName this}}</h2>
                   <p>{{ getUserHeadline this }}</p>
+                  <div>
+                  {{#each getUserRoles this}}
+                    <span class="role-name">{{this}}</span>
+                  {{/each}}
+                  </div>
                 </div>
-                <div class="user-summary">
-                  {{ this.summary }}
-                </div>
+                {{#if this.summary}}
+                  <div class="user-summary">
+                    {{ this.summary }}
+                  </div>
+                {{/if}}
+
+                {{#if notCurrentUser this }}
                 <div class="item item-divider meet-button-wrapper">
-                  {{#if notCurrentUser this }}
                     {{>_meetButton user=this}}
-                  {{/if}}
                 </div>
+                {{/if}}
+                
                 <div class="padding" style="color: #0e6dc8" align="right">
                   <p>Click anywhere for more details.</p>
                 </div>

@@ -10,6 +10,10 @@ getUserHeadline = function(user) {
   return user.profile ? user.profile.headline : '';
 };
 
+getUserRoles = function(user) {
+  return user.profile ? user.profile.roles : [];
+};
+
 getUserPicture = function(user) {
   return user.profile ? user.profile.pictureUrl : '';
 };
